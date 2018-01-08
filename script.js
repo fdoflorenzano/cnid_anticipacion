@@ -81,11 +81,12 @@ const vis = new Vue({
           links
         };
 
-        // this.simulation
-        //   .force("link")
-        //   .links(this.graph.links);
-
-        this.simulation.nodes(this.graph.nodes).on("tick", this.ticked);
+        this.simulation = d3.forceSimulation()
+        .nodes(this.graph.nodes)
+        .force("colision", d3.forceCollide(50))
+        .force("charge", d3.forceManyBody().strength(-20))
+        .force("link", d3.forceLink().id(d => d.id).distance(5).strength(0.1).links(this.graph.links))
+        .on("tick", this.ticked);
 
       });
     },
@@ -96,10 +97,6 @@ const vis = new Vue({
         .attr('transform',
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
 
-      this.simulation = d3.forceSimulation()
-        .force("colision", d3.forceCollide(50))
-        .force("charge", d3.forceManyBody().strength(-20))
-        .force("link", d3.forceLink().id(l => l.id).distance(5).strength(0.1));
       console.log('initialized');
     },
     dragstarted(d, i, elements) {

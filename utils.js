@@ -41,3 +41,17 @@ const nodificador = n => ({
 const linkeador = dataset => {
     return merge(dataset.map(n => parse(n.hito_consecuencia).map(c => fromTo(n.hito_id, c))));
 };
+const rankYears = nodes => {
+    let ranking = {};
+    nodes.forEach( node => {
+        if(ranking[node.fecha]){
+            ranking[node.fecha] += 1;
+        } else {
+            ranking[node.fecha] = 1;            
+        }
+    });
+    return ranking;
+}
+const tipHTML = element => {
+    return `<span class="fecha">${element.fecha}: </span><span>${element.name}</span>`;
+}

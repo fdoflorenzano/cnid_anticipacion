@@ -3,7 +3,7 @@ const vis = new Vue({
   data() {
     return {
       title: "ANTICIPANDO HORIZONTES PARA CHILE",
-      WIDTH: 1000,
+      WIDTH: 1200,
       HEIGHT: 6000,
       MARGIN: {
         TOP: 50,
@@ -15,12 +15,15 @@ const vis = new Vue({
       FILEPATH: 'datos.csv',
       graph: null,
       container: null,
+      tooltip: null,
       simulation: null,
       heightScale: null,
     }
   },
   mounted() {
     console.log('mounting');
+    this.scrollToEnd();
+    this.tooltip = d3.select('.tooltip').style("opacity", 0);
     this.initialize();
     this.getData();
   },
@@ -55,20 +58,26 @@ const vis = new Vue({
           .on("start", this.dragstarted)
           .on("drag", this.dragged)
           .on("end", this.dragended))
-        .on('dblclick', this.unfix);
+        .on('dblclick', this.unfix)
+        .on("mouseover", function(d) {
+          d3.select('.tooltip').transition()
+            .duration(200)
+            .style("opacity", .9);
+          console.log(d3.event);
+          d3.select('.tooltip').html(tipHTML(d))
+            .style("left", (d3.event.pageX - 60) + "px")
+            .style("top", (d3.event.pageY + 16) + "px");
+          })
+        .on("mouseout", function(d) {
+          d3.select('.tooltip').transition()
+            .duration(500)
+            .style("opacity", 0);
+          });
 
       gNodes
         .append('circle')
         .attr('r', this.RADIUS);
 
-      gNodes
-        .append('text')
-        .attr("dy", 5)
-        .text(d => d.id);
-
-      gNodes
-        .append('title')
-        .text(d => d.name);
     }
   },
   methods: {
@@ -84,17 +93,26 @@ const vis = new Vue({
           links
         };
 
+        const ranking = rankYears(nodes);
+
         heightScale = d3.scaleLinear()
           .range([this.height - 300, 100])
           .domain(d3.extent(nodes, d => d.fecha));
 
+        const dif = Math.abs(heightScale(5) - heightScale(0));
+
         this.simulation = d3.forceSimulation()
           .nodes(this.graph.nodes)
           .force("colision", d3.forceCollide(this.RADIUS * 1.5))
-          .force("charge", d3.forceManyBody().strength(-150))
-          .force("link", d3.forceLink().id(d => d.id).strength(0.05).links(this.graph.links))
-          .force("vertical", d3.forceY(d => heightScale(d.fecha)))
-          .force("horizontal", d3.forceX(this.width/2).strength(0.05))
+          .force("charge", d3.forceManyBody().strength(-500))
+          .force("link",
+            d3.forceLink()
+            .id(d => d.id)
+            .distance(this.linkDistance(dif))
+            .strength(0.25)
+            .links(this.graph.links))
+          .force("vertical", d3.forceY(d => heightScale(d.fecha)).strength(0.3))
+          .force("horizontal", d3.forceX(this.width / 2).strength(0.12))
           .on("tick", this.ticked);
 
         const timelines = [2018, 2020];
@@ -102,7 +120,6 @@ const vis = new Vue({
         while (timelines[timelines.length - 1] < d3.max(nodes, d => d.fecha)) {
           timelines.push(timelines[timelines.length - 1] + 5);
         }
-        console.log(timelines);
 
         this.container
           .selectAll('.timeline')
@@ -143,6 +160,7 @@ const vis = new Vue({
     dragged(d, i, elements) {
       d.fx = d3.event.x;
       d.fy = d3.event.y;
+      console.log(d);
     },
     dragended(d, i, elements) {
       d3.select(elements[i]).classed("active", false);
@@ -169,6 +187,24 @@ const vis = new Vue({
         .attr('y1', l => l.source.y)
         .attr('x2', l => l.target.x)
         .attr('y2', l => l.target.y);
+    },
+    linkDistance(dif) {
+      return (l) => dif ? dif * Math.abs(l.source.fecha - l.target.fecha) / 5 : 40;
+    },
+    nodeCharge(ranking) {
+      let max = -1;
+      let min = 100000;
+      for (let fecha in ranking) {
+        if (max < ranking[fecha]) max = ranking[fecha]
+        if (min > ranking[fecha]) min = ranking[fecha]
+      }
+      console.log(min, max)
+      return d3.scaleLinear().domain([min, max]).range([-500, -125]);
+    },
+    scrollToEnd() {
+      let container = document.querySelector("html");
+      const scrollHeight = container.scrollHeight;
+      container.scrollTop = scrollHeight;
     }
   }
 });

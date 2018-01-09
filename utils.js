@@ -16,9 +16,26 @@ const fromTo = (from, to) => ({
     'target': to,
     'source': from
 });
+const dateParser = date => {
+    const parsed = date.split('-');    
+    if(date == '' || date == '-') {
+        return 2018
+    }else if(date.toLowerCase() == 'hoy'){
+        return 2018
+    }else if(parsed.length == 1){
+        return parseInt(parsed)
+    }else{
+        if(isNaN(parseInt(parsed[0]))){
+            return (2018 + parseInt(parsed[1]))/2
+        }else{
+            return (parseInt(parsed[0]) + parseInt(parsed[1]))/2
+        }
+    }
+    return date
+};
 const nodificador = n => ({
     'id': n.hito_id,
-    'fecha': n.fecha,
+    'fecha': dateParser(n.fecha),
     'name': n.hito_texto
 });
 const linkeador = dataset => {

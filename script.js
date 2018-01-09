@@ -11,10 +11,12 @@ const vis = new Vue({
         LEFT: 0,
         RIGHT: 0
       },
+      RADIUS: 10,
       FILEPATH: 'datos.csv',
       graph: null,
       container: null,
-      simulation: null
+      simulation: null,
+      heightScale: null,
     }
   },
   mounted() {
@@ -37,6 +39,7 @@ const vis = new Vue({
         .data(val.links)
         .enter()
         .append('line')
+        .attr('class', 'link')
         .attr('x1', l => l.source.x)
         .attr('y1', l => l.source.y)
         .attr('x2', l => l.target.x)
@@ -56,7 +59,7 @@ const vis = new Vue({
 
       gNodes
         .append('circle')
-        .attr('r', 10);
+        .attr('r', this.RADIUS);
 
       gNodes
         .append('text')
@@ -81,12 +84,45 @@ const vis = new Vue({
           links
         };
 
+        heightScale = d3.scaleLinear()
+          .range([300, this.height - 100])
+          .domain(d3.extent(nodes, d => d.fecha));
+
         this.simulation = d3.forceSimulation()
-        .nodes(this.graph.nodes)
-        .force("colision", d3.forceCollide(50))
-        .force("charge", d3.forceManyBody().strength(-20))
-        .force("link", d3.forceLink().id(d => d.id).distance(5).strength(0.1).links(this.graph.links))
-        .on("tick", this.ticked);
+          .nodes(this.graph.nodes)
+          .force("colision", d3.forceCollide(this.RADIUS * 1.5))
+          .force("charge", d3.forceManyBody().strength(-150))
+          .force("link", d3.forceLink().id(d => d.id).strength(0.05).links(this.graph.links))
+          .force("vertical", d3.forceY(d => heightScale(d.fecha)))
+          .force("horizontal", d3.forceX(this.width/2).strength(0.05))
+          .on("tick", this.ticked);
+
+        const timelines = [2018, 2020];
+
+        while (timelines[timelines.length - 1] < d3.max(nodes, d => d.fecha)) {
+          timelines.push(timelines[timelines.length - 1] + 5);
+        }
+        console.log(timelines);
+
+        this.container
+          .selectAll('.timeline')
+          .data(timelines)
+          .enter()
+          .append('line')
+          .attr('class', 'timeline')
+          .attr('x1', 100)
+          .attr('x2', this.width)
+          .attr('y1', heightScale)
+          .attr('y2', heightScale);
+        this.container
+          .selectAll('.timeline-text')
+          .data(timelines)
+          .enter()
+          .append('text')
+          .attr('class', 'timeline-text')
+          .attr('x', 20)
+          .attr('y', heightScale)
+          .text(d => d);
 
       });
     },
@@ -128,7 +164,7 @@ const vis = new Vue({
     ticked() {
       this.container.selectAll('.node')
         .attr('transform', d => `translate(${this.boundedX(d)}, ${this.boundedY(d)})`);
-      this.container.selectAll('line')
+      this.container.selectAll('.link')
         .attr('x1', l => l.source.x)
         .attr('y1', l => l.source.y)
         .attr('x2', l => l.target.x)

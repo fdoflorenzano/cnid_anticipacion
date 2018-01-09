@@ -3,9 +3,14 @@ body {
   max-width: 1000px;
   font-family: sans-serif;
 }
-#container line {
+#container line.link {
   stroke: #9ecae1;
   stroke-width: 4px;
+}
+#container line.timeline {
+  stroke: black;
+  stroke-width: 2px;
+  stroke-dasharray: 1em;
 }
 #container .node circle {
   fill: white;

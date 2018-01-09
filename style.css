@@ -1,18 +1,75 @@
+@font-face {
+    font-family: sourceBold;
+    src: url(fonts/SourceSansPro-Bold.otf);
+}
+
+@font-face {
+    font-family: sourceBlack;
+    src: url(fonts/SourceSansPro-Black.otf);
+}
+
+@font-face {
+    font-family: source;
+    src: url(fonts/SourceSansPro-Regular.otf);
+}
+
+@font-face {
+    font-family: alegreya;
+    src: url(fonts/AlegreyaSC-Regular.otf);
+}
+
 body {
   margin: 5em auto;
   max-width: 1000px;
   font-family: sans-serif;
+  background: #0a0a0a; /* Old browsers */
+  background: -moz-linear-gradient(top, var(--main-grad1) 0%, var(--main-grad2) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, var(--main-grad1) 0%,var(--main-grad2) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, var(--main-grad1) 0%,var(--main-grad2) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a0a0a', endColorstr='#1c243a',GradientType=0 ); /* IE6-9 */
 }
 #container line.link {
-  stroke: #9ecae1;
-  stroke-width: 4px;
+  stroke: var(--main-red);
+  stroke-width: 2px;
 }
 #container line.timeline {
-  stroke: black;
-  stroke-width: 2px;
-  stroke-dasharray: 1em;
+  stroke: var(--main-whiteStroke);
+  stroke-width: 1px;
+  stroke-dasharray: 2;
 }
 #container .node circle {
+  fill: var(--main-red);
+  stroke: none;
+}
+
+.timeline-text{
+  font-family: sourceBlack, 'sans-serif';
+  font-size: 20px;
   fill: white;
-  stroke: black;
+}
+
+.node text{
+  font-family: source, 'sans-serif';
+  font-size: 12px;
+  fill: white;
+}
+
+h1 {
+  color: white;
+  font-family: sourceBold, 'sans-serif';
+  font-size: 30px;
+}
+
+h2 {
+  color: white;
+  font-family: sourceBold, 'sans-serif';
+  font-size: 15px;
+  font-variant: small-caps;
+}
+
+:root{
+  --main-red: #e52331;
+  --main-whiteStroke: #f2f2f2;
+  --main-grad1: #0a0a0a;
+  --main-grad2: #1c243a;
 }

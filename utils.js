@@ -19,7 +19,7 @@ const fromTo = (from, to) => ({
 const dateParser = date => {
     const parsed = date.split('-');    
     if(date == '' || date == '-') {
-        return 2018
+        return 2100
     }else if(date.toLowerCase() == 'hoy'){
         return 2018
     }else if(parsed.length == 1){

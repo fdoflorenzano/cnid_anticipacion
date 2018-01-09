@@ -88,9 +88,11 @@ const vis = new Vue({
         console.log('read');
         const nodes = data.map(nodificador);
         const links = linkeador(data);
+        const squares = d3.range(20).map( _ => {text: 'lorem'});
         this.graph = {
           nodes,
-          links
+          links,
+          squares
         };
 
         const ranking = rankYears(nodes);
@@ -172,7 +174,7 @@ const vis = new Vue({
       d.fy = null;
     },
     boundedX(d) {
-      d.x = Math.max(10, Math.min(this.width - 10, d.x));
+      d.x = Math.max(100, Math.min(this.width-12, d.x));
       return d.x;
     },
     boundedY(d) {

@@ -2,9 +2,9 @@ const vis = new Vue({
   el: "#vis",
   data() {
     return {
-      title: "ANTICIPANDO HORIZONTES PARA CHILE",
       WIDTH: 1200,
       HEIGHT: 6000,
+      QHEIGHT: 140,
       MARGIN: {
         TOP: 50,
         BOTTOM: 50,
@@ -15,7 +15,9 @@ const vis = new Vue({
       FILEPATH: 'datos.csv',
       graph: null,
       container: null,
+      qcontainer: null,
       tooltip: null,
+      state: 'base',
       simulation: null,
       heightScale: null,
     }
@@ -23,7 +25,6 @@ const vis = new Vue({
   mounted() {
     console.log('mounting');
     this.scrollToEnd();
-    this.tooltip = d3.select('.tooltip').style("opacity", 0);
     this.initialize();
     this.getData();
   },
@@ -63,7 +64,6 @@ const vis = new Vue({
           d3.select('.tooltip').transition()
             .duration(200)
             .style("opacity", .9);
-          console.log(d3.event);
           d3.select('.tooltip').html(tipHTML(d))
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
@@ -78,12 +78,31 @@ const vis = new Vue({
         .append('circle')
         .attr('r', this.RADIUS);
 
-      const squares = this.container.selectAll('.question')
+      const squares = this.qcontainer
+        .selectAll('.question')
         .data(val.squares)
         .enter()
         .append('rect')
         .attr('class', 'question')
-        .attr()
+        .attr('width', 20)
+        .attr('height', 20)
+        .attr('x', (_, i) => i * 30)
+        .attr('y', 10)
+        .on("mouseover", function (d,i,el) {
+          d3.select(el[i]).classed('activated', true);
+          d3.select('.tooltip').transition()
+            .duration(200)
+            .style("opacity", .9);
+          d3.select('.tooltip').html(tipHTML(d))
+            .style("left", (d3.event.pageX - 60) + "px")
+            .style("top", (d3.event.pageY + 16) + "px");
+        })
+        .on("mouseout", function (d,i,el) {
+          d3.select(el[i]).classed('activated', false);          
+          d3.select('.tooltip').transition()
+            .duration(500)
+            .style("opacity", 0);
+        });;
 
     }
   },
@@ -95,9 +114,8 @@ const vis = new Vue({
         console.log('read');
         const nodes = data.map(nodificador);
         const links = linkeador(data);
-        const squares = d3.range(20).map(_ => {
-          text: 'lorem'
-        });
+        const squares = d3.range(20).map(_ => ({ text: 'lorem'}));
+        console.log(squares);
         this.graph = {
           nodes,
           links,
@@ -156,7 +174,12 @@ const vis = new Vue({
     },
     initialize() {
       console.log('initializing');
+      this.tooltip = d3.select('.tooltip').style("opacity", 0);
       this.container = d3.select('#container')
+        .append('g')
+        .attr('transform',
+          `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
+      this.qcontainer = d3.select('#question_container')
         .append('g')
         .attr('transform',
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
@@ -209,7 +232,6 @@ const vis = new Vue({
         if (max < ranking[fecha]) max = ranking[fecha]
         if (min > ranking[fecha]) min = ranking[fecha]
       }
-      console.log(min, max)
       return d3.scaleLinear().domain([min, max]).range([-500, -125]);
     },
     scrollToEnd() {

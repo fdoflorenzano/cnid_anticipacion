@@ -17,18 +17,18 @@ const fromTo = (from, to) => ({
     'source': from
 });
 const dateParser = date => {
-    const parsed = date.split('-');    
-    if(date == '' || date == '-') {
+    const parsed = date.split('-');
+    if (date == '' || date == '-') {
         return 2100
-    }else if(date.toLowerCase() == 'hoy'){
+    } else if (date.toLowerCase() == 'hoy') {
         return 2018
-    }else if(parsed.length == 1){
+    } else if (parsed.length == 1) {
         return parseInt(parsed)
-    }else{
-        if(isNaN(parseInt(parsed[0]))){
-            return (2018 + parseInt(parsed[1]))/2
-        }else{
-            return (parseInt(parsed[0]) + parseInt(parsed[1]))/2
+    } else {
+        if (isNaN(parseInt(parsed[0]))) {
+            return (2018 + parseInt(parsed[1])) / 2
+        } else {
+            return (parseInt(parsed[0]) + parseInt(parsed[1])) / 2
         }
     }
     return date
@@ -43,15 +43,19 @@ const linkeador = dataset => {
 };
 const rankYears = nodes => {
     let ranking = {};
-    nodes.forEach( node => {
-        if(ranking[node.fecha]){
+    nodes.forEach(node => {
+        if (ranking[node.fecha]) {
             ranking[node.fecha] += 1;
         } else {
-            ranking[node.fecha] = 1;            
+            ranking[node.fecha] = 1;
         }
     });
     return ranking;
 }
 const tipHTML = element => {
-    return `<span class="fecha">${element.fecha}: </span><span>${element.name}</span>`;
+    if (element['fecha']) {
+        return `<span class="fecha">${element.fecha}: </span><span>${element.name}</span>`;
+    } else {
+        return `<span>${element.text}: </span>`;        
+    }
 }

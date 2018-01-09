@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset='utf-8'>  
-    <script src='utils.js'
-    charset='utf-8'></script>     
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.js'
-    charset='utf-8'></script>
-    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-    <script src="https://unpkg.com/vue"></script>    
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset='utf-8'>
+  <script src='utils.js' charset='utf-8'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.js' charset='utf-8'></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <script src="https://unpkg.com/vue"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <body>
-    <div id="vis">
-        <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
-        </svg>
-        <div class="tooltip"></div>
-        <h1>{{title}}</h1>
-        <h2>EXPLORANDO ÁREAS EMERGENTES EN CIENCIA Y HUMANIDAD</h2>        
-    </div>
-    <script src="script.js"></script>
-  </body>
+<body>
+  <div id="vis">
+    <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
+    </svg>
+    <svg :width="WIDTH" :height="QHEIGHT" id="question_container" pointer-events="all">
+    </svg>
+    <h3>PREGUNTAS EN LAS FRONTERAS</h3>    
+    <div class="separator"></div>    
+    <div class="tooltip"></div>
+    <h1>ANTICIPANDO HORIZONTES PARA CHILE</h1>
+    <div class="separator"></div>
+    <h2>EXPLORANDO ÁREAS EMERGENTES EN CIENCIA Y HUMANIDAD</h2>
+  </div>
+  <script src="script.js"></script>
+</body>
 
 </html>

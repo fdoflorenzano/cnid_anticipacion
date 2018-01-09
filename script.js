@@ -59,7 +59,7 @@ const vis = new Vue({
           .on("drag", this.dragged)
           .on("end", this.dragended))
         .on('dblclick', this.unfix)
-        .on("mouseover", function(d) {
+        .on("mouseover", function (d) {
           d3.select('.tooltip').transition()
             .duration(200)
             .style("opacity", .9);
@@ -67,16 +67,23 @@ const vis = new Vue({
           d3.select('.tooltip').html(tipHTML(d))
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
-          })
-        .on("mouseout", function(d) {
+        })
+        .on("mouseout", function (d) {
           d3.select('.tooltip').transition()
             .duration(500)
             .style("opacity", 0);
-          });
+        });
 
       gNodes
         .append('circle')
         .attr('r', this.RADIUS);
+
+      const squares = this.container.selectAll('.question')
+        .data(val.squares)
+        .enter()
+        .append('rect')
+        .attr('class', 'question')
+        .attr()
 
     }
   },
@@ -88,7 +95,9 @@ const vis = new Vue({
         console.log('read');
         const nodes = data.map(nodificador);
         const links = linkeador(data);
-        const squares = d3.range(20).map( _ => {text: 'lorem'});
+        const squares = d3.range(20).map(_ => {
+          text: 'lorem'
+        });
         this.graph = {
           nodes,
           links,
@@ -174,7 +183,7 @@ const vis = new Vue({
       d.fy = null;
     },
     boundedX(d) {
-      d.x = Math.max(100, Math.min(this.width-12, d.x));
+      d.x = Math.max(100, Math.min(this.width - 12, d.x));
       return d.x;
     },
     boundedY(d) {

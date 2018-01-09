@@ -52,3 +52,6 @@ const rankYears = nodes => {
     });
     return ranking;
 }
+const tipHTML = element => {
+    return `<span class="fecha">${element.fecha}: </span><span>${element.name}</span>`;
+}

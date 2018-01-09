@@ -16,3 +16,18 @@ body {
   fill: white;
   stroke: black;
 }
+div.tooltip {
+  position: absolute;
+  width: 120px;
+  padding: 5px;
+  font: 12px sans-serif;
+  color: white;
+  background: rgb(34, 44, 54);
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+div.tooltip .fecha{
+  color: red;
+}

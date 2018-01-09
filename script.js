@@ -85,7 +85,7 @@ const vis = new Vue({
         };
 
         heightScale = d3.scaleLinear()
-          .range([300, this.height - 100])
+          .range([this.height - 300, 100])
           .domain(d3.extent(nodes, d => d.fecha));
 
         this.simulation = d3.forceSimulation()

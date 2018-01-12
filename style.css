@@ -104,6 +104,10 @@ div.tooltip .fecha{
   fill: var(--main-grey);
 }
 
+.question.hover{
+  fill: white;
+}
+
 .question.activated{
   fill: var(--main-red);
 }
@@ -113,4 +117,9 @@ div.separator {
   background: var(--main-red);
   height: 10px;
   width: 600px;
+}
+
+.question_info {
+  margin: 0 auto;
+  height: 50px;
 }

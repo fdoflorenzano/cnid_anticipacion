@@ -18,6 +18,7 @@ const vis = new Vue({
       qcontainer: null,
       tooltip: null,
       state: 'base',
+      selected: null,
       simulation: null,
       heightScale: null,
     }
@@ -78,6 +79,10 @@ const vis = new Vue({
         .append('circle')
         .attr('r', this.RADIUS);
 
+      const maxSquares = Math.floor(this.width / 30);
+      this.QHEIGHT += 40 * (Math.floor(val.squares.length / maxSquares))
+
+      let that = this;
       const squares = this.qcontainer
         .selectAll('.question')
         .data(val.squares)
@@ -86,23 +91,26 @@ const vis = new Vue({
         .attr('class', 'question')
         .attr('width', 20)
         .attr('height', 20)
-        .attr('x', (_, i) => i * 30)
-        .attr('y', 10)
-        .on("mouseover", function (d,i,el) {
-          d3.select(el[i]).classed('activated', true);
-          d3.select('.tooltip').transition()
-            .duration(200)
-            .style("opacity", .9);
-          d3.select('.tooltip').html(tipHTML(d))
-            .style("left", (d3.event.pageX - 60) + "px")
-            .style("top", (d3.event.pageY + 16) + "px");
+        .attr('x', (_, i) => (i % maxSquares) * 30)
+        .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)))
+        .on("mouseover", function (d, i, el) {
+          d3.select(el[i]).classed('hover', true);
+          d3.select('.question_info').select('.title').text(d.text);
         })
-        .on("mouseout", function (d,i,el) {
-          d3.select(el[i]).classed('activated', false);          
-          d3.select('.tooltip').transition()
-            .duration(500)
-            .style("opacity", 0);
-        });;
+        .on("mouseout", function (d, i, el) {
+          d3.select(el[i]).classed('hover', false);
+          if (that.state == 'base') {
+            d3.select('.question_info').select('.title').text('');
+          } else {
+            d3.select('.question_info').select('.title').text(that.selected.text);
+          }
+        })
+        .on("click", function (d, i, el) {
+          d3.selectAll(el).classed('activated', false);
+          d3.select(el[i]).classed('activated', that.state != d.id);
+          that.state = that.state == d.id ? 'base' : d.id;
+          that.selected = that.state == d.id ? d : null;
+        });
 
     }
   },
@@ -114,8 +122,10 @@ const vis = new Vue({
         console.log('read');
         const nodes = data.map(nodificador);
         const links = linkeador(data);
-        const squares = d3.range(20).map(_ => ({ text: 'lorem'}));
-        console.log(squares);
+        const squares = d3.range(50).map((_, i) => ({
+          text: 'lorem' + i.toString(),
+          id: i.toString()
+        }));
         this.graph = {
           nodes,
           links,

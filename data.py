@@ -162,7 +162,9 @@ def extract_links(hit):
                     'dimensions': hit['dimension'],
                     'subdimensions': hit['subdimension'],
                     'disciplines': hit['disciplinas'],
-                    'subdisciplines': hit['subdisciplina']
+                    'subdisciplines': hit['subdisciplina'],
+                    'tags': hit['pregunta'] + hit['dimension'] +
+                        hit['subdimension'] + hit['disciplinas'] + hit['subdisciplina']
                     }, hit['hito_consecuencia']))
 def node(hit):
     """
@@ -176,7 +178,9 @@ def node(hit):
         'dimensions': hit['dimension'],
         'subdimensions': hit['subdimension'],
         'disciplines': hit['disciplinas'],
-        'subdisciplines': hit['subdisciplina']
+        'subdisciplines': hit['subdisciplina'],
+        'tags': hit['pregunta'] + hit['dimension'] +
+                        hit['subdimension'] + hit['disciplinas'] + hit['subdisciplina']
         }
 def filter_data(data):
     """

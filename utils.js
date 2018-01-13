@@ -1,4 +1,3 @@
-
 const rankYears = nodes => {
     let ranking = {};
     nodes.forEach(node => {
@@ -14,6 +13,12 @@ const tipHTML = element => {
     if (element['date']) {
         return `<span>${element.name}</span>`;
     } else {
-        return `<span>${element.text}: </span>`;        
+        return `<span>${element.text}: </span>`;
     }
+}
+
+function arrayContainsArray(superset, subset) {
+    return subset.every(function (value) {
+        return (superset.indexOf(value) >= 0);
+    });
 }

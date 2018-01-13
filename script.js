@@ -42,6 +42,20 @@ const vis = new Vue({
     },
   },
   watch: {
+    checkedFilters: function (val) {
+      this.disableQuestionFilter();
+      if (val.length > 0) {
+        this.container
+          .selectAll('.node')
+          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
+          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
+
+          this.container
+          .selectAll('.link')
+          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
+          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
+      }
+    },
     graph: function (val) {
 
       this.container.selectAll('line')
@@ -260,23 +274,14 @@ const vis = new Vue({
       const id = question.id;
       this.container
         .selectAll('.node')
-        .filter(d => d['question'].includes(id))
-        .classed('active', true);
-
-      this.container
-        .selectAll('.node')
-        .filter(d => !d['question'].includes(id))
-        .classed('disable', true);
+        .classed('active', d => d['question'].includes(id))
+        .classed('disable', d => !d['question'].includes(id));
 
       this.container
         .selectAll('.link')
-        .filter(d => d['questions'].includes(id))
-        .classed('active', true);
+        .classed('active', d => d['questions'].includes(id))
+        .classed('disable', d => !d['questions'].includes(id));
 
-      this.container
-        .selectAll('.link')
-        .filter(d => !d['questions'].includes(id))
-        .classed('disable', true);
     },
     disableQuestionFilter() {
       this.container

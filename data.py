@@ -133,6 +133,21 @@ def node(hit):
         'tags': hit['tags'],
         'question': hit['pregunta']
         }
+def filter_data(data):
+    """
+    Filtrar nodos sin fechas validas y relaciones correspondientes
+    """
+    valid_nodes = {}
+    for node in data['nodes']:
+        if node['date'] > 0:
+            valid_nodes[node['id']] = True
+        else:
+            valid_nodes[node['id']] = False
+    
+    data['nodes'] = list(filter(lambda x: valid_nodes[x['id']], data['nodes']))
+    data['links'] = list(filter(lambda x: valid_nodes[x['source']] and valid_nodes[x['target']], data['links']))
+
+    return data
 
 print('ADDING UP INFO')
 with open('hitos.json') as hitos_file:
@@ -144,6 +159,6 @@ with open('hitos.json') as hitos_file:
         hitos = transitive(hitos)
         data['links'] = flat(list(map(lambda x: extract_links(x), hitos)))
         data['nodes'] = list(map(lambda x: node(x), hitos))
-        filter_data(data)
+        data = filter_data(data)
         with open('data.json', 'w') as f:
             json.dump(data, f, ensure_ascii=False)

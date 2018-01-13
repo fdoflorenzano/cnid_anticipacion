@@ -12,7 +12,7 @@ const vis = new Vue({
         RIGHT: 0
       },
       RADIUS: 10,
-      FILEPATH: 'datos.csv',
+      FILEPATH: 'data.json',
       graph: null,
       container: null,
       qcontainer: null,
@@ -50,7 +50,8 @@ const vis = new Vue({
         .attr('x2', l => l.target.x)
         .attr('y2', l => l.target.y);
 
-      const gNodes = this.container.selectAll('.node')
+      const gNodes = this.container
+        .selectAll('.node')
         .data(val.nodes)
         .enter()
         .append('g')
@@ -117,15 +118,12 @@ const vis = new Vue({
   methods: {
     getData() {
       console.log('about to read');
-      d3.csv(this.FILEPATH, (error, data) => {
+      d3.json(this.FILEPATH, (error, data) => {
         if (error) throw error;
         console.log('read');
-        const nodes = data.map(nodificador);
-        const links = linkeador(data);
-        const squares = d3.range(50).map((_, i) => ({
-          text: 'lorem' + i.toString(),
-          id: i.toString()
-        }));
+        const nodes = data['nodes'];
+        const links = data['links'];
+        const squares = data['questions'];
         this.graph = {
           nodes,
           links,
@@ -136,7 +134,7 @@ const vis = new Vue({
 
         heightScale = d3.scaleLinear()
           .range([this.height - 300, 100])
-          .domain(d3.extent(nodes, d => d.fecha));
+          .domain(d3.extent(nodes, d => d.date));
 
         const dif = Math.abs(heightScale(5) - heightScale(0));
 
@@ -150,13 +148,13 @@ const vis = new Vue({
             .distance(this.linkDistance(dif))
             .strength(0.25)
             .links(this.graph.links))
-          .force("vertical", d3.forceY(d => heightScale(d.fecha)).strength(0.3))
+          .force("vertical", d3.forceY(d => heightScale(d.date)).strength(0.3))
           .force("horizontal", d3.forceX(this.width / 2).strength(0.12))
           .on("tick", this.ticked);
 
         const timelines = [2018, 2020];
 
-        while (timelines[timelines.length - 1] < d3.max(nodes, d => d.fecha)) {
+        while (timelines[timelines.length - 1] < d3.max(nodes, d => d.date)) {
           timelines.push(timelines[timelines.length - 1] + 5);
         }
 
@@ -233,7 +231,7 @@ const vis = new Vue({
         .attr('y2', l => l.target.y);
     },
     linkDistance(dif) {
-      return (l) => dif ? dif * Math.abs(l.source.fecha - l.target.fecha) / 5 : 40;
+      return (l) => dif ? dif * Math.abs(l.source.date - l.target.date) / 5 : 40;
     },
     nodeCharge(ranking) {
       let max = -1;

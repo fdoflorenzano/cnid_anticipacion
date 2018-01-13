@@ -1,0 +1,2514 @@
+{
+    "dimensions": [{
+        "nombre": "Recursos Hidricos",
+        "id": "rh",
+        "subdimension": [{
+            "nombre": "Legislación y Política de Recursos Hídricos",
+            "dimension_id": "rh",
+            "id": "1"
+        }, {
+            "nombre": "Recursos Hídricos y Medioambiente",
+            "dimension_id": "rh",
+            "id": "2"
+        }, {
+            "nombre": "Gestión y Usos del Recurso Hídrico",
+            "dimension_id": "rh",
+            "id": "3"
+        }, {
+            "nombre": "Estudio del Recursos Hídrico",
+            "dimension_id": "rh",
+            "id": "4"
+        }, {
+            "nombre": "Ciencias y Tecnologías Afines",
+            "dimension_id": "rh",
+            "id": "5"
+        }, {
+            "nombre": "Recursos Hídricos y Educación",
+            "dimension_id": "rh",
+            "id": "6"
+        }]
+    }, {
+        "nombre": "Desastrer Naturales",
+        "id": "dn",
+        "subdimension": []
+    }],
+    "disciplines": [{
+        "nombre": "Natural Sciences",
+        "subdisciplinas": [{
+            "nombre": "Mathematics",
+            "id": "1.1",
+            "id_disciplina": "1"
+        }, {
+            "nombre": "Computer and information sciences",
+            "id": "1.2",
+            "id_disciplina": "1"
+        }, {
+            "nombre": "Physical sciences",
+            "id": "1.3",
+            "id_disciplina": "1"
+        }, {
+            "nombre": "Chemical sciences",
+            "id": "1.4",
+            "id_disciplina": "1"
+        }, {
+            "nombre": "Earth and related environmental sciences",
+            "id": "1.5",
+            "id_disciplina": "1"
+        }, {
+            "nombre": "Biological sciences",
+            "id": "1.6",
+            "id_disciplina": "1"
+        }, {
+            "nombre": "Other natural sciences",
+            "id": "1.7",
+            "id_disciplina": "1"
+        }],
+        "id": "1"
+    }, {
+        "nombre": "Engineering and Technology",
+        "subdisciplinas": [{
+            "nombre": "Civil engineering",
+            "id": "2.1",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Electrical engineering, electronic engineering, information engineering",
+            "id": "2.2",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Mechanical engineering",
+            "id": "2.3",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Chemical engineering",
+            "id": "2.4",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Materials engineering",
+            "id": "2.5",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Medical engineering",
+            "id": "2.6",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Environmental engineering",
+            "id": "2.7",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Environmental biotechnology",
+            "id": "2.8",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Industrial Biotechnology",
+            "id": "2.9",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Nano-technology",
+            "id": "2.10",
+            "id_disciplina": "2"
+        }, {
+            "nombre": "Other engineering and technologies",
+            "id": "2.11",
+            "id_disciplina": "2"
+        }],
+        "id": "2"
+    }, {
+        "nombre": "Medical and Health Sciences",
+        "subdisciplinas": [{
+            "nombre": "Basic medicine",
+            "id": "3.1",
+            "id_disciplina": "3"
+        }, {
+            "nombre": "Clinical medicine",
+            "id": "3.2",
+            "id_disciplina": "3"
+        }, {
+            "nombre": "Health sciences",
+            "id": "3.3",
+            "id_disciplina": "3"
+        }, {
+            "nombre": "Health biotechnology",
+            "id": "3.4",
+            "id_disciplina": "3"
+        }, {
+            "nombre": "Other medical sciences",
+            "id": "3.5",
+            "id_disciplina": "3"
+        }],
+        "id": "3"
+    }, {
+        "nombre": "Agricultural Sciences",
+        "subdisciplinas": [{
+            "nombre": "Agriculture, forestry and fisheries",
+            "id": "4.1",
+            "id_disciplina": "4"
+        }, {
+            "nombre": "Animal and dairy science",
+            "id": "4.2",
+            "id_disciplina": "4"
+        }, {
+            "nombre": "Veterinary science",
+            "id": "4.3",
+            "id_disciplina": "4"
+        }, {
+            "nombre": "Agricultural biotechnology",
+            "id": "4.4",
+            "id_disciplina": "4"
+        }, {
+            "nombre": "Other agricultural science",
+            "id": "4.5",
+            "id_disciplina": "4"
+        }],
+        "id": "4"
+    }, {
+        "nombre": "Social Sciences",
+        "subdisciplinas": [{
+            "nombre": "Psychology",
+            "id": "5.1",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Economics and business",
+            "id": "5.2",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Educational sciences",
+            "id": "5.3",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Sociology",
+            "id": "5.4",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Law",
+            "id": "5.5",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Political science",
+            "id": "5.6",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Social and economic geography",
+            "id": "5.7",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Media and communication",
+            "id": "5.8",
+            "id_disciplina": "5"
+        }, {
+            "nombre": "Other social sciences",
+            "id": "5.9",
+            "id_disciplina": "5"
+        }],
+        "id": "5"
+    }, {
+        "nombre": "Humanities",
+        "subdisciplinas": [{
+            "nombre": "History and archeology",
+            "id": "6.1",
+            "id_disciplina": "6"
+        }, {
+            "nombre": "Languages and literature",
+            "id": "6.2",
+            "id_disciplina": "6"
+        }, {
+            "nombre": "Philosophy, ethics and religion",
+            "id": "6.3",
+            "id_disciplina": "6"
+        }, {
+            "nombre": "Art (arts, history of arts, performing arts, music)",
+            "id": "6.4",
+            "id_disciplina": "6"
+        }, {
+            "nombre": "Other humanities",
+            "id": "6.5",
+            "id_disciplina": "6"
+        }],
+        "id": "6"
+    }],
+    "links": [{
+        "source": "B4",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B5",
+        "questions": []
+    }, {
+        "source": "H9",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H14",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "A3",
+        "dimensions": ["rh"],
+        "subdimensions": ["rh.2", "rh.3", "rh.4", "rh.1"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A14",
+        "questions": ["A4", "A1", "A3"]
+    }, {
+        "source": "H4",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H2",
+        "questions": ["H2", "H3"]
+    }, {
+        "source": "H4",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H8",
+        "questions": ["H2", "H3"]
+    }, {
+        "source": "D11",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D1",
+        "questions": ["D1"]
+    }, {
+        "source": "I11",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I12",
+        "questions": []
+    }, {
+        "source": "I9",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I10",
+        "questions": []
+    }, {
+        "source": "B3",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B7",
+        "questions": []
+    }, {
+        "source": "H11",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H12",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "I18",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I19",
+        "questions": []
+    }, {
+        "source": "E10",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E11",
+        "questions": ["E2", "E1"]
+    }, {
+        "source": "I20",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I21",
+        "questions": []
+    }, {
+        "source": "D5",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D15",
+        "questions": ["D2", "D1"]
+    }, {
+        "source": "D5",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D16",
+        "questions": ["D2", "D1"]
+    }, {
+        "source": "B7",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B6",
+        "questions": []
+    }, {
+        "source": "D6",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D16",
+        "questions": ["D1", "D2"]
+    }, {
+        "source": "B8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B5",
+        "questions": []
+    }, {
+        "source": "F15",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F10",
+        "questions": ["F2"]
+    }, {
+        "source": "A17",
+        "dimensions": [],
+        "subdimensions": ["rh.3", "rh.5", "rh.4", "rh.1", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A8",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A17",
+        "dimensions": [],
+        "subdimensions": ["rh.3", "rh.5", "rh.4", "rh.1", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A11",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A4",
+        "dimensions": [],
+        "subdimensions": ["rh.4", "rh.5", "rh.2"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A12",
+        "questions": ["A4"]
+    }, {
+        "source": "H10",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H13",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "H12",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H17",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "F13",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F2",
+        "questions": ["F3"]
+    }, {
+        "source": "D12",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D1",
+        "questions": ["D1"]
+    }, {
+        "source": "D10",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D20",
+        "questions": ["D2"]
+    }, {
+        "source": "E4",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E10",
+        "questions": ["E2", "E1"]
+    }, {
+        "source": "F2",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F20",
+        "questions": ["F3"]
+    }, {
+        "source": "E5",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E10",
+        "questions": ["E1", "E2"]
+    }, {
+        "source": "A21",
+        "dimensions": [],
+        "subdimensions": ["rh.1", "rh.3", "rh.4", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A8",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A21",
+        "dimensions": [],
+        "subdimensions": ["rh.1", "rh.3", "rh.4", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A9",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A23",
+        "dimensions": [],
+        "subdimensions": ["rh.6", "rh.4", "rh.3", "rh.1"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A8",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "E7",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E1",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "A1",
+        "dimensions": ["rh"],
+        "subdimensions": ["rh.2", "rh.3", "rh.6", "rh.1"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A15",
+        "questions": ["A1", "A3", "A4"]
+    }, {
+        "source": "B2",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B10",
+        "questions": []
+    }, {
+        "source": "H7",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H6",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "I8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I9",
+        "questions": []
+    }, {
+        "source": "C12",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "C7",
+        "questions": ["C2"]
+    }, {
+        "source": "A5",
+        "dimensions": [],
+        "subdimensions": ["rh.2"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A13",
+        "questions": ["A2"]
+    }, {
+        "source": "A20",
+        "dimensions": [],
+        "subdimensions": ["rh.1", "rh.4", "rh.3", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A8",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A20",
+        "dimensions": [],
+        "subdimensions": ["rh.1", "rh.4", "rh.3", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A9",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A20",
+        "dimensions": [],
+        "subdimensions": ["rh.1", "rh.4", "rh.3", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A10",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A20",
+        "dimensions": [],
+        "subdimensions": ["rh.1", "rh.4", "rh.3", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A11",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "C18",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "C20",
+        "questions": ["C1"]
+    }, {
+        "source": "E6",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E12",
+        "questions": ["E1"]
+    }, {
+        "source": "E6",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E13",
+        "questions": ["E1"]
+    }, {
+        "source": "H5",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H20",
+        "questions": ["H1"]
+    }, {
+        "source": "C13",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "C17",
+        "questions": []
+    }, {
+        "source": "I5",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I6",
+        "questions": []
+    }, {
+        "source": "D7",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D17",
+        "questions": ["D2"]
+    }, {
+        "source": "H18",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H19",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "F19",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F14",
+        "questions": ["F1"]
+    }, {
+        "source": "B6",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B8",
+        "questions": []
+    }, {
+        "source": "A22",
+        "dimensions": [],
+        "subdimensions": ["rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A7",
+        "questions": ["A1"]
+    }, {
+        "source": "A2",
+        "dimensions": ["rh"],
+        "subdimensions": ["rh.3", "rh.4", "rh.5", "rh.2", "rh.1"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A14",
+        "questions": ["A3", "A1", "A4"]
+    }, {
+        "source": "A2",
+        "dimensions": ["rh"],
+        "subdimensions": ["rh.3", "rh.4", "rh.5", "rh.2", "rh.1"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A15",
+        "questions": ["A3", "A1", "A4"]
+    }, {
+        "source": "I6",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I7",
+        "questions": []
+    }, {
+        "source": "I16",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I17",
+        "questions": []
+    }, {
+        "source": "F16",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F10",
+        "questions": ["F2"]
+    }, {
+        "source": "I21",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I22",
+        "questions": []
+    }, {
+        "source": "C8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "C18",
+        "questions": ["C1"]
+    }, {
+        "source": "E1",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E8",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "E1",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E9",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "I2",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I2",
+        "questions": []
+    }, {
+        "source": "I10",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I11",
+        "questions": []
+    }, {
+        "source": "I22",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I23",
+        "questions": []
+    }, {
+        "source": "D14",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D3",
+        "questions": ["D1"]
+    }, {
+        "source": "A8",
+        "dimensions": [],
+        "subdimensions": ["rh.3", "rh.4", "rh.1", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A6",
+        "questions": ["A1", "A3", "A2", "A4"]
+    }, {
+        "source": "B1",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "B2",
+        "questions": []
+    }, {
+        "source": "H15",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H17",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "F8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F21",
+        "questions": ["F4"]
+    }, {
+        "source": "F4",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F18",
+        "questions": ["F2", "F1"]
+    }, {
+        "source": "H16",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H17",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "D8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D18",
+        "questions": ["D2"]
+    }, {
+        "source": "D8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D19",
+        "questions": ["D2"]
+    }, {
+        "source": "A6",
+        "dimensions": [],
+        "subdimensions": ["rh.4", "rh.5", "rh.3", "rh.1", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A16",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "H14",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H16",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "E8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E2",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "E8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E3",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "I13",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I14",
+        "questions": []
+    }, {
+        "source": "H8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H12",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "H8",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H18",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "F9",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F22",
+        "questions": ["F1"]
+    }, {
+        "source": "F14",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F9",
+        "questions": ["F1"]
+    }, {
+        "source": "A18",
+        "dimensions": [],
+        "subdimensions": ["rh.4", "rh.3", "rh.1", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A10",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "A19",
+        "dimensions": [],
+        "subdimensions": ["rh.4", "rh.3", "rh.1", "rh.6"],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "A10",
+        "questions": ["A3", "A1", "A2", "A4"]
+    }, {
+        "source": "F5",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "F17",
+        "questions": ["F2", "F1"]
+    }, {
+        "source": "D13",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "D3",
+        "questions": ["D1"]
+    }, {
+        "source": "E9",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E2",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "E9",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "E3",
+        "questions": ["E2", "E3", "E1"]
+    }, {
+        "source": "H2",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H7",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "H2",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H11",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "I14",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "I15",
+        "questions": []
+    }, {
+        "source": "H13",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H17",
+        "questions": ["H3", "H2"]
+    }, {
+        "source": "H1",
+        "dimensions": [],
+        "subdimensions": [],
+        "subdisciplines": [],
+        "disciplines": [],
+        "target": "H4",
+        "questions": ["H3", "H2"]
+    }],
+    "nodes": [{
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Robots interactúan con personas en el mundo real, en formas diversas",
+        "id": "F17",
+        "question": ["F2", "F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Integración del conocimiento en modelos de sistema tierra",
+        "id": "F12",
+        "question": ["F4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Sociedades artificiales",
+        "id": "D15",
+        "question": ["D2", "D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Fragmentación ¿estados de derecho?",
+        "id": "C14",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Nuevo anticancerigeno ",
+        "id": "B4",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2080,
+        "name": "Dilemas éticos-morales",
+        "id": "D20",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Generar herramientas para lograr capacidad adaptativa",
+        "id": "H9",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Minería espacial",
+        "id": "F11",
+        "question": ["F3"]
+    }, {
+        "dimensions": ["rh"],
+        "subdisciplines": [],
+        "subdimensions": ["rh.2", "rh.3", "rh.4", "rh.1"],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Con los modelos establecer y desarrollar criterios de modelos óptimos de recursos hídricos con variables ambientales, sociales y económicas con sustentabilidad",
+        "id": "A3",
+        "question": ["A4", "A1", "A3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Reducción de desastres ambientales, mejor usos de los recursos del país",
+        "id": "H4",
+        "question": ["H2", "H3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Dilemas éticos y políticos debido a la planificación y predicción social",
+        "id": "D16",
+        "question": ["D2", "D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Industria farmaceúticas de microalgas como plataforma recombinante de proteínas (hormonas de crecimiento, pastillas moduladoras Alzheimer antiaging)",
+        "id": "I12",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "¿Qué es la conciencia y dónde está?",
+        "id": "D11",
+        "question": ["D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Inserción de medicina ancestral en servicio de salud pública",
+        "id": "I3",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.2"],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Aumento del número de investigadores y establecimiento de masas críticas",
+        "id": "A13",
+        "question": ["A2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2070,
+        "name": "Nuevo sistema laboral",
+        "id": "E12",
+        "question": ["E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045,
+        "name": "Biopolimeros en parches quirúrgicos para reparación de heridas en hospitales",
+        "id": "I11",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Baja del porcentaje y número de personas con cáncer en la región por consumo de microalgas encapsuladas",
+        "id": "I9",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Cambio de paradigma: Ver al hombre como parte de organizmo superior y no como un organismo superior en si",
+        "id": "B3",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Mejores y más efectivos tratamientos en salud",
+        "id": "H11",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2037.5,
+        "name": "Modelo de variables ambientales que afecten procesos oceanográficos",
+        "id": "I18",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040.0,
+        "name": "Crísis del sistema laboral",
+        "id": "E10",
+        "question": ["E2", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025,
+        "name": "Poner en valor la medicina tradicional y el etnoconocimiento",
+        "id": "I20",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Simulación de sistemas biológicos/humanos",
+        "id": "D5",
+        "question": ["D2", "D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035,
+        "name": "Un prototipo de generación energética eficiente y sustentable",
+        "id": "B7",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Autoperpetuación (autopoiesis) de las simulaciones computacionales humanas",
+        "id": "D6",
+        "question": ["D1", "D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2020,
+        "name": "Intregación de dinámicas de pensamiento, ideas y emociones en simulaciones computacionales de sociedades humanas",
+        "id": "D1",
+        "question": ["D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Chile como lugar de centros internacionales de excelencia científica ",
+        "id": "B8",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040.0,
+        "name": "Entender el origen de la conciencia",
+        "id": "F15",
+        "question": ["F2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055,
+        "name": "Repoblamiento del sector alto andino",
+        "id": "I15",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Fortalecer relevancia y comunicación",
+        "id": "H30",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.3", "rh.5", "rh.4", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Uso de Tecnologías de información y comunicación espacial, establecer demanda-causa",
+        "id": "A17",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Integración de metodologías",
+        "id": "H21",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.4", "rh.5", "rh.2"],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Desarrollar modelos integrales validados",
+        "id": "A4",
+        "question": ["A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Promover turismo",
+        "id": "H10",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "Desarrollo de turismo científico en territorios vulnerables de pescadores del norte chico - producto",
+        "id": "I17",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040.0,
+        "name": "Crísisuso información",
+        "id": "E11",
+        "question": ["E2", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Mayor expectativa de vida y en mejores condiciones",
+        "id": "H12",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035,
+        "name": "Robots cuidan personas poco valentes",
+        "id": "F18",
+        "question": ["F2", "F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Falta de agua",
+        "id": "F13",
+        "question": ["F3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Teoría/Modelo de la conciencia",
+        "id": "D12",
+        "question": ["D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2080,
+        "name": "Sociedades sin trabajos automatizables",
+        "id": "D10",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Identificación de métodos para investigación transdisciplinar aplicables a la intersección de ciencias sociales, físicas, biológicas, técnicas, etc.",
+        "id": "C3",
+        "question": ["C3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Primer computador cuántico personal",
+        "id": "E4",
+        "question": ["E2", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Minería seca: optimizar las operaciones auxiliares para disminuir energía, sustituir el proceso de contración. Procesar sin agua",
+        "id": "F2",
+        "question": ["F3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.1", "rh.3", "rh.6", "rh.4"],
+        "disciplines": [],
+        "date": 2035,
+        "name": "Planificación informada, nueva ley de pesca",
+        "id": "A16",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Diseño electrónico en los colegios",
+        "id": "E5",
+        "question": ["E1", "E2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.1", "rh.3", "rh.4", "rh.6"],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Replanteamiento del rol y funcionamientos de las agencias actualmente involucradas",
+        "id": "A21",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Mejorar comunicación de la ciencia y la vigencia de los problemas",
+        "id": "H25",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "No utilización de drogas farmacológicas",
+        "id": "I23",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Chile como centro científico internacional",
+        "id": "B5",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.6", "rh.4", "rh.3", "rh.1"],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Responsabilización ciudadana",
+        "id": "A23",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Nuevas formas de gobierno",
+        "id": "H3",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Datos abiertos",
+        "id": "E7",
+        "question": ["E2", "E3", "E1"]
+    }, {
+        "dimensions": ["rh"],
+        "subdisciplines": [],
+        "subdimensions": ["rh.2", "rh.3", "rh.6", "rh.1"],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Se tiene centros urbanos sustentables y resilentes",
+        "id": "A1",
+        "question": ["A1", "A3", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Creación de sistema de comunicación de datos y transmisión de larga distancia y eficiente energéticamente",
+        "id": "E2",
+        "question": ["E3", "E2", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2070,
+        "name": "Mayor/mejor integración de la sociedad, paz social",
+        "id": "H17",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Cambio de paradigma en las enfermedades crónicas. ??? socialmente",
+        "id": "B2",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025,
+        "name": "¿No estamos haciendo un buen diagnóstico?",
+        "id": "C10",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Mejorar valorización de la biodiversidad y del capital verde del país",
+        "id": "H7",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Cambio cultural en la interacción en ciencia y sociedad (toma de decisiones)",
+        "id": "I7",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Mapa de riesgos de actividades asociadas turismo científico (y otras actividades productivas/comunidades)",
+        "id": "I19",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Llenar vacíos de formación científica",
+        "id": "H23",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035,
+        "name": "???",
+        "id": "B10",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2020,
+        "name": "Valorización de los microorganismos y su rol ecosistémico (microalgas en el desierto)",
+        "id": "I8",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "Discusión ética sobre edición genética",
+        "id": "C12",
+        "question": ["C2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.2"],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Generar una institucionalidad estable para la investigación y acción en temas ambientales",
+        "id": "A5",
+        "question": ["A2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.1", "rh.4", "rh.3", "rh.6"],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Ministerio de Ciencias y Tecnologías con recursos para financiar un programa de observación",
+        "id": "A20",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Máquinas conscientes",
+        "id": "F10",
+        "question": ["F2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.6"],
+        "disciplines": [],
+        "date": 2027.5,
+        "name": "Nuevo sistema de gobernanza urbana",
+        "id": "A7",
+        "question": ["A1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Dispositivo de vigilancia en búsqueda de enfermedades para personas",
+        "id": "C18",
+        "question": ["C1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Protocolo de seguimiento",
+        "id": "H22",
+        "question": ["H3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Sistema inteligentes estandarizados en los ámbitos revelantes: salud - transporte - educación",
+        "id": "E6",
+        "question": ["E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Priorizar acciones transversales entre los ministerios",
+        "id": "H5",
+        "question": ["H1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025,
+        "name": "Identificación y empoderamiento del capital social en los territorios",
+        "id": "I4",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Amenazas, ignoracia",
+        "id": "C13",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Existencia de intereses comunes entre científicos y comunidades locales",
+        "id": "I5",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Comprender la respuesta de los elementos naturales y sociales frente a forzantes de cambio",
+        "id": "H29",
+        "question": ["H1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Nuevas formas de comprender",
+        "id": "H20",
+        "question": ["H1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.3", "rh.4", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2025,
+        "name": "Determinar el uso actual del recurso hídrico",
+        "id": "A11",
+        "question": ["A4", "A3", "A1", "A2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Incorporación de enfoque interdisciplinario en la formación docente y las políticas educacionales",
+        "id": "C6",
+        "question": ["C5"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Atentados genéticos",
+        "id": "C17",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Reconfiguración de análisis y teoría interdisciplinar sobre el comportamiento complejo en ámbitos técnicos",
+        "id": "C4",
+        "question": ["C3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Educación sin orientación de mercado y sin rendición de cuentas",
+        "id": "D2",
+        "question": ["D3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Unificación de las ciencias",
+        "id": "D7",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Ciencia transversal, promover formación de equipos interdisciplinarios",
+        "id": "H24",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025.0,
+        "name": "Llegar a las máximas profundidades del océano, realizar observaciones y recolectar muestras para su análisis en tierra",
+        "id": "F1",
+        "question": ["F4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055,
+        "name": "¿Podrán existir relaciones amorosas entre humanos y robots?",
+        "id": "F22",
+        "question": ["F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Trade off positions",
+        "id": "H18",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Incorporar en el curriculum de formación docente las \"habilidades del siglo XXI\" y otras",
+        "id": "C5",
+        "question": ["C4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Abogacía de parte de científica",
+        "id": "H26",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Reconocer vigencia del problema",
+        "id": "H31",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Crisis energética ¿cómo hacemos las cosas?",
+        "id": "C19",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "Adquisición de conciencia social de simulaciones de computacionales de sociedades humana",
+        "id": "D3",
+        "question": ["D1"]
+    }, {
+        "dimensions": ["rh"],
+        "subdisciplines": [],
+        "subdimensions": ["rh.1", "rh.2", "rh.3"],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Mejorar planificiación de uso del territorio sumergido",
+        "id": "A15",
+        "question": ["A1", "A3", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Los humanos tenemos sentimientos por las máquinas",
+        "id": "F19",
+        "question": ["F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060.0,
+        "name": "Heterarquía, normativa política",
+        "id": "C15",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Potenciar arte",
+        "id": "H6",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.2", "rh.4"],
+        "disciplines": [],
+        "date": 2035,
+        "name": "Disminución de la huella hídrica",
+        "id": "A12",
+        "question": ["A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Desarrollo tecnológico. El desarrollo de nuevos materiales que permitan conjugar el reciclaje y la producción energética eficiente.",
+        "id": "B6",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Catastro de etnoconocimiento y economías locales",
+        "id": "I1",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Singularidad conciencia artificial",
+        "id": "D19",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "Desarrollo de tecnologías que puedan trabajar a altísimas presiones (observación y experimentación in situ)",
+        "id": "F6",
+        "question": ["F4", "F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.6"],
+        "disciplines": [],
+        "date": 2025,
+        "name": "Empoderamiento ciudadano",
+        "id": "A22",
+        "question": ["A1"]
+    }, {
+        "dimensions": ["rh"],
+        "subdisciplines": [],
+        "subdimensions": ["rh.3", "rh.4", "rh.5", "rh.2", "rh.1"],
+        "disciplines": [],
+        "date": 2035,
+        "name": "Implementación de modelos oceanográficos y biogeoquímicos \"operacionales\" que asimilen en tiempo cuasi real la información generada por la red de monitoreo",
+        "id": "A2",
+        "question": ["A3", "A1", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2100,
+        "name": "Mayoría de los trabajos científicos son multidisplinarios",
+        "id": "D9",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Primer paciente (niño) con fibrosis quísitica (CF) \"corregido\"",
+        "id": "C7",
+        "question": ["C2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035,
+        "name": "Puede extrapolarse a otras áreas y solucionar problemas de agua",
+        "id": "F20",
+        "question": ["F3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Participación ciudadana en procesos de investigación científica",
+        "id": "I6",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2020,
+        "name": "Conocer áreas de concentración de cetáceos en el norte de Chile chico",
+        "id": "I16",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040.0,
+        "name": "¿Cómo entender que algo es consciente",
+        "id": "F16",
+        "question": ["F2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Mejorar capacidad predictiva",
+        "id": "H28",
+        "question": ["H1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.4", "rh.3", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2020,
+        "name": "Financiar públicamente proyectos de investigación realmente multidisplinarios y con productos heterogéneos",
+        "id": "A10",
+        "question": ["A2", "A3", "A1", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Utilización de la medicina alternativa en el sistema formal de salud",
+        "id": "I21",
+        "question": []
+    }, {
+        "dimensions": ["rh"],
+        "subdisciplines": [],
+        "subdimensions": ["rh.3", "rh.2", "rh.1"],
+        "disciplines": [],
+        "date": 2045,
+        "name": "\"Datificación\" de la toma de decisiones",
+        "id": "A14",
+        "question": ["A1", "A3", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Se encuentra la señal primera de que una célula cualquiera (todas las células) va a perder el control del ciclo celular",
+        "id": "C8",
+        "question": ["C1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Pensamiento computacional en colegios (formación escolar)",
+        "id": "E1",
+        "question": ["E2", "E3", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Fortalecer la identidad cultural",
+        "id": "I2",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Celdas fotovoltaicas sensibilizadas con pigmentos naturales de microalgas",
+        "id": "I10",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045,
+        "name": "Producción de plantas medicinales a gran escala",
+        "id": "I22",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Las máquinas desarrollan su propio lenguaje",
+        "id": "F3",
+        "question": ["F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025.0,
+        "name": "Computación cuántica",
+        "id": "D14",
+        "question": ["D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.3", "rh.4", "rh.5", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2020,
+        "name": "Implementación de modelos que combinen hidrodinámica y biogeoquímica de la Patagonia chilena",
+        "id": "A9",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.3", "rh.4", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2020.0,
+        "name": "Sistema de observación y modelación urbanos coordinados, integrados y permanentes (atmosféricos, sociales, movilidad, vegetación, habitacional, etc.)",
+        "id": "A8",
+        "question": ["A1", "A3", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2070,
+        "name": "Hombre de 200 años",
+        "id": "C20",
+        "question": ["C1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Descentralización (no se puede controlas) sino que es un horizonte normativo",
+        "id": "C9",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Regeneración del corazón ",
+        "id": "B1",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Poner recursos",
+        "id": "H27",
+        "question": ["H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Mejoramiento de servicios básicos",
+        "id": "H15",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Formación interdisciplinaria de científicos jóvenes",
+        "id": "C1",
+        "question": ["C3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Seguimiento",
+        "id": "H32",
+        "question": ["H1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Transferencia de conciencia humano-máquina",
+        "id": "D18",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Creación de un sistema variable que prediga en tiempo real las enfermedades con mayor prevalencia",
+        "id": "E3",
+        "question": ["E2", "E3", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Instalación de un sistema de observación que permita registros continuos y sostenidos en el tiempo",
+        "id": "F8",
+        "question": ["F4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025,
+        "name": "Consolidación de institucionalidad científicia adecuada para la investigación interdisciplinar",
+        "id": "C2",
+        "question": ["C3"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Robot mayordomo o cuidador puede operar autonomamente en interior de una casa",
+        "id": "F4",
+        "question": ["F2", "F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Teoría del todo",
+        "id": "D17",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Diversificar el uso de recursos",
+        "id": "H16",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2070,
+        "name": "Redefinición de desarrollo humano",
+        "id": "E13",
+        "question": ["E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Inteligencia artificial y automatización",
+        "id": "D8",
+        "question": ["D2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.4", "rh.5", "rh.3", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Red con adecuada resolución espacial de monitoreo oceanográfico y sistema de transmisión, acopio y distribución de la información",
+        "id": "A6",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2055.0,
+        "name": "Generar estrategias para minimizar impactos socio-económicos",
+        "id": "H14",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Discución profunda sobre regulación y ética del uso de la información",
+        "id": "E8",
+        "question": ["E2", "E3", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2030,
+        "name": "Recuperar especies cultivables nativas y adaptar nuevas especies",
+        "id": "I13",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Comienza la conquista por el fondo del mar",
+        "id": "F21",
+        "question": ["F4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2050,
+        "name": "Cambio a una economía basada en energías limpias",
+        "id": "H8",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045,
+        "name": "Las máquinas pueden experimentar emociones y actuar por sí mismas",
+        "id": "F9",
+        "question": ["F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "¿Pueden las emociones humanas modificar el funcionamiento de las máquinas?",
+        "id": "F14",
+        "question": ["F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.4", "rh.3", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Permitir el crecimiento de número de investigadores (puestos en centros)",
+        "id": "A18",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060.0,
+        "name": "Las nuevas épocas surgen a partir de una catástrofe",
+        "id": "C16",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": ["rh.4", "rh.3", "rh.1", "rh.6"],
+        "disciplines": [],
+        "date": 2018,
+        "name": "Flexibilizar los criterios con que se evalúa el desempeño",
+        "id": "A19",
+        "question": ["A3", "A1", "A2", "A4"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "Robotos pueden operar/interactuar en ambiente natural (ej. calle) por más de 8 horas",
+        "id": "F5",
+        "question": ["F2", "F1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2025.0,
+        "name": "Computación neurocientífica",
+        "id": "D13",
+        "question": ["D1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2024.0,
+        "name": "Sensores robustos y redes estables y algoritmos eficientes",
+        "id": "E9",
+        "question": ["E2", "E3", "E1"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2045.0,
+        "name": "Mejoría en calidad de vida de la persona",
+        "id": "H2",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Establecer atractivos productivos (cultivos)",
+        "id": "I14",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2027.5,
+        "name": "Humano-máquina",
+        "id": "C11",
+        "question": []
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Conocer cómo reconstruir los ecosistemas",
+        "id": "H13",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2040,
+        "name": "Reducción de inequidades en la sociedad",
+        "id": "H1",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2060,
+        "name": "Nuevas preguntas, ¿mismos problemas?",
+        "id": "H19",
+        "question": ["H3", "H2"]
+    }, {
+        "dimensions": [],
+        "subdisciplines": [],
+        "subdimensions": [],
+        "disciplines": [],
+        "date": 2035.0,
+        "name": "Los seres humanos tenemos un dispositivo en el cuerpo desde donde somos vigilados",
+        "id": "F7",
+        "question": ["F1"]
+    }],
+    "questions": [{
+        "text": "¿De qué forma la capacidad de modelamiento computacional de las sociedades humanas predestinará su futuro?",
+        "id": "D1"
+    }, {
+        "text": "¿Podrá la tecnología ayudar a un desarrollo completo de una ciencia específica, de tal manera que, eventualmente, se puedan contestar todas las preguntas que ella planta?",
+        "id": "D2"
+    }, {
+        "text": "¿Cómo podemos armonizar la creciente automatización de los procesos productivos con las creciente demandas por justicia social?",
+        "id": "D3"
+    }, {
+        "text": "¿Cómo cambia la subjetividad humana con la entrada de tecnologías digitales?",
+        "id": "F1"
+    }, {
+        "text": "¿Cuáles seran las consecuencias que tendrá el desarrollo de máquinas o sistemas inteligentes en los humanos y en la forma qué nos organizamos?",
+        "id": "F2"
+    }, {
+        "text": "¿Es la minería una industria sustentable en el futuro?",
+        "id": "F3"
+    }, {
+        "text": "¿Cómo se organizan y funcionan los ecosistemas de las grandes profundidades del océano?",
+        "id": "F4"
+    }, {
+        "text": "¿Cómo hacer de nuestras ciudades, ciudades resilentes en un mundo cambiante?",
+        "id": "A1"
+    }, {
+        "text": "¿Cómo redifinir las frontreras de la acción estatal en relación a problemas ambientales; y cuál es el rol de la academia en el proceso?",
+        "id": "A2"
+    }, {
+        "text": "¿Cómo responderán los ecosistemas patagónicos al derritimiento de glaciares y cambios en precipitaciones?",
+        "id": "A3"
+    }, {
+        "text": "¿Como optimizar de modo integral el uso del agua?",
+        "id": "A4"
+    }, {
+        "text": "Mecanismos, comprometer, grupos desventaja",
+        "id": "H1"
+    }, {
+        "text": "Información -> efectos -> cambio",
+        "id": "H2"
+    }, {
+        "text": "Adaptación sistemas sociales y naturales",
+        "id": "H3"
+    }, {
+        "text": "¿Por qué se desarrollan las células cancerígenas?",
+        "id": "C1"
+    }, {
+        "text": "¿Cómo podemos emplear mecanismo de regulación de proteínas (canales iónicos) en el tratamiento de enfermedades?",
+        "id": "C2"
+    }, {
+        "text": "¿Cómo entender las relaciones de reciprocidad entre fenómenos sociales, físicos, biológicos y las interacciones complejas entre ellos?",
+        "id": "C3"
+    }, {
+        "text": "¿Cómo se vincula la formación docente con las necesidades de los niños del siglo XXI?",
+        "id": "C4"
+    }, {
+        "text": "¿La forma de aprendizaje de hoy es compatibe con nuestra forma de enseñanza?",
+        "id": "C5"
+    }, {
+        "text": "¿Cómo incorporar el comportamiento humano en el diseño óptimo de productos, servicios, procesos y organizaciones?",
+        "id": "E1"
+    }, {
+        "text": "¿Cómo vamos a utilizar los nuevos modelos de computación (ej: cuántica) para resolver problemas que computacionalmente son muy complejos?",
+        "id": "E2"
+    }, {
+        "text": "¿Cómo gestionar los volúmenes crecientes de información en armonía con el desarrollo humano?",
+        "id": "E3"
+    }]
+}

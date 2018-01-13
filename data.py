@@ -11,7 +11,9 @@ Copyright (c) 2018, Fernando Florenzano
 
 import json
 import csv
+import os
 
+os.chdir('data')
 
 def date_parser(date_string):
     """
@@ -31,7 +33,7 @@ def date_parser(date_string):
             return (2018 + int(parsed[1])) / 2
 
 print('PROCESSING HITOS')
-with open('hitos.csv', newline='', encoding="utf-8") as csvfile:
+with open('hitos.csv', newline='') as csvfile:
     reader = csv.reader(csvfile)
     hitosJson = []
     rownum = 0
@@ -42,8 +44,11 @@ with open('hitos.csv', newline='', encoding="utf-8") as csvfile:
             colnum = 0
             hito = {}
             for col in row:
-                if header[colnum] in ['hito_consecuencia', 'tags', 'hito_precedente']:
-                    hito[header[colnum]] = list(filter(lambda x: x != '', col.replace(" ", "").split(',')))
+                if header[colnum] in ['hito_consecuencia', 'hito_precedente', 
+                                      'dimension', 'subdimension', 
+                                      'disciplinas', 'subdisciplina']:
+                    hito[header[colnum]] = list(filter(lambda x: x != '', 
+                                                       col.replace(" ", "").split(',')))
                 elif header[colnum] in [ 'tipo', 'lugar', 'investigador']:
                     pass
                 elif header[colnum] == 'fecha':
@@ -57,7 +62,7 @@ with open('hitos.csv', newline='', encoding="utf-8") as csvfile:
         json.dump(hitosJson, f, ensure_ascii=False)
 
 print('PROCESSING PREGUNTAS')
-with open('preguntas.csv', newline='', encoding="utf-8") as csvfile:
+with open('preguntas.csv', newline='') as csvfile:
     reader = csv.reader(csvfile)
     preguntasJson = []
     rownum = 0
@@ -75,6 +80,31 @@ with open('preguntas.csv', newline='', encoding="utf-8") as csvfile:
     with open('preguntas.json', 'w') as f:
         json.dump(preguntasJson, f, ensure_ascii=False)
 
+def csvToJson(file):
+    with open(file+'.csv', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        preguntasJson = []
+        rownum = 0
+        for row in reader:
+            if rownum == 0:
+                header = row
+            else:
+                colnum = 0
+                pregunta = {}
+                for col in row:
+                    pregunta[header[colnum]] = col
+                    colnum += 1
+                preguntasJson.append(pregunta)
+            rownum += 1
+        with open(file + '.json', 'w') as f:
+            json.dump(preguntasJson, f, ensure_ascii=False)
+
+print('PROCESSING DISCIPLINAS Y DIMENSIONES')
+csvToJson('disciplina')
+csvToJson('subdisciplina')
+csvToJson('dimension')
+csvToJson('subdimension')
+
 # print('ADDING RANDOM INFO')
 # # COMENTAR EN VERSION DEFINITIVA
 
@@ -86,6 +116,22 @@ def flat(arrays):
     for array in arrays:
         result.extend(array)
     return result
+
+def DFS(hitos, hit_dict, attr):
+    for h in hitos:
+        if len(h[attr]) > 0 :
+            ques = h[attr][0]
+            stack = [h]
+            while len(stack) > 0:
+                current = stack.pop()
+                for c in current['hito_consecuencia']:
+                    if ques not in hit_dict[c][attr]:
+                        hit_dict[c][attr].append(ques)
+                        stack.append(hit_dict[c])
+                for c in current['hito_precedente']:
+                    if ques not in hit_dict[c][attr]:
+                        hit_dict[c][attr].append(ques)
+                        stack.append(hit_dict[c])
 def transitive(hit):
     """
     Produce clausura transitiva de hitos relacionados a preguntas
@@ -97,20 +143,8 @@ def transitive(hit):
         else:
             h['pregunta'] = []
         dict_hit[h['hito_id']] = h
-    for h in hit:
-        if len(h['pregunta']) > 0 :
-            ques = h['pregunta'][0]
-            stack = [h]
-            while len(stack) > 0:
-                current = stack.pop()
-                for c in current['hito_consecuencia']:
-                    if ques not in dict_hit[c]['pregunta']:
-                        dict_hit[c]['pregunta'].append(ques)
-                        stack.append(dict_hit[c])
-                for c in current['hito_precedente']:
-                    if ques not in dict_hit[c]['pregunta']:
-                        dict_hit[c]['pregunta'].append(ques)
-                        stack.append(dict_hit[c])
+    for attr in ['pregunta', 'dimension', 'subdimension', 'disciplinas', 'subdisciplina']:
+        DFS(hit, dict_hit, attr)
     return dict_hit.values()
 def question(pre):
     """
@@ -124,7 +158,11 @@ def extract_links(hit):
     return list(map(lambda y: {
                     'source': hit['hito_id'], 
                     'target': y,
-                    'questions': hit['pregunta']
+                    'questions': hit['pregunta'],
+                    'dimensions': hit['dimension'],
+                    'subdimensions': hit['subdimension'],
+                    'disciplines': hit['disciplinas'],
+                    'subdisciplines': hit['subdisciplina']
                     }, hit['hito_consecuencia']))
 def node(hit):
     """
@@ -134,8 +172,11 @@ def node(hit):
         'id': hit['hito_id'],
         'name': hit['hito_texto'],
         'date': hit['fecha'],
-        'tags': hit['tags'],
-        'question': hit['pregunta']
+        'question': hit['pregunta'],
+        'dimensions': hit['dimension'],
+        'subdimensions': hit['subdimension'],
+        'disciplines': hit['disciplinas'],
+        'subdisciplines': hit['subdisciplina']
         }
 def filter_data(data):
     """
@@ -157,15 +198,61 @@ def filter_data(data):
     return data
 
 print('ADDING UP INFO')
+
+with open('disciplina.json') as disciplinas_file:
+    disciplinas = json.loads(disciplinas_file.read())
+    with open('subdisciplina.json') as subdisciplinas_file:
+        subdisciplinas = json.loads(subdisciplinas_file.read())
+        for d in disciplinas:
+            d['subdisciplinas'] = []
+        for s in subdisciplinas:
+            for d in disciplinas:
+                if s['id_disciplina'] == d['id']:
+                    d['subdisciplinas'].append(s)
+                    break
+        with open('disciplinas.json', 'w') as f:
+            json.dump(disciplinas, f, ensure_ascii=False)
+
+with open('dimension.json') as dimension_file:
+    dimension = json.loads(dimension_file.read())
+    with open('subdimension.json') as subdimension_file:
+        subdimension = json.loads(subdimension_file.read())
+        for d in dimension:
+            d['subdimension'] = []
+        for s in subdimension:
+            for d in dimension:
+                if s['dimension_id'] == d['id']:
+                    d['subdimension'].append(s)
+                    break
+        with open('dimensiones.json', 'w') as f:
+            json.dump(dimension, f, ensure_ascii=False)
+
+with open('dimensiones.json') as dimension_file:
+    dimensiones = json.loads(dimension_file.read())
+    with open('disciplinas.json') as disciplina_file:
+        disciplinas = json.loads(disciplina_file.read())
+        data = {
+            "dimensions": dimensiones,
+            "disciplines": disciplinas
+        }
+        with open('categories.json', 'w') as f:
+            json.dump(data, f, ensure_ascii=False)
+
 with open('hitos.json') as hitos_file:
     hitos = json.loads(hitos_file.read())
     with open('preguntas.json') as preguntas_file:
         preguntas = json.loads(preguntas_file.read())
-        data = {}
-        data['questions'] = list(map(lambda x: question(x), preguntas))
-        hitos = transitive(hitos)
-        data['links'] = flat(list(map(lambda x: extract_links(x), hitos)))
-        data['nodes'] = list(map(lambda x: node(x), hitos))
-        data = filter_data(data)
-        with open('data.json', 'w') as f:
-            json.dump(data, f, ensure_ascii=False)
+        with open('categories.json') as category_file:
+            categories = json.loads(category_file.read())
+            data = {}
+            data['dimensions'] = categories['dimensions']
+            data['disciplines'] = categories['disciplines']
+            data['questions'] = list(map(lambda x: question(x), preguntas))
+            hitos = transitive(hitos)
+            data['links'] = flat(list(map(lambda x: extract_links(x), hitos)))
+            data['nodes'] = list(map(lambda x: node(x), hitos))
+            data = filter_data(data)
+            with open('data.json', 'w') as f:
+                json.dump(data, f, ensure_ascii=False)
+
+print('DONE')

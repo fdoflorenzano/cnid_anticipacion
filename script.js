@@ -12,7 +12,7 @@ const vis = new Vue({
         RIGHT: 0
       },
       RADIUS: 10,
-      FILEPATH: 'data.json',
+      FILEPATH: 'data/data.json',
       graph: null,
       container: null,
       qcontainer: null,
@@ -22,6 +22,8 @@ const vis = new Vue({
       selected: null,
       simulation: null,
       heightScale: null,
+      checkedFilters: [],
+      dimensions: [],
     }
   },
   mounted() {
@@ -116,11 +118,11 @@ const vis = new Vue({
         .on("click", function (d, i, el) {
           d3.selectAll(el).classed('activated', false);
           d3.select(el[i]).classed('activated', that.state != d.id);
-          if(that.state == d.id) {
+          if (that.state == d.id) {
             that.state = 'base';
             that.disableQuestionFilter();
-          }else{
-            that.state =  d.id;
+          } else {
+            that.state = d.id;
           }
           that.selected = that.state == d.id ? d : null;
         });
@@ -136,6 +138,8 @@ const vis = new Vue({
         const nodes = data['nodes'];
         const links = data['links'];
         const squares = data['questions'];
+        this.dimensions = data['dimensions'];
+        const disciplines = data['disciplines'];
         this.graph = {
           nodes,
           links,
@@ -244,15 +248,6 @@ const vis = new Vue({
     },
     linkDistance(dif) {
       return (l) => dif ? dif * Math.abs(l.source.date - l.target.date) / 5 : 40;
-    },
-    nodeCharge(ranking) {
-      let max = -1;
-      let min = 100000;
-      for (let fecha in ranking) {
-        if (max < ranking[fecha]) max = ranking[fecha]
-        if (min > ranking[fecha]) min = ranking[fecha]
-      }
-      return d3.scaleLinear().domain([min, max]).range([-500, -125]);
     },
     scrollToEnd() {
       let container = document.querySelector("html");

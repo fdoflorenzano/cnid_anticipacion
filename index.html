@@ -26,6 +26,25 @@
     <h1>ANTICIPANDO HORIZONTES PARA CHILE</h1>
     <div class="separator"></div>
     <h2>EXPLORANDO ÁREAS EMERGENTES EN CIENCIA Y HUMANIDAD</h2>
+    <div class="category_box">
+      <h1>DESAFIOS</h1>
+      <div v-for="dimension in dimensions">
+        <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
+        <label :for="dimension.id">{{dimension.nombre}}</label><br>
+        <div v-for="subdimension in dimension.subdimension">
+          <input 
+          type="checkbox" 
+          :id="dimension.id+'.'+subdimension.id" 
+          :value="dimension.id+'.'+subdimension.id" 
+          v-model="checkedFilters">
+          <label :for="dimension.id+'.'+subdimension.id" >
+            {{subdimension.nombre}}
+          </label><br>
+        </div>
+      </div>
+      <br>
+      <span>Checked names: {{ checkedFilters }}</span>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>

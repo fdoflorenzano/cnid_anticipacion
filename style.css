@@ -150,3 +150,14 @@ div.separator {
 .question_info.active{
   background-color: var(--main-red);
 }
+
+.category_box {
+  position: fixed;
+  right: 10px;
+  top: 30%;
+  color: var(--main-whiteStroke);
+}
+
+.category_box h1{
+  font-size: 20px;
+}

@@ -42,9 +42,9 @@ with open('hitos.csv', newline='', encoding="utf-8") as csvfile:
             colnum = 0
             hito = {}
             for col in row:
-                if header[colnum] in ['hito_consecuencia', 'tags']:
+                if header[colnum] in ['hito_consecuencia', 'tags', 'hito_precedente']:
                     hito[header[colnum]] = list(filter(lambda x: x != '', col.replace(" ", "").split(',')))
-                elif header[colnum] in ['hito_precedente', 'tipo', 'lugar', 'investigador']:
+                elif header[colnum] in [ 'tipo', 'lugar', 'investigador']:
                     pass
                 elif header[colnum] == 'fecha':
                     hito[header[colnum]] = date_parser(col)
@@ -103,7 +103,11 @@ def transitive(hit):
             stack = [h]
             while len(stack) > 0:
                 current = stack.pop()
-                for c in h['hito_consecuencia']:
+                for c in current['hito_consecuencia']:
+                    if ques not in dict_hit[c]['pregunta']:
+                        dict_hit[c]['pregunta'].append(ques)
+                        stack.append(dict_hit[c])
+                for c in current['hito_precedente']:
                     if ques not in dict_hit[c]['pregunta']:
                         dict_hit[c]['pregunta'].append(ques)
                         stack.append(dict_hit[c])
@@ -137,16 +141,19 @@ def filter_data(data):
     """
     Filtrar nodos sin fechas validas y relaciones correspondientes
     """
-    valid_nodes = {}
+    valid_nodes = {};
+    present_questions = {};
     for node in data['nodes']:
         if node['date'] > 0:
-            valid_nodes[node['id']] = True
+            valid_nodes[node['id']] = True;
+            for q in node['question']:
+                present_questions[q] = True;
         else:
             valid_nodes[node['id']] = False
     
-    data['nodes'] = list(filter(lambda x: valid_nodes[x['id']], data['nodes']))
+    data['nodes'] = list(filter(lambda x: valid_nodes[x['id']], data['nodes']));
     data['links'] = list(filter(lambda x: valid_nodes[x['source']] and valid_nodes[x['target']], data['links']))
-
+    data['questions'] = list(filter(lambda x: x['id'] in present_questions, data['questions']));
     return data
 
 print('ADDING UP INFO')

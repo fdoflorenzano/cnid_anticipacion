@@ -29,17 +29,36 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a0a0a', endColorstr='#1c243a',GradientType=0 ); /* IE6-9 */
 }
 #container line.link {
+  stroke: var(--main-whiteStroke);
+  stroke-width: 2px;
+}
+
+#container line.link.active {
   stroke: var(--main-red);
   stroke-width: 2px;
 }
+
+#container line.link.disable {
+  stroke: var(--main-grey);
+  stroke-width: 2px;
+}
+
 #container line.timeline {
   stroke: var(--main-whiteStroke);
   stroke-width: 1px;
   stroke-dasharray: 2;
 }
 #container .node circle {
-  fill: var(--main-red);
+  fill: var(--main-whiteStroke);
   stroke: none;
+}
+
+#container .node.active circle {
+  fill: var(--main-red);
+}
+
+#container .node.disable circle {
+  fill: var(--main-grey);
 }
 
 .timeline-text{
@@ -121,5 +140,13 @@ div.separator {
 
 .question_info {
   margin: 0 auto;
-  height: 50px;
+  height: 100px;
+}
+
+.question_info h3{
+  font-size: 20px;
+}
+
+.question_info.active{
+  background-color: var(--main-red);
 }

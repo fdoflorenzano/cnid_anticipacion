@@ -17,6 +17,7 @@ const vis = new Vue({
       container: null,
       qcontainer: null,
       tooltip: null,
+      questionClass: 'unactive',
       state: 'base',
       selected: null,
       simulation: null,
@@ -96,20 +97,31 @@ const vis = new Vue({
         .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)))
         .on("mouseover", function (d, i, el) {
           d3.select(el[i]).classed('hover', true);
+          d3.select('.question_info').classed('active', true);
           d3.select('.question_info').select('.title').text(d.text);
+          that.applyQuestionFilter(d);
         })
         .on("mouseout", function (d, i, el) {
           d3.select(el[i]).classed('hover', false);
           if (that.state == 'base') {
+            d3.select('.question_info').classed('active', false);
             d3.select('.question_info').select('.title').text('');
+            that.disableQuestionFilter();
           } else {
+            d3.select('.question_info').classed('active', true);
             d3.select('.question_info').select('.title').text(that.selected.text);
+            that.applyQuestionFilter(that.selected);
           }
         })
         .on("click", function (d, i, el) {
           d3.selectAll(el).classed('activated', false);
           d3.select(el[i]).classed('activated', that.state != d.id);
-          that.state = that.state == d.id ? 'base' : d.id;
+          if(that.state == d.id) {
+            that.state = 'base';
+            that.disableQuestionFilter();
+          }else{
+            that.state =  d.id;
+          }
           that.selected = that.state == d.id ? d : null;
         });
 
@@ -246,6 +258,37 @@ const vis = new Vue({
       let container = document.querySelector("html");
       const scrollHeight = container.scrollHeight;
       container.scrollTop = scrollHeight;
+    },
+    applyQuestionFilter(question) {
+      this.disableQuestionFilter();
+      const id = question.id;
+      this.container
+        .selectAll('.node')
+        .filter(d => d['question'].includes(id))
+        .classed('active', true);
+
+      this.container
+        .selectAll('.node')
+        .filter(d => !d['question'].includes(id))
+        .classed('disable', true);
+
+      this.container
+        .selectAll('.link')
+        .filter(d => d['questions'].includes(id))
+        .classed('active', true);
+
+      this.container
+        .selectAll('.link')
+        .filter(d => !d['questions'].includes(id))
+        .classed('disable', true);
+    },
+    disableQuestionFilter() {
+      this.container
+        .selectAll('.node')
+        .classed('active disable', false);
+      this.container
+        .selectAll('.link')
+        .classed('active disable', false);
     }
   }
 });

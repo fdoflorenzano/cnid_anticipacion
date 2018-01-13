@@ -24,6 +24,7 @@ const vis = new Vue({
       heightScale: null,
       checkedFilters: [],
       dimensions: [],
+      disciplines: []
     }
   },
   mounted() {
@@ -139,7 +140,7 @@ const vis = new Vue({
         const links = data['links'];
         const squares = data['questions'];
         this.dimensions = data['dimensions'];
-        const disciplines = data['disciplines'];
+        this.disciplines = data['disciplines'];
         this.graph = {
           nodes,
           links,

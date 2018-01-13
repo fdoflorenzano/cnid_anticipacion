@@ -12,7 +12,7 @@ const rankYears = nodes => {
 }
 const tipHTML = element => {
     if (element['date']) {
-        return `<span class="fecha">${element.date}: </span><span>${element.name}</span>`;
+        return `<span>${element.name}</span>`;
     } else {
         return `<span>${element.text}: </span>`;        
     }

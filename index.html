@@ -26,24 +26,37 @@
     <h1>ANTICIPANDO HORIZONTES PARA CHILE</h1>
     <div class="separator"></div>
     <h2>EXPLORANDO ÁREAS EMERGENTES EN CIENCIA Y HUMANIDAD</h2>
-    <div class="category_box">
+    <div class="category_box dimension_box">
       <h1>DESAFIOS</h1>
       <div v-for="dimension in dimensions">
         <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
-        <label :for="dimension.id">{{dimension.nombre}}</label><br>
+        <label :for="dimension.id">{{dimension.nombre}}</label>
+        <br>
         <div v-for="subdimension in dimension.subdimension">
-          <input 
-          type="checkbox" 
-          :id="dimension.id+'.'+subdimension.id" 
-          :value="dimension.id+'.'+subdimension.id" 
-          v-model="checkedFilters">
-          <label :for="dimension.id+'.'+subdimension.id" >
+          <input type="checkbox" :id="dimension.id+'.'+subdimension.id" :value="dimension.id+'.'+subdimension.id" v-model="checkedFilters">
+          <label :for="dimension.id+'.'+subdimension.id">
             {{subdimension.nombre}}
-          </label><br>
+          </label>
+          <br>
         </div>
       </div>
       <br>
       <span>Checked names: {{ checkedFilters }}</span>
+    </div>
+    <div class="category_box discipline_box">
+      <h1>DISCIPINAS</h1>
+      <div v-for="dimension in disciplines">
+        <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
+        <label :for="dimension.id">{{dimension.nombre}}</label>
+        <br>
+        <div v-for="subdimension in dimension.subdisciplinas">
+          <input type="checkbox" :id="dimension.id+'.'+subdimension.id" :value="dimension.id+'.'+subdimension.id" v-model="checkedFilters">
+          <label :for="dimension.id+'.'+subdimension.id">
+            {{subdimension.nombre}}
+          </label>
+          <br>
+        </div>
+      </div>
     </div>
   </div>
   <script src="script.js"></script>

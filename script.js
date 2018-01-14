@@ -24,7 +24,8 @@ const vis = new Vue({
       heightScale: null,
       checkedFilters: [],
       dimensions: [],
-      disciplines: []
+      disciplines: [],
+      tags: []
     }
   },
   mounted() {
@@ -58,6 +59,8 @@ const vis = new Vue({
     },
     graph: function (val) {
 
+      let that = this;
+
       this.container.selectAll('line')
         .data(val.links)
         .enter()
@@ -75,18 +78,21 @@ const vis = new Vue({
         .append('g')
         .attr('class', 'node')
         .attr('transform', d => `translate(${d.x}, ${d.y})`)
-        .call(d3.drag()
-          .on("start", this.dragstarted)
-          .on("drag", this.dragged)
-          .on("end", this.dragended))
-        .on('dblclick', this.unfix)
+        // .call(d3.drag()
+        //   .on("start", this.dragstarted)
+        //   .on("drag", this.dragged)
+        //   .on("end", this.dragended))
+        // .on('dblclick', this.unfix)
         .on("mouseover", function (d) {
           d3.select('.tooltip').transition()
             .duration(200)
             .style("opacity", .9);
-          d3.select('.tooltip').html(tipHTML(d))
+          d3.select('.tooltip').html(tipHTML(d, this.tags))
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
+        })
+        .on('click', function (d) {
+          d3.select('.tooltip').html(tipHTMLLong(d, that.tags))
         })
         .on("mouseout", function (d) {
           d3.select('.tooltip').transition()
@@ -101,7 +107,6 @@ const vis = new Vue({
       const maxSquares = Math.floor(this.width / 30);
       this.QHEIGHT += 40 * (Math.floor(val.squares.length / maxSquares))
 
-      let that = this;
       const squares = this.qcontainer
         .selectAll('.question')
         .data(val.squares)
@@ -155,6 +160,7 @@ const vis = new Vue({
         const squares = data['questions'];
         this.dimensions = data['dimensions'];
         this.disciplines = data['disciplines'];
+        this.tags = data['tags'];
         this.graph = {
           nodes,
           links,

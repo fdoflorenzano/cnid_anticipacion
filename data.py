@@ -119,8 +119,7 @@ def flat(arrays):
 
 def DFS(hitos, hit_dict, attr):
     for h in hitos:
-        if len(h[attr]) > 0 :
-            ques = h[attr][0]
+        for ques in h[attr]:
             stack = [h]
             while len(stack) > 0:
                 current = stack.pop()
@@ -163,7 +162,7 @@ def extract_links(hit):
                     'subdimensions': hit['subdimension'],
                     'disciplines': hit['disciplinas'],
                     'subdisciplines': hit['subdisciplina'],
-                    'tags': hit['pregunta'] + hit['dimension'] +
+                    'tags':  hit['dimension'] +
                         hit['subdimension'] + hit['disciplinas'] + hit['subdisciplina']
                     }, hit['hito_consecuencia']))
 def node(hit):
@@ -179,7 +178,7 @@ def node(hit):
         'subdimensions': hit['subdimension'],
         'disciplines': hit['disciplinas'],
         'subdisciplines': hit['subdisciplina'],
-        'tags': hit['pregunta'] + hit['dimension'] +
+        'tags':  hit['dimension'] +
                         hit['subdimension'] + hit['disciplinas'] + hit['subdisciplina']
         }
 def filter_data(data):
@@ -200,6 +199,19 @@ def filter_data(data):
     data['links'] = list(filter(lambda x: valid_nodes[x['source']] and valid_nodes[x['target']], data['links']))
     data['questions'] = list(filter(lambda x: x['id'] in present_questions, data['questions']));
     return data
+
+def tagger(categories):
+    """
+    Get possible tags from categories
+    """
+    tags = {}
+    for dim in categories['dimensions']:
+        for subdimension in dim['subdimension']:
+            tags[subdimension['id']] = subdimension
+    for disc in categories['disciplines']:
+        for subdiscipline in disc['subdisciplinas']:
+            tags[subdiscipline['id']] = subdiscipline 
+    return tags;
 
 print('ADDING UP INFO')
 
@@ -226,6 +238,7 @@ with open('dimension.json') as dimension_file:
         for s in subdimension:
             for d in dimension:
                 if s['dimension_id'] == d['id']:
+                    s['id'] = d['id'] + '.' + s['id']
                     d['subdimension'].append(s)
                     break
         with open('dimensiones.json', 'w') as f:
@@ -251,6 +264,7 @@ with open('hitos.json') as hitos_file:
             data = {}
             data['dimensions'] = categories['dimensions']
             data['disciplines'] = categories['disciplines']
+            data['tags'] = tagger(categories)
             data['questions'] = list(map(lambda x: question(x), preguntas))
             hitos = transitive(hitos)
             data['links'] = flat(list(map(lambda x: extract_links(x), hitos)))

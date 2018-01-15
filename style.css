@@ -1,33 +1,39 @@
 @font-face {
-    font-family: sourceBold;
-    src: url(fonts/SourceSansPro-Bold.otf);
+  font-family: sourceBold;
+  src: url(fonts/SourceSansPro-Bold.otf);
 }
 
 @font-face {
-    font-family: sourceBlack;
-    src: url(fonts/SourceSansPro-Black.otf);
+  font-family: sourceBlack;
+  src: url(fonts/SourceSansPro-Black.otf);
 }
 
 @font-face {
-    font-family: source;
-    src: url(fonts/SourceSansPro-Regular.otf);
+  font-family: source;
+  src: url(fonts/SourceSansPro-Regular.otf);
 }
 
 @font-face {
-    font-family: alegreya;
-    src: url(fonts/AlegreyaSC-Regular.otf);
+  font-family: alegreya;
+  src: url(fonts/AlegreyaSC-Regular.otf);
 }
 
 body {
   margin: 5em auto;
   max-width: 1200px;
   font-family: sans-serif;
-  background: #0a0a0a; /* Old browsers */
-  background: -moz-linear-gradient(top, var(--main-grad1) 0%, var(--main-grad2) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, var(--main-grad1) 0%,var(--main-grad2) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, var(--main-grad1) 0%,var(--main-grad2) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a0a0a', endColorstr='#1c243a',GradientType=0 ); /* IE6-9 */
+  background: #0a0a0a;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, var(--main-grad1) 0%, var(--main-grad2) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, var(--main-grad1) 0%, var(--main-grad2) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, var(--main-grad1) 0%, var(--main-grad2) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a0a0a', endColorstr='#1c243a', GradientType=0);
+  /* IE6-9 */
 }
+
 #container line.link {
   stroke: var(--main-whiteStroke);
   stroke-width: 2px;
@@ -48,6 +54,7 @@ body {
   stroke-width: 1px;
   stroke-dasharray: 2;
 }
+
 #container .node circle {
   fill: var(--main-whiteStroke);
   stroke: none;
@@ -61,13 +68,13 @@ body {
   fill: var(--main-grey);
 }
 
-.timeline-text{
+.timeline-text {
   font-family: sourceBlack, 'sans-serif';
   font-size: 20px;
   fill: white;
 }
 
-.node text{
+.node text {
   font-family: source, 'sans-serif';
   font-size: 12px;
   fill: white;
@@ -76,33 +83,34 @@ body {
 h1 {
   color: white;
   font-family: sourceBold, 'sans-serif';
-  font-size: 45px;
-  text-align: center;  
+  font-size: 260%;
+  text-align: center;
 }
 
 h2 {
   color: white;
   font-family: sourceBold, 'sans-serif';
-  font-size: 15px;
+  font-size: 140%;
   font-variant: small-caps;
-  text-align: center;  
+  text-align: center;
 }
 
 h3 {
   color: white;
   font-family: sourceBold, 'sans-serif';
-  font-size: 15px;
+  font-size: 120%;
   font-variant: small-caps;
   text-align: center;
 }
 
-:root{
+:root {
   --main-red: #e52331;
   --main-whiteStroke: #f2f2f2;
   --main-grad1: #0a0a0a;
   --main-grad2: #1c243a;
   --main-grey: grey;
 }
+
 div.tooltip {
   position: absolute;
   max-width: 300px;
@@ -118,7 +126,10 @@ div.tooltip {
   text-align: center;
 }
 
-div.tooltip span{
+div.tooltip.large {
+  text-align: left;
+}
+div.tooltip span {
   font-family: sourceBold, 'sans-serif';
 }
 
@@ -127,23 +138,23 @@ span.tag {
   margin: 2px;
   padding: 1px 0;
   border-radius: 5px;
+  font-size: 10px;
 }
-
 
 .question {
   fill: var(--main-grey);
 }
 
-.question.hover{
+.question.hover {
   fill: white;
 }
 
-.question.activated{
+.question.activated {
   fill: var(--main-red);
 }
 
 div.separator {
-  margin: 10px auto;  
+  margin: 10px auto;
   background: var(--main-red);
   height: 10px;
   width: 600px;
@@ -161,11 +172,11 @@ div.separator-tip {
   height: 100px;
 }
 
-.question_info h3{
+.question_info h3 {
   font-size: 20px;
 }
 
-.question_info.active{
+.question_info.active {
   background-color: var(--main-red);
 }
 
@@ -188,6 +199,49 @@ div.separator-tip {
   bottom: 0;
 }
 
-.category_box h1{
+.category_box h1 {
   font-size: 20px;
 }
+
+#front {
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.st0 {
+  fill: #FFFFFF;
+}
+
+.st1 {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 0.75;
+  stroke-miterlimit: 10;
+}
+
+.st2 {
+  stroke: #A6B2BC;
+}
+
+.st3 {
+  stroke: #A6B2BC;
+}
+
+.section {
+  height: 100vh;
+}
+
+.s0 {
+  min-height: 0px;
+}
+
+.s1 {
+  min-height: 100px;
+}
+
+.s3 {
+  min-height: 200px;
+}
+

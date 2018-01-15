@@ -17,7 +17,9 @@ const vis = new Vue({
       container: null,
       qcontainer: null,
       tooltip: null,
+      tooltipped: null,
       questionClass: 'unactive',
+      toolTipType: false,
       state: 'base',
       selected: null,
       simulation: null,
@@ -43,6 +45,11 @@ const vis = new Vue({
     },
   },
   watch: {
+    toolTipType: function (val) {
+      this.tooltip
+        .classed('large', val)
+        .html(val ? tipHTMLLong(this.tooltipped, this.tags) : tipHTML(this.tooltipped));
+    },
     checkedFilters: function (val) {
       this.disableQuestionFilter();
       if (val.length > 0) {
@@ -51,7 +58,7 @@ const vis = new Vue({
           .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
           .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
 
-          this.container
+        this.container
           .selectAll('.link')
           .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
           .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
@@ -84,20 +91,17 @@ const vis = new Vue({
         //   .on("end", this.dragended))
         // .on('dblclick', this.unfix)
         .on("mouseover", function (d) {
-          d3.select('.tooltip').transition()
-            .duration(200)
+          that.tooltipped = d;
+          that.tooltip
             .style("opacity", .9);
-          d3.select('.tooltip').html(tipHTML(d, this.tags))
+          that.tooltip
+            .classed('large', false)
+            .html(tipHTML(d))
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
         })
         .on('click', function (d) {
-          d3.select('.tooltip').html(tipHTMLLong(d, that.tags))
-        })
-        .on("mouseout", function (d) {
-          d3.select('.tooltip').transition()
-            .duration(500)
-            .style("opacity", 0);
+          that.toolTipType = !that.toolTipType;
         });
 
       gNodes
@@ -214,6 +218,12 @@ const vis = new Vue({
           .attr('x', 20)
           .attr('y', heightScale)
           .text(d => d);
+
+        this.tooltip
+          .on('click', function () {
+            console.log('hi');
+            that.toolTipType = !that.toolTipType;
+          });
 
       });
     },

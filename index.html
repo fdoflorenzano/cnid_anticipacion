@@ -129,7 +129,23 @@
 
     </div>
 
-    <div class="tooltip"></div>
+    <div class="tooltip" v-bind:class="{ large: tooltipLarge, appear: tooltipped }">
+      <span clas="title" v-if="tooltipped">
+        {{tooltipped.name}}
+      </span>
+      <div class="separator-tip" v-if="tooltipLarge"></div>
+      <div v-if="tooltipLarge">
+        LOREM
+      </div>
+      <div v-if="tooltipped && tooltipLarge">
+        <template v-for="tag in tooltipped.tags">
+          <span class="tag" v-if="tags[tag]">
+            {{tags[tag].nombre}}
+          </span>
+        </template>
+      </div>
+      <p></p>
+    </div>
     <div class="category_box dimension_box">
       <h1>DESAFIOS</h1>
       <div class="check" v-for="dimension in dimensions">

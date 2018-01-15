@@ -19,7 +19,7 @@ const vis = new Vue({
       tooltip: null,
       tooltipped: null,
       questionClass: 'unactive',
-      toolTipType: false,
+      tooltipLarge: false,
       state: 'base',
       selected: null,
       simulation: null,
@@ -45,11 +45,6 @@ const vis = new Vue({
     },
   },
   watch: {
-    toolTipType: function (val) {
-      this.tooltip
-        .classed('large', val)
-        .html(val ? tipHTMLLong(this.tooltipped, this.tags) : tipHTML(this.tooltipped));
-    },
     checkedFilters: function (val) {
       this.disableQuestionFilter();
       if (val.length > 0) {
@@ -87,17 +82,11 @@ const vis = new Vue({
         .on("mouseover", function (d) {
           that.tooltipped = d;
           that.tooltip
-            .style("opacity", .9);
-          that.tooltip
-            .classed('large', false)
-            .html(tipHTML(d))
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
         })
         .on('click', function (d) {
-          console.log(d['tags']);
-          console.log(that.checkedFilters);
-          that.toolTipType = !that.toolTipType;
+          that.tooltipLarge = !that.tooltipLarge;
         });
 
       gNodes.append('circle')
@@ -222,7 +211,7 @@ const vis = new Vue({
     },
     initialize() {
       console.log('initializing');
-      this.tooltip = d3.select('.tooltip').style("opacity", 0);
+      this.tooltip = d3.select('.tooltip');
       this.container = d3.select('#container')
         .append('g')
         .attr('transform',

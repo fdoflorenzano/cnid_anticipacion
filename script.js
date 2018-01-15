@@ -65,7 +65,6 @@ const vis = new Vue({
       }
     },
     graph: function (val) {
-
       let that = this;
 
       this.container.selectAll('line')
@@ -85,11 +84,6 @@ const vis = new Vue({
         .append('g')
         .attr('class', 'node')
         .attr('transform', d => `translate(${d.x}, ${d.y})`)
-        // .call(d3.drag()
-        //   .on("start", this.dragstarted)
-        //   .on("drag", this.dragged)
-        //   .on("end", this.dragended))
-        // .on('dblclick', this.unfix)
         .on("mouseover", function (d) {
           that.tooltipped = d;
           that.tooltip
@@ -106,8 +100,7 @@ const vis = new Vue({
           that.toolTipType = !that.toolTipType;
         });
 
-      gNodes
-        .append('circle')
+      gNodes.append('circle')
         .attr('r', this.RADIUS);
 
       const maxSquares = Math.floor(this.width / 30);
@@ -167,14 +160,11 @@ const vis = new Vue({
         this.dimensions = data['dimensions'];
         this.disciplines = data['disciplines'];
         this.tags = data['tags'];
-        //console.log(data['tags']);
         this.graph = {
           nodes,
           links,
           squares
         };
-
-        const ranking = rankYears(nodes);
 
         heightScale = d3.scaleLinear()
           .range([this.height - 300, 100])
@@ -243,25 +233,6 @@ const vis = new Vue({
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
 
       console.log('initialized');
-    },
-    dragstarted(d, i, elements) {
-      if (!d3.event.active) this.simulation.alphaTarget(0.3).restart();
-      d3.select(elements[i]).classed("active", true);
-      d3.select(elements[i]).classed("fixed", true);
-    },
-    dragged(d, i, elements) {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
-      console.log(d);
-    },
-    dragended(d, i, elements) {
-      d3.select(elements[i]).classed("active", false);
-      if (!d3.event.active) this.simulation.alphaTarget(0);
-    },
-    unfix(d, i, elements) {
-      d3.select(elements[i]).classed("fixed", false);
-      d.fx = null;
-      d.fy = null;
     },
     boundedX(d) {
       d.x = Math.max(100, Math.min(this.width - 12, d.x));

@@ -101,6 +101,8 @@ const vis = new Vue({
             .style("top", (d3.event.pageY + 16) + "px");
         })
         .on('click', function (d) {
+          console.log(d['tags']);
+          console.log(that.checkedFilters);
           that.toolTipType = !that.toolTipType;
         });
 
@@ -165,6 +167,7 @@ const vis = new Vue({
         this.dimensions = data['dimensions'];
         this.disciplines = data['disciplines'];
         this.tags = data['tags'];
+        //console.log(data['tags']);
         this.graph = {
           nodes,
           links,

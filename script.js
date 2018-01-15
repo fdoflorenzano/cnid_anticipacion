@@ -51,6 +51,12 @@ const vis = new Vue({
         .append('g')
         .attr('transform',
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
+      this.container
+        .append('rect')
+        .attr('width', this.width)
+        .attr('height', this.height)
+        .attr('fill', 'none')
+        .on('click', this.removeTooltip);
       this.qcontainer = d3.select('#question_container')
         .append('g')
         .attr('transform',
@@ -168,6 +174,17 @@ const vis = new Vue({
     },
     toggleToolTip() {
       this.tooltipLarge = !this.tooltipLarge;
+    },
+    removeTooltip() {
+      this.tooltipped = null;
+    },
+    addFilterTag(tag) {
+      const index = this.checkedFilters.indexOf(tag);
+      if (this.checkedFilters.indexOf(tag) < 0) {
+        this.checkedFilters = [...this.checkedFilters, tag];
+      }else{
+        this.checkedFilters.splice(index, 1);
+      }
     }
   },
   watch: {

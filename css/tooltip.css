@@ -12,15 +12,18 @@ div.tooltip {
   opacity: 0;
 }
 
+div.tooltip .title {
+  cursor: pointer;
+}
+
 div.tooltip span {
   font-family: sourceSemi, 'sans-serif';
-  font-size: 90%; 
+  font-size: 90%;
 }
 
 div.tooltip.appear {
   opacity: 0.9;
 }
-
 
 div.tooltip.large {
   text-align: left;
@@ -32,4 +35,9 @@ span.tag {
   padding: 1px 0;
   border-radius: 5px;
   font-size: 10px;
+  cursor: pointer;
+}
+
+span.tag.active {
+  background-color: var(--main-red);
 }

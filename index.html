@@ -129,17 +129,21 @@
 
     </div>
 
-    <div class="tooltip" v-bind:class="{ large: tooltipLarge, appear: tooltipped }" v-on:click="toggleToolTip">
-      <span clas="title" v-if="tooltipped">
-        {{tooltipped.name}}
-      </span>
+    <div class="tooltip" v-bind:class="{ large: tooltipLarge, appear: tooltipped }">
+      <div class="title" v-if="tooltipped" v-on:click="toggleToolTip">
+        <span>
+          {{tooltipped.name}}
+        </span>
+      </div>
       <div class="separator-tip" v-if="tooltipLarge"></div>
       <div v-if="tooltipLarge">
         LOREM
       </div>
       <div v-if="tooltipped && tooltipLarge">
         <template v-for="tag in tooltipped.tags">
-          <span class="tag" v-if="tags[tag]">
+          <span class="tag" v-if="tags[tag]"
+           v-on:click="addFilterTag(tag)"
+           v-bind:class="{ active: checkedFilters.indexOf(tag) >= 0}">
             {{tags[tag].nombre}}
           </span>
         </template>

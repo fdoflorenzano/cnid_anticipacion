@@ -13,14 +13,16 @@ const vis = new Vue({
       },
       RADIUS: 10,
       FILEPATH: 'data/data.json',
-      graph: null,
+      nodes: null,
+      links: null,
+      questions: null,
       container: null,
       qcontainer: null,
       tooltip: null,
       tooltipped: null,
       questionClass: 'unactive',
-      tooltipLarge: false,
       state: 'base',
+      tooltipLarge: false,
       selected: null,
       simulation: null,
       heightScale: null,
@@ -30,12 +32,6 @@ const vis = new Vue({
       tags: []
     }
   },
-  mounted() {
-    console.log('mounting');
-    this.scrollToEnd();
-    this.initialize();
-    this.getData();
-  },
   computed: {
     width() {
       return this.WIDTH - this.MARGIN.RIGHT - this.MARGIN.LEFT;
@@ -44,37 +40,143 @@ const vis = new Vue({
       return this.HEIGHT - this.MARGIN.TOP - this.MARGIN.BOTTOM;
     },
   },
-  watch: {
-    checkedFilters: function (val) {
-      this.disableQuestionFilter();
-      if (val.length > 0) {
-        this.container
-          .selectAll('.node')
-          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
-          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
-
-        this.container
-          .selectAll('.link')
-          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
-          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
-      }
+  mounted() {
+    this.initialize();
+    this.getData();
+  },
+  methods: {
+    initialize() {
+      this.scrollToEnd();
+      this.container = d3.select('#container')
+        .append('g')
+        .attr('transform',
+          `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
+      this.qcontainer = d3.select('#question_container')
+        .append('g')
+        .attr('transform',
+          `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
+      this.tooltip = d3.select('.tooltip');
     },
-    graph: function (val) {
-      let that = this;
+    scrollToEnd() {
+      let container = document.querySelector("html");
+      const scrollHeight = container.scrollHeight;
+      container.scrollTop = scrollHeight;
+    },
+    getData() {
+      d3.json(this.FILEPATH, (error, data) => {
+        if (error) throw error;
+        this.nodes = data['nodes'];
+        this.links = data['links'];
+        this.questions = data['questions'];
+        this.dimensions = data['dimensions'];
+        this.disciplines = data['disciplines'];
+        this.tags = data['tags'];
 
-      this.container.selectAll('line')
-        .data(val.links)
-        .enter()
-        .append('line')
-        .attr('class', 'link')
+        this.heightScale = d3.scaleLinear()
+          .range([this.height - 300, 100])
+          .domain(d3.extent(this.nodes, d => d.date));
+
+        this.setSimulation();
+        this.setTimeline();
+
+      });
+    },
+    setSimulation() {
+      const dif = Math.abs(this.heightScale(5) - this.heightScale(0));
+      this.simulation = d3.forceSimulation()
+        .nodes(this.nodes)
+        .force("colision", d3.forceCollide(this.RADIUS * 1.5))
+        .force("charge", d3.forceManyBody().strength(-500))
+        .force("link",
+          d3.forceLink()
+          .id(d => d.id)
+          .distance(this.linkDistance(dif))
+          .strength(0.25)
+          .links(this.links))
+        .force("vertical", d3.forceY(d => this.heightScale(d.date)).strength(0.3))
+        .force("horizontal", d3.forceX(this.width / 2).strength(0.12))
+        .on("tick", this.ticked);
+    },
+    boundedX(d) {
+      d.x = Math.max(100, Math.min(this.width - 12, d.x));
+      return d.x;
+    },
+    boundedY(d) {
+      d.y = Math.max(10, Math.min(this.height - 10, d.y));
+      return d.y;
+    },
+    ticked() {
+      this.container.selectAll('.node')
+        .attr('transform', d => `translate(${this.boundedX(d)}, ${this.boundedY(d)})`);
+      this.container.selectAll('.link')
         .attr('x1', l => l.source.x)
         .attr('y1', l => l.source.y)
         .attr('x2', l => l.target.x)
         .attr('y2', l => l.target.y);
+    },
+    linkDistance(dif) {
+      return (l) => dif ? dif * Math.abs(l.source.date - l.target.date) / 5 : 40;
+    },
+    setTimeline() {
+      let timelines = [2018, 2020];
+
+      while (timelines[timelines.length - 1] < d3.max(this.nodes, d => d.date)) {
+        timelines.push(timelines[timelines.length - 1] + 5);
+      }
+
+      this.container
+        .selectAll('.timeline')
+        .data(timelines)
+        .enter()
+        .append('line')
+        .attr('class', 'timeline')
+        .attr('x1', 100)
+        .attr('x2', this.width)
+        .attr('y1', this.heightScale)
+        .attr('y2', this.heightScale);
+      this.container
+        .selectAll('.timeline-text')
+        .data(timelines)
+        .enter()
+        .append('text')
+        .attr('class', 'timeline-text')
+        .attr('x', 20)
+        .attr('y', this.heightScale)
+        .text(d => d);
+    },
+    applyQuestionFilter(question) {
+      this.disableQuestionFilter();
+      const id = question.id;
+      this.container
+        .selectAll('.node')
+        .classed('active', d => d['question'].includes(id))
+        .classed('disable', d => !d['question'].includes(id));
+
+      this.container
+        .selectAll('.link')
+        .classed('active', d => d['questions'].includes(id))
+        .classed('disable', d => !d['questions'].includes(id));
+
+    },
+    disableQuestionFilter() {
+      this.container
+        .selectAll('.node')
+        .classed('active disable', false);
+      this.container
+        .selectAll('.link')
+        .classed('active disable', false);
+    },
+    toggleToolTip() {
+      this.tooltipLarge = !this.tooltipLarge;
+    }
+  },
+  watch: {
+    nodes: function (val) {
+      let that = this;
 
       const gNodes = this.container
         .selectAll('.node')
-        .data(val.nodes)
+        .data(val)
         .enter()
         .append('g')
         .attr('class', 'node')
@@ -85,19 +187,33 @@ const vis = new Vue({
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
         })
-        .on('click', function (d) {
-          that.tooltipLarge = !that.tooltipLarge;
-        });
+        .on('click', that.toggleToolTip);
 
       gNodes.append('circle')
         .attr('r', this.RADIUS);
+    },
+    links: function (val) {
+      let that = this;
+
+      this.container.selectAll('line')
+        .data(val)
+        .enter()
+        .append('line')
+        .attr('class', 'link')
+        .attr('x1', l => l.source.x)
+        .attr('y1', l => l.source.y)
+        .attr('x2', l => l.target.x)
+        .attr('y2', l => l.target.y);
+    },
+    questions: function (val) {
+      let that = this;
 
       const maxSquares = Math.floor(this.width / 30);
-      this.QHEIGHT += 40 * (Math.floor(val.squares.length / maxSquares))
+      this.QHEIGHT += 40 * (Math.floor(val.length / maxSquares))
 
       const squares = this.qcontainer
         .selectAll('.question')
-        .data(val.squares)
+        .data(val)
         .enter()
         .append('rect')
         .attr('class', 'question')
@@ -134,141 +250,20 @@ const vis = new Vue({
           }
           that.selected = that.state == d.id ? d : null;
         });
-
-    }
-  },
-  methods: {
-    getData() {
-      console.log('about to read');
-      d3.json(this.FILEPATH, (error, data) => {
-        if (error) throw error;
-        console.log('read');
-        const nodes = data['nodes'];
-        const links = data['links'];
-        const squares = data['questions'];
-        this.dimensions = data['dimensions'];
-        this.disciplines = data['disciplines'];
-        this.tags = data['tags'];
-        this.graph = {
-          nodes,
-          links,
-          squares
-        };
-
-        heightScale = d3.scaleLinear()
-          .range([this.height - 300, 100])
-          .domain(d3.extent(nodes, d => d.date));
-
-        const dif = Math.abs(heightScale(5) - heightScale(0));
-
-        this.simulation = d3.forceSimulation()
-          .nodes(this.graph.nodes)
-          .force("colision", d3.forceCollide(this.RADIUS * 1.5))
-          .force("charge", d3.forceManyBody().strength(-500))
-          .force("link",
-            d3.forceLink()
-            .id(d => d.id)
-            .distance(this.linkDistance(dif))
-            .strength(0.25)
-            .links(this.graph.links))
-          .force("vertical", d3.forceY(d => heightScale(d.date)).strength(0.3))
-          .force("horizontal", d3.forceX(this.width / 2).strength(0.12))
-          .on("tick", this.ticked);
-
-        const timelines = [2018, 2020];
-
-        while (timelines[timelines.length - 1] < d3.max(nodes, d => d.date)) {
-          timelines.push(timelines[timelines.length - 1] + 5);
-        }
-
-        this.container
-          .selectAll('.timeline')
-          .data(timelines)
-          .enter()
-          .append('line')
-          .attr('class', 'timeline')
-          .attr('x1', 100)
-          .attr('x2', this.width)
-          .attr('y1', heightScale)
-          .attr('y2', heightScale);
-        this.container
-          .selectAll('.timeline-text')
-          .data(timelines)
-          .enter()
-          .append('text')
-          .attr('class', 'timeline-text')
-          .attr('x', 20)
-          .attr('y', heightScale)
-          .text(d => d);
-
-        this.tooltip
-          .on('click', function () {
-            console.log('hi');
-            that.toolTipType = !that.toolTipType;
-          });
-
-      });
     },
-    initialize() {
-      console.log('initializing');
-      this.tooltip = d3.select('.tooltip');
-      this.container = d3.select('#container')
-        .append('g')
-        .attr('transform',
-          `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
-      this.qcontainer = d3.select('#question_container')
-        .append('g')
-        .attr('transform',
-          `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
-
-      console.log('initialized');
-    },
-    boundedX(d) {
-      d.x = Math.max(100, Math.min(this.width - 12, d.x));
-      return d.x;
-    },
-    boundedY(d) {
-      d.y = Math.max(10, Math.min(this.height - 10, d.y));
-      return d.y;
-    },
-    ticked() {
-      this.container.selectAll('.node')
-        .attr('transform', d => `translate(${this.boundedX(d)}, ${this.boundedY(d)})`);
-      this.container.selectAll('.link')
-        .attr('x1', l => l.source.x)
-        .attr('y1', l => l.source.y)
-        .attr('x2', l => l.target.x)
-        .attr('y2', l => l.target.y);
-    },
-    linkDistance(dif) {
-      return (l) => dif ? dif * Math.abs(l.source.date - l.target.date) / 5 : 40;
-    },
-    scrollToEnd() {
-      let container = document.querySelector("html");
-      const scrollHeight = container.scrollHeight;
-      container.scrollTop = scrollHeight;
-    },
-    applyQuestionFilter(question) {
+    checkedFilters: function (val) {
       this.disableQuestionFilter();
-      const id = question.id;
-      this.container
-        .selectAll('.node')
-        .classed('active', d => d['question'].includes(id))
-        .classed('disable', d => !d['question'].includes(id));
+      if (val.length > 0) {
+        this.container
+          .selectAll('.node')
+          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
+          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
 
-      this.container
-        .selectAll('.link')
-        .classed('active', d => d['questions'].includes(id))
-        .classed('disable', d => !d['questions'].includes(id));
-
+        this.container
+          .selectAll('.link')
+          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
+          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
+      }
     },
-    disableQuestionFilter() {
-      this.container
-        .selectAll('.node')
-        .classed('active disable', false);
-      this.container
-        .selectAll('.link')
-        .classed('active disable', false);
-    }
   }
 });

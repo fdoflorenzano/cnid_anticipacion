@@ -129,7 +129,7 @@
 
     </div>
 
-    <div class="tooltip" v-bind:class="{ large: tooltipLarge, appear: tooltipped }">
+    <div class="tooltip" v-bind:class="{ large: tooltipLarge, appear: tooltipped }" v-on:click="toggleToolTip">
       <span clas="title" v-if="tooltipped">
         {{tooltipped.name}}
       </span>

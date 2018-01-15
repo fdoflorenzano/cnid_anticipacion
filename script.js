@@ -20,10 +20,8 @@ const vis = new Vue({
       qcontainer: null,
       tooltip: null,
       tooltipped: null,
-      questionClass: 'unactive',
-      state: 'base',
       tooltipLarge: false,
-      selected: null,
+      selectedQuestion: null,
       simulation: null,
       heightScale: null,
       checkedFilters: [],
@@ -182,7 +180,7 @@ const vis = new Vue({
       const index = this.checkedFilters.indexOf(tag);
       if (this.checkedFilters.indexOf(tag) < 0) {
         this.checkedFilters = [...this.checkedFilters, tag];
-      }else{
+      } else {
         this.checkedFilters.splice(index, 1);
       }
     }
@@ -243,29 +241,31 @@ const vis = new Vue({
           d3.select('.question_info').classed('active', true);
           d3.select('.question_info').select('.title').text(d.text);
           that.applyQuestionFilter(d);
+          that.checkedFilters = [];
         })
         .on("mouseout", function (d, i, el) {
           d3.select(el[i]).classed('hover', false);
-          if (that.state == 'base') {
+          if (that.selectedQuestion == null) {
             d3.select('.question_info').classed('active', false);
             d3.select('.question_info').select('.title').text('');
             that.disableQuestionFilter();
           } else {
             d3.select('.question_info').classed('active', true);
-            d3.select('.question_info').select('.title').text(that.selected.text);
-            that.applyQuestionFilter(that.selected);
+            d3.select('.question_info').select('.title').text(that.selectedQuestion.text);
+            that.applyQuestionFilter(that.selectedQuestion);
           }
         })
         .on("click", function (d, i, el) {
+          that.checkedFilters = [];
           d3.selectAll(el).classed('activated', false);
-          d3.select(el[i]).classed('activated', that.state != d.id);
-          if (that.state == d.id) {
-            that.state = 'base';
+          if (that.selectedQuestion != null && that.selectedQuestion.id == d.id) {
+            that.selectedQuestion = null;
             that.disableQuestionFilter();
+            d3.select(el[i]).classed('activated', false);
           } else {
-            that.state = d.id;
+            that.selectedQuestion = d;
+            d3.select(el[i]).classed('activated', true);
           }
-          that.selected = that.state == d.id ? d : null;
         });
     },
     checkedFilters: function (val) {

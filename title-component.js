@@ -321,7 +321,6 @@ const title = {
     },
     methods: {
         resize() {
-            console.log('holi');
             this.container
                 .selectAll('path')
                 .attr('transform',
@@ -336,8 +335,8 @@ const title = {
                 .attr('transform', `translate(${(this.width - 725*this.scale)/2}, 0)`);
         },
         boundedX(d) {
-            if (this.width - (this.width - 725 * this.scale) / 2 - 10 < d.x) {
-                d.x = this.width - (this.width - 725 * this.scale) / 2 - 10;
+            if (this.width - (this.width - 725 * this.scale) / 2 - 725 * this.scale / 4 < d.x) {
+                d.x = this.width - (this.width - 725 * this.scale) / 2 - 725 * this.scale / 4;
                 d.vx = -d.vx;
                 d.velbase.x = -d.velbase.x;
             } else if (d.x < 0) {

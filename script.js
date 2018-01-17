@@ -29,7 +29,9 @@ const vis = new Vue({
       disciplines: [],
       tags: [],
       windowWidth: 0,
-      windowHeight: 0
+      windowHeight: 0,
+      showChallenge: false,
+      showDiscipline: false,
     }
   },
   computed: {
@@ -42,7 +44,7 @@ const vis = new Vue({
   },
   mounted() {
     this.initialize();
-    this.$nextTick(function() {
+    this.$nextTick(function () {
       window.addEventListener('resize', this.getWindowWidth);
       window.addEventListener('resize', this.getWindowHeight);
 
@@ -140,7 +142,7 @@ const vis = new Vue({
       let timelines = [2018, 2020];
 
       while (timelines[timelines.length - 1] < d3.max(this.nodes, d => d.date)) {
-        timelines.push(timelines[timelines.length - 1] + 5);
+        timelines.push(timelines[timelines.length - 1] + 10);
       }
 
       this.container
@@ -188,6 +190,12 @@ const vis = new Vue({
     toggleToolTip() {
       this.tooltipLarge = !this.tooltipLarge;
     },
+    toggleChallenge() {
+      this.showChallenge = !this.showChallenge;
+    },
+    toggleDiscipline() {
+      this.showDiscipline = !this.showDiscipline;
+    },
     removeTooltip() {
       this.tooltipped = null;
     },
@@ -197,6 +205,14 @@ const vis = new Vue({
         this.checkedFilters = [...this.checkedFilters, tag];
       } else {
         this.checkedFilters.splice(index, 1);
+      }
+    },
+    resize() {
+      if (this.simulation) {
+        this.simulation.force("horizontal")
+          .x(this.width / 2);
+        this.simulation.force("charge").strength(-this.width / 1200 * 500);
+        this.simulation.alphaTarget(0.3).restart();
       }
     }
   },
@@ -297,5 +313,13 @@ const vis = new Vue({
           .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
       }
     },
+    windowWidth: function (val) {
+      if (val > 1200) {
+        this.WIDTH = 1200;
+      } else {
+        this.WIDTH = val;
+      }
+      this.resize();
+    }
   }
 });

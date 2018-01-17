@@ -141,9 +141,7 @@
       </div>
       <div v-if="tooltipped && tooltipLarge">
         <template v-for="tag in tooltipped.tags">
-          <span class="tag" v-if="tags[tag]"
-           v-on:click="addFilterTag(tag)"
-           v-bind:class="{ active: checkedFilters.indexOf(tag) >= 0}">
+          <span class="tag" v-if="tags[tag]" v-on:click="addFilterTag(tag)" v-bind:class="{ active: checkedFilters.indexOf(tag) >= 0}">
             {{tags[tag].nombre}}
           </span>
         </template>
@@ -151,38 +149,40 @@
       <p></p>
     </div>
     <div class="category_box dimension_box">
-      <h1>DESAFIOS</h1>
-      <div class="check" v-for="dimension in dimensions">
-        <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
-        <label :for="dimension.id">{{dimension.nombre}}</label>
-        <div class="check" v-for="subdimension in dimension.subdimension">
-          <input class="sub" type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
-          <label :for="subdimension.id">
-            {{subdimension.nombre}}
-          </label>
-          <br>
+      <h1 v-on:click="toggleChallenge()">DESAFIOS</h1>
+      <div class="container" v-if="showChallenge">
+        <div class="check" v-for="dimension in dimensions">
+          <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
+          <label :for="dimension.id">{{dimension.nombre}}</label>
+          <div class="check" v-for="subdimension in dimension.subdimension">
+            <input class="sub" type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
+            <label :for="subdimension.id">
+              {{subdimension.nombre}}
+            </label>
+            <br>
+          </div>
         </div>
       </div>
     </div>
     <div class="category_box discipline_box">
-      <h1>DISCIPINAS</h1>
-      <div class="check" v-for="dimension in disciplines">
-        <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
-        <label :for="dimension.id">{{dimension.nombre}}</label>
-        <br>
-        <div class="check" v-for="subdimension in dimension.subdisciplinas">
-          <input class="sub" type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
-          <label :for="subdimension.id">
-            {{subdimension.nombre}}
-          </label>
+      <h1 v-on:click="toggleDiscipline()">DISCIPINAS</h1>
+      <div class="container" v-if="showDiscipline">
+        <div class="check" v-for="dimension in disciplines">
+          <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
+          <label :for="dimension.id">{{dimension.nombre}}</label>
           <br>
+          <div class="check" v-for="subdimension in dimension.subdisciplinas">
+            <input class="sub" type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
+            <label :for="subdimension.id">
+              {{subdimension.nombre}}
+            </label>
+            <br>
+          </div>
         </div>
       </div>
     </div>
-    <span>{{windowWidth}}</span>
-    <span>{{windowHeight}}</span>
   </div>
-  
+
 
   <script src="script.js"></script>
 </body>

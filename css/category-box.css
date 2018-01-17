@@ -16,12 +16,15 @@ by Felix Hagspiel.
   position: fixed;
   right: 0%;
   color: var(--main-whiteStroke);
-  width: 300px;
-  max-height: 20%;
-  overflow-y: auto;
   background-color: var(--main-grad1);
   opacity: 0.8;
   padding: 1%;
+}
+
+.category_box .container {
+  width: 300px;
+  max-height:  20vh;
+  overflow-y: auto;
 }
 
 .dimension_box {
@@ -36,6 +39,7 @@ by Felix Hagspiel.
   font-size: 14px;
   text-align: left;
   margin-top: 0%;
+  cursor: pointer;
 }
 
 .check label{

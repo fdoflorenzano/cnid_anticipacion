@@ -47,6 +47,7 @@ by Felix Hagspiel.
   font-family: source, sans-serif;
 }
 
+
 .check input[type="checkbox"]:checked {
   width: 0;
   height: 0;
@@ -72,6 +73,10 @@ by Felix Hagspiel.
   cursor: pointer;
 }
 
+.check > input[type="checkbox"] + label.sub {
+  padding-left: 40px;
+}
+
 .check > input[type="checkbox"]:checked + label::before {
   position: absolute;
   display: inline-block;
@@ -83,6 +88,10 @@ by Felix Hagspiel.
   color: var(--color-default);
 }
 
+.check > input[type="checkbox"]:checked + label.sub::before {
+  left: 20px;
+}
+
 .check > input[type="checkbox"]:not(:checked) + label::before {
   position: absolute;
   display: inline-block;
@@ -92,6 +101,10 @@ by Felix Hagspiel.
   height: 10px;
   border: 2px solid var(--color-default);
   color: var(--color-default);
+}
+
+.check > input[type="checkbox"]:not(:checked) + label.sub::before {
+  left: 20px;
 }
 
 .check > input[type="checkbox"]:checked + label:hover::before{

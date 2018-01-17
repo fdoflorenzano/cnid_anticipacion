@@ -155,8 +155,8 @@
           <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
           <label :for="dimension.id">{{dimension.nombre}}</label>
           <div class="check" v-for="subdimension in dimension.subdimension">
-            <input class="sub" type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
-            <label :for="subdimension.id">
+            <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
+            <label class="sub" :for="subdimension.id">
               {{subdimension.nombre}}
             </label>
             <br>
@@ -172,8 +172,8 @@
           <label :for="dimension.id">{{dimension.nombre}}</label>
           <br>
           <div class="check" v-for="subdimension in dimension.subdisciplinas">
-            <input class="sub" type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
-            <label :for="subdimension.id">
+            <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
+            <label class="sub" :for="subdimension.id">
               {{subdimension.nombre}}
             </label>
             <br>

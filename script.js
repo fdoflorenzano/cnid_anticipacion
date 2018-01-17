@@ -1,5 +1,8 @@
 const vis = new Vue({
   el: "#vis",
+  components: {
+    'title-particle': title,
+  },
   data() {
     return {
       WIDTH: 1200,
@@ -163,7 +166,7 @@ const vis = new Vue({
         .append('text')
         .attr('class', 'timeline-text')
         .attr('x', 20)
-        .attr('y', this.heightScale)
+        .attr('y', d => this.heightScale(d) + 8 )
         .text(d => d);
 
       this.timelines = timelines;

@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: sourceSemi;
-  src: url(fonts/SourceSansPro-SemiBold.otf);
+  src: url(fonts/SourceSansPro-Semibold.otf);
 }
 
 @font-face {
@@ -47,10 +47,13 @@ body {
 #container line.link {
   stroke: var(--main-whiteStroke);
   stroke-width: 1px;
+  opacity: 0.8;
 }
 
 #container line.link.active {
   stroke: var(--main-red);
+  stroke-width: 1px;
+  opacity: 1;
 }
 
 #container line.link.disable {

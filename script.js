@@ -11,7 +11,7 @@ const vis = new Vue({
         LEFT: 0,
         RIGHT: 0
       },
-      RADIUS: 10,
+      RADIUS: 5,
       FILEPATH: 'data/data.json',
       nodes: null,
       links: null,
@@ -27,7 +27,9 @@ const vis = new Vue({
       checkedFilters: [],
       dimensions: [],
       disciplines: [],
-      tags: []
+      tags: [],
+      windowWidth: 0,
+      windowHeight: 0
     }
   },
   computed: {
@@ -40,6 +42,13 @@ const vis = new Vue({
   },
   mounted() {
     this.initialize();
+    this.$nextTick(function() {
+      window.addEventListener('resize', this.getWindowWidth);
+      window.addEventListener('resize', this.getWindowHeight);
+
+      this.getWindowWidth()
+      this.getWindowHeight()
+    })
     this.getData();
   },
   methods: {
@@ -65,6 +74,12 @@ const vis = new Vue({
       let container = document.querySelector("html");
       const scrollHeight = container.scrollHeight;
       container.scrollTop = scrollHeight;
+    },
+    getWindowWidth(event) {
+      this.windowWidth = document.documentElement.clientWidth;
+    },
+    getWindowHeight(event) {
+      this.windowHeight = document.documentElement.clientHeight;
     },
     getData() {
       d3.json(this.FILEPATH, (error, data) => {

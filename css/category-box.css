@@ -16,7 +16,7 @@ by Felix Hagspiel.
   position: fixed;
   right: 0%;
   color: var(--main-whiteStroke);
-  width: 18%;
+  width: 300px;
   max-height: 20%;
   overflow-y: auto;
   background-color: var(--main-grad1);

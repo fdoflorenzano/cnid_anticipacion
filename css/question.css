@@ -1,6 +1,7 @@
 .question_info {
   margin: 0 auto;
-  height: 100px;
+  height: 40vh;
+  width: 80%;
 }
 
 .question_info h3 {

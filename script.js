@@ -28,6 +28,7 @@ const vis = new Vue({
       dimensions: [],
       disciplines: [],
       tags: [],
+      timelines: [],
       windowWidth: 0,
       windowHeight: 0,
       showChallenge: false,
@@ -107,7 +108,7 @@ const vis = new Vue({
       this.simulation = d3.forceSimulation()
         .nodes(this.nodes)
         .force("colision", d3.forceCollide(this.RADIUS * 1.5))
-        .force("charge", d3.forceManyBody().strength(-500))
+        .force("charge", d3.forceManyBody().strength(-this.width / 1200 * 500))
         .force("link",
           d3.forceLink()
           .id(d => d.id)
@@ -164,6 +165,8 @@ const vis = new Vue({
         .attr('x', 20)
         .attr('y', this.heightScale)
         .text(d => d);
+
+      this.timelines = timelines;
     },
     applyQuestionFilter(question) {
       this.disableQuestionFilter();
@@ -214,6 +217,24 @@ const vis = new Vue({
         this.simulation.force("charge").strength(-this.width / 1200 * 500);
         this.simulation.alphaTarget(0.3).restart();
       }
+      this.container
+        .selectAll('.timeline')
+        .data(this.timelines)
+        .attr('x1', 100)
+        .attr('x2', this.width)
+        .attr('y1', this.heightScale)
+        .attr('y2', this.heightScale);
+      if (this.questions) {
+        const maxSquares = Math.floor(this.width / 30);
+        this.QHEIGHT += 40 * (Math.floor(this.questions.length / maxSquares));
+
+        const squares = this.qcontainer
+          .selectAll('.question')
+          .data(this.questions)
+          .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
+          .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)));
+      }
+
     }
   },
   watch: {
@@ -255,7 +276,7 @@ const vis = new Vue({
       let that = this;
 
       const maxSquares = Math.floor(this.width / 30);
-      this.QHEIGHT += 40 * (Math.floor(val.length / maxSquares))
+      this.QHEIGHT += 40 * (Math.floor(val.length / maxSquares));
 
       const squares = this.qcontainer
         .selectAll('.question')
@@ -265,7 +286,7 @@ const vis = new Vue({
         .attr('class', 'question')
         .attr('width', 20)
         .attr('height', 20)
-        .attr('x', (_, i) => (i % maxSquares) * 30)
+        .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
         .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)))
         .on("mouseover", function (d, i, el) {
           d3.select(el[i]).classed('hover', true);

@@ -36,6 +36,7 @@ const vis = new Vue({
       windowHeight: 0,
       showChallenge: false,
       showDiscipline: false,
+      triangle: null
     }
   },
   computed: {
@@ -278,14 +279,14 @@ const vis = new Vue({
     questions: function (val) {
       let that = this;
 
-      val.forEach( (v, i) => {
+      val.forEach((v, i) => {
         v['i'] = i;
       });
 
       const maxSquares = Math.floor(this.width / 30);
       this.QHEIGHT += 40 * (Math.floor(val.length / maxSquares));
 
-      const triangle = this.qcontainer
+      this.triangle = this.qcontainer
         .append('path')
         .attr('class', 'triangle')
         .attr('d', 'M0 0 L20 0 L 10 14.422 Z')
@@ -303,7 +304,7 @@ const vis = new Vue({
         .attr('y', (_, i) => 20 + 30 * (Math.floor(i / maxSquares)))
         .on("mouseover", function (d, i, el) {
           d3.select(el[i]).classed('hover', true);
-          triangle.attr('opacity', 1)
+          that.triangle.attr('opacity', 1)
             .attr('transform', `translate(${6 + (i % maxSquares) * 30} 0)`);
           d3.select('.question_info').classed('active', true);
           d3.select('.question_info').select('.title').text(d.text);
@@ -316,12 +317,12 @@ const vis = new Vue({
             d3.select('.question_info').classed('active', false);
             d3.select('.question_info').select('.title').text('');
             that.disableQuestionFilter();
-            triangle.attr('opacity', 0);
+            that.triangle.attr('opacity', 0);
           } else {
             d3.select('.question_info').classed('active', true);
             d3.select('.question_info').select('.title').text(that.selectedQuestion.text);
             that.applyQuestionFilter(that.selectedQuestion);
-            triangle.attr('opacity', 1)
+            that.triangle.attr('opacity', 1)
               .attr('transform', `translate(${6 + (that.selectedQuestion.i % maxSquares) * 30} 0)`);
           }
         })
@@ -342,8 +343,15 @@ const vis = new Vue({
 
     },
     checkedFilters: function (val) {
-      this.disableQuestionFilter();
       if (val.length > 0) {
+        this.disableQuestionFilter();
+        this.qcontainer
+          .selectAll('.question')
+          .classed('activated', false);
+        this.selectedQuestion = null;
+        this.triangle.attr('opacity', 0);
+        d3.select('.question_info').classed('active', false);
+        d3.select('.question_info').select('.title').text('');
         this.container
           .selectAll('.node')
           .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))

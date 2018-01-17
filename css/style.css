@@ -44,6 +44,10 @@ body {
   /* IE6-9 */
 }
 
+#vis {
+  margin: 0;
+}
+
 #container line.link {
   stroke: var(--main-whiteStroke);
   stroke-width: 1px;

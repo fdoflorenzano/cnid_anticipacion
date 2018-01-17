@@ -9,8 +9,8 @@ const vis = new Vue({
       HEIGHT: 6000,
       QHEIGHT: 140,
       MARGIN: {
-        TOP: 50,
-        BOTTOM: 50,
+        TOP: 0,
+        BOTTOM: 0,
         LEFT: 0,
         RIGHT: 0
       },
@@ -166,7 +166,7 @@ const vis = new Vue({
         .append('text')
         .attr('class', 'timeline-text')
         .attr('x', 20)
-        .attr('y', d => this.heightScale(d) + 8 )
+        .attr('y', d => this.heightScale(d) + 8)
         .text(d => d);
 
       this.timelines = timelines;
@@ -278,8 +278,18 @@ const vis = new Vue({
     questions: function (val) {
       let that = this;
 
+      val.forEach( (v, i) => {
+        v['i'] = i;
+      });
+
       const maxSquares = Math.floor(this.width / 30);
       this.QHEIGHT += 40 * (Math.floor(val.length / maxSquares));
+
+      const triangle = this.qcontainer
+        .append('path')
+        .attr('class', 'triangle')
+        .attr('d', 'M0 0 L20 0 L 10 14.422 Z')
+        .attr('opacity', 0);
 
       const squares = this.qcontainer
         .selectAll('.question')
@@ -290,9 +300,11 @@ const vis = new Vue({
         .attr('width', 20)
         .attr('height', 20)
         .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
-        .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)))
+        .attr('y', (_, i) => 20 + 30 * (Math.floor(i / maxSquares)))
         .on("mouseover", function (d, i, el) {
           d3.select(el[i]).classed('hover', true);
+          triangle.attr('opacity', 1)
+            .attr('transform', `translate(${6 + (i % maxSquares) * 30} 0)`);
           d3.select('.question_info').classed('active', true);
           d3.select('.question_info').select('.title').text(d.text);
           that.applyQuestionFilter(d);
@@ -304,10 +316,13 @@ const vis = new Vue({
             d3.select('.question_info').classed('active', false);
             d3.select('.question_info').select('.title').text('');
             that.disableQuestionFilter();
+            triangle.attr('opacity', 0);
           } else {
             d3.select('.question_info').classed('active', true);
             d3.select('.question_info').select('.title').text(that.selectedQuestion.text);
             that.applyQuestionFilter(that.selectedQuestion);
+            triangle.attr('opacity', 1)
+              .attr('transform', `translate(${6 + (that.selectedQuestion.i % maxSquares) * 30} 0)`);
           }
         })
         .on("click", function (d, i, el) {
@@ -322,6 +337,9 @@ const vis = new Vue({
             d3.select(el[i]).classed('activated', true);
           }
         });
+
+
+
     },
     checkedFilters: function (val) {
       this.disableQuestionFilter();
@@ -338,11 +356,7 @@ const vis = new Vue({
       }
     },
     windowWidth: function (val) {
-      if (val > 1200) {
-        this.WIDTH = 1200;
-      } else {
-        this.WIDTH = val;
-      }
+      this.WIDTH = val > 1200 ? 1200 : val;
       this.resize();
     }
   }

@@ -1,11 +1,13 @@
 .question_info {
   margin: 0 auto;
-  height: 40vh;
-  width: 80%;
+  height: 20vh;
+  width: 100%;
+  border-radius: 3px;
 }
 
 .question_info h3 {
   font-size: 120%;
+  padding: 20px 20%;
 }
 
 .question_info.active {
@@ -21,5 +23,9 @@
 }
 
 .question.activated {
+  fill: var(--main-red);
+}
+
+.triangle {
   fill: var(--main-red);
 }

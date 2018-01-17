@@ -373,11 +373,8 @@ const title = {
         distanceCondition(link) {
             const distance = Math.abs(link.source.x - link.target.x) +
                 Math.abs(link.source.y - link.target.y);
-            if (distance > 250 * this.scale) {
-                return 0;
-            } else {
-                return 0.75;
-            }
+
+            return distance > 250 * this.scale ? 0 : 0.75;
         },
         randomForce(alpha) {
             this.particles.forEach(p => {

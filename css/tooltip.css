@@ -1,8 +1,26 @@
+div.separator-tip {
+  background: var(--main-red);
+  height: 6px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+div.separator {
+  margin: 10px auto;
+  margin-top: 5%;
+  background: var(--main-red);
+  height: 10px;
+  width: 70%;
+}
+
 div.tooltip {
   position: absolute;
   max-width: 250px;
-  padding: 0.5% 0.5% 0.8% 0.5%;
+  padding: 0.5% 0.5% 0.5% 0.5%;
   font-family: sourceSemi, 'sans-serif';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   text-align: center;
   color: white;
   background: var(--main-grad1);
@@ -16,7 +34,7 @@ div.tooltip .title {
   cursor: pointer;
 }
 
-div.tooltip span {
+div.tooltip .title span {
   font-family: sourceSemi, 'sans-serif';
   font-size: 90%;
 }
@@ -26,16 +44,27 @@ div.tooltip.appear {
 }
 
 div.tooltip.large {
-  text-align: left;
+  text-align: center;
 }
 
+.tooltip.large.appear div:nth-child(3) {
+  font-family: alegreya;
+  margin-bottom: 10px;
+}
+
+.tooltip.large.appear div:nth-child(4) {
+  text-align: center;
+}
+
+
 span.tag {
-  background-color: var(--main-grey);
-  margin: 2px;
-  padding: 1px 0;
+  background-color: #333333;
+  margin: 4px;
+  padding: 1px 6px;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
   cursor: pointer;
+  line-height: 25px;
 }
 
 span.tag.active {

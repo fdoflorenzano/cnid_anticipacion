@@ -144,26 +144,14 @@ by Felix Hagspiel.
     font-family: source, sans-serif;
     font-size: 13px;
     text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-transition: border-color .2s ease-in, background-color .2s ease-in;
     -moz-transition: border-color .2s ease-in, background-color .2s ease-in;
     -o-transition: border-color .2s ease-in, background-color .2s ease-in;
     -ms-transition: border-color .2s ease-in, background-color .2s ease-in;
     transition: border-color .2s ease-in, background-color .2s ease-in;        
 }
-
-/*.check > input[type="checkbox"]:checked + label::before {
-    font-size: 70%;
-    content: "\2715";
-    line-height: 11px;`
-    text-indent: -1.2px;
-    color: #FFF;
-    background-color: var(--color-active);
-    border-color: var(--color-active);
-}
-
-.check > input[type="checkbox"]:not(:checked) + label::before {
-    content: "";
-} */
 
 .check > input[type="checkbox"]:checked + label::before {
   content: "";

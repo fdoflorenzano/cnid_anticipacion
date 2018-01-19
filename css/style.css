@@ -9,11 +9,6 @@
 }
 
 @font-face {
-  font-family: FontAwesome;
-  src: url(fonts/fa-regular-400.ttf);
-}
-
-@font-face {
   font-family: sourceSemi;
   src: url(fonts/SourceSansPro-Semibold.ttf);
 }
@@ -25,7 +20,12 @@
 
 @font-face {
   font-family: alegreya;
-  src: url(fonts/AlegreyaSC-Regular.otf);
+  src: url(fonts/Alegreya-Regular.ttf);
+}
+
+@font-face {
+  font-family: alegreyaIt;
+  src: url(fonts/Alegreya-Italic.ttf);
 }
 
 body {
@@ -87,19 +87,29 @@ body {
   font-family: sourceBlack, 'sans-serif';
   font-size: 20px;
   fill: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .node text {
   font-family: source, 'sans-serif';
   font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   fill: white;
+}
+
+h1,h2,h3 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
 h1 {
   color: white;
   font-family: sourceBold, 'sans-serif';
   font-size: 260%;
-  text-align: center;
 }
 
 h2 {
@@ -107,15 +117,13 @@ h2 {
   font-family: sourceBold, 'sans-serif';
   font-size: 140%;
   font-variant: small-caps;
-  text-align: center;
 }
 
 h3 {
   color: white;
-  font-family: sourceBold, 'sans-serif';
+  font-family: sourceSemi, 'sans-serif';
   font-size: 120%;
   font-variant: small-caps;
-  text-align: center;
 }
 
 :root {
@@ -124,20 +132,6 @@ h3 {
   --main-grad1: #0a0a0a;
   --main-grad2: #1c243a;
   --main-grey: grey;
-}
-
-div.separator {
-  margin: 10px auto;
-  background: var(--main-red);
-  height: 10px;
-  width: 80%;
-}
-
-div.separator-tip {
-  background: var(--main-red);
-  height: 10px;
-  width: 100%;
-  margin-top: 10px;
 }
 
 #front {

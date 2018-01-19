@@ -12,6 +12,8 @@
 
 .question_info.active {
   background-color: var(--main-red);
+  border-bottom: 1px;
+  border-color: var(--main-red);
 }
 
 .question {
@@ -28,4 +30,8 @@
 
 .triangle {
   fill: var(--main-red);
+}
+
+.question-sect h3 {
+	font-family: sourceSemi;
 }

@@ -9,7 +9,7 @@ const vis = new Vue({
       MARGIN: {
         TOP: 0,
         BOTTOM: 0,
-        LEFT: 100,
+        LEFT: 60,
         RIGHT: 0
       },
       RADIUS: 5,
@@ -46,9 +46,13 @@ const vis = new Vue({
     height() {
       return this.HEIGHT - this.MARGIN.TOP - this.MARGIN.BOTTOM;
     },
+    minimapRatio() {
+      return this.windowHeight / this.HEIGHT;
+    },
   },
   mounted() {
-    this.initialize();
+    this.getWindowWidth();
+    this.getWindowHeight();
     this.$nextTick(function () {
       window.addEventListener('resize', this.getWindowWidth);
       window.addEventListener('resize', this.getWindowHeight);
@@ -56,6 +60,7 @@ const vis = new Vue({
       this.getWindowHeight();
       window.addEventListener('scroll', this.handleScroll);
     })
+    this.initialize();
     this.getData();
   },
   methods: {
@@ -78,7 +83,13 @@ const vis = new Vue({
       this.tooltip = d3.select('.tooltip');
       this.minimap = d3.select('#minimap');
 
-      this.minimap.append('rect').attr('width', 100).attr('height', 100).attr('fill','red')
+      this.minimap
+        .append('g')
+        .attr('class', 'rect-container').append('rect')
+        .attr('width', this.MINIMAP_WIDTH)
+        .attr('height', this.windowHeight * this.minimapRatio)
+        .attr('fill', 'grey')
+        .attr('opacity', 0.2);
     },
     scrollToEnd() {
       let container = document.querySelector("html");
@@ -91,8 +102,12 @@ const vis = new Vue({
     getWindowHeight(event) {
       this.windowHeight = document.documentElement.clientHeight;
     },
-    handleScroll(event){
-      this.showCategoryBoxes = window.scrollY <= 6000; 
+    handleScroll(event) {
+      this.showCategoryBoxes = window.scrollY <= 6000;
+      if (this.showCategoryBoxes) {
+        this.minimap.select('rect')
+          .attr('y', window.scrollY * this.minimapRatio);
+      }
     },
     getData() {
       d3.json(this.FILEPATH, (error, data) => {
@@ -156,6 +171,8 @@ const vis = new Vue({
         timelines.push(timelines[timelines.length - 1] + 10);
       }
 
+      let that = this;
+
       this.container
         .selectAll('.timeline')
         .data(timelines)
@@ -175,6 +192,45 @@ const vis = new Vue({
         .attr('x', 20)
         .attr('y', d => this.heightScale(d) + 8)
         .text(d => d);
+      this.minimap
+        .selectAll('.timeline')
+        .data(timelines)
+        .enter()
+        .append('line')
+        .attr('class', 'timeline')
+        .attr('x1', 0)
+        .attr('x2', this.MINIMAP_WIDTH)
+        .attr('y1', d => this.heightScale(d) * this.minimapRatio)
+        .attr('y2', d => this.heightScale(d) * this.minimapRatio);
+      this.minimap
+        .selectAll('.timeline-text')
+        .data(timelines)
+        .enter()
+        .append('text')
+        .attr('class', 'timeline-text')
+        .attr('x', 75)
+        .attr('y', d => this.heightScale(d) * this.minimapRatio + 16)
+        .text(d => d)
+        .on('click', function (d, i, el) {
+          let container = document.querySelector("html");
+          const scrollHeight = container.scrollHeight;
+          container.scrollTop = that.heightScale(d);
+        });
+
+      this.minimap
+        .select('.rect-container')
+        .call(d3.drag()
+          // .on("start", dragstarted)
+          .on("drag", function (d, i, elements) {
+            d3.select(this)
+              .select('rect')
+              .attr('y', d3.event.y);
+            let container = document.querySelector("html");
+            const scrollHeight = container.scrollHeight;
+            container.scrollTop = d3.event.y / that.minimapRatio;
+          })
+          // .on("end", dragended)
+        );
 
       this.timelines = timelines;
     },

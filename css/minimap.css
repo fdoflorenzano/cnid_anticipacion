@@ -9,3 +9,22 @@
 #minimap.show {
   opacity: 0.8;
 }
+
+#minimap line.timeline {
+  stroke: var(--main-whiteStroke);
+  stroke-width: 0.5px;
+  stroke-dasharray: 3;
+}
+
+#minimap .timeline-text {
+  font-family: sourceBlack, 'sans-serif';
+  font-size: 18px;
+  fill: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: pointer;
+}
+
+#minimap rect{
+  cursor: move;
+}

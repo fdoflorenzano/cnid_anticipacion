@@ -83,7 +83,7 @@ body {
   fill: var(--main-grey);
 }
 
-.timeline-text {
+#container .timeline-text {
   font-family: sourceBlack, 'sans-serif';
   font-size: 20px;
   fill: white;

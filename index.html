@@ -13,18 +13,20 @@
   <link rel="stylesheet" href="css/tooltip.css" />
   <link rel="stylesheet" href="css/description-sect.css"/>
   <link rel="stylesheet" href="css/question.css" />
+  <link rel="stylesheet" href="css/minimap.css" />
 </head>
 
 <body>
   <div id="vis">
     <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
     </svg>
+    <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all">
     <div class="question_info">
       <h3 class="title"></h3>
       <div class="description"></div>
     </div>
     <svg :width="WIDTH" :height="QHEIGHT" id="question_container" pointer-events="all">
-    </svg>
+      </svg>
     <!--<div class="milestone-sect section">
       <div class="outside"></div>
     </div>-->

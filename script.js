@@ -1,11 +1,9 @@
 const vis = new Vue({
   el: "#vis",
-  components: {
-    'title-particle': title,
-  },
   data() {
     return {
       WIDTH: 1200,
+      MINIMAP_WIDTH: 200,
       HEIGHT: 6000,
       QHEIGHT: 140,
       MARGIN: {
@@ -52,9 +50,8 @@ const vis = new Vue({
     this.$nextTick(function () {
       window.addEventListener('resize', this.getWindowWidth);
       window.addEventListener('resize', this.getWindowHeight);
-
-      this.getWindowWidth()
-      this.getWindowHeight()
+      this.getWindowWidth();
+      this.getWindowHeight();
     })
     this.getData();
   },
@@ -365,6 +362,7 @@ const vis = new Vue({
     },
     windowWidth: function (val) {
       this.WIDTH = val > 1200 ? 1200 : val;
+      this.MINIMAP_WIDTH = val > 1200 ? 200 : 0;
       this.resize();
     }
   }

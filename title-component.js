@@ -1,4 +1,4 @@
-const title = {
+Vue.component('title-particle', {
     template: '<svg id="title_particle" :width="width" :height="height"></svg>',
     props: ['width'],
     data: function () {
@@ -390,4 +390,4 @@ const title = {
             })
         }
     }
-}
+});

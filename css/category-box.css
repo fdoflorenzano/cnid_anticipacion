@@ -17,8 +17,13 @@ by Felix Hagspiel.
   right: 0%;
   color: var(--main-whiteStroke);
   background-color: var(--main-grad1);
-  opacity: 0.8;
+  opacity: 0;
   padding: 1%;
+  transition: opacity 1s;
+}
+
+.category_box.show {
+  opacity: 0.8;
 }
 
 .category_box .container {

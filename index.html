@@ -18,7 +18,7 @@
 
 <body>
   <div id="vis">
-    <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all">
+    <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all" v-bind:class="{show: showCategoryBoxes}">
     </svg>
     <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
     </svg>
@@ -98,7 +98,7 @@
         </template>
       </div>
     </div>
-    <div class="category_box dimension_box" v-if="showCategoryBoxes">
+    <div class="category_box dimension_box" v-bind:class="{show: showCategoryBoxes}">
       <h1 v-on:click="toggleChallenge()">DESAFÍOS</h1>
       <div class="container" v-if="showChallenge">
         <div class="check" v-for="dimension in dimensions">
@@ -114,7 +114,7 @@
         </div>
       </div>
     </div>
-    <div class="category_box discipline_box" v-if="showCategoryBoxes">
+    <div class="category_box discipline_box" v-bind:class="{show: showCategoryBoxes}">
       <h1 v-on:click="toggleDiscipline()">DISCIPLINAS</h1>
       <div class="container" v-if="showDiscipline">
         <div class="check" v-for="dimension in disciplines">

@@ -9,7 +9,7 @@ const vis = new Vue({
       MARGIN: {
         TOP: 0,
         BOTTOM: 0,
-        LEFT: 0,
+        LEFT: 100,
         RIGHT: 0
       },
       RADIUS: 5,
@@ -19,6 +19,7 @@ const vis = new Vue({
       questions: null,
       container: null,
       qcontainer: null,
+      minimap: null,
       tooltip: null,
       tooltipped: null,
       tooltipLarge: false,
@@ -75,6 +76,9 @@ const vis = new Vue({
         .attr('transform',
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
       this.tooltip = d3.select('.tooltip');
+      this.minimap = d3.select('#minimap');
+
+      this.minimap.append('rect').attr('width', 100).attr('height', 100).attr('fill','red')
     },
     scrollToEnd() {
       let container = document.querySelector("html");

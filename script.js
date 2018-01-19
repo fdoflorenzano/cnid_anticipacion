@@ -1,6 +1,6 @@
 const vis = new Vue({
   el: "#vis",
-  data() {
+  data: function () {
     return {
       WIDTH: 1200,
       MINIMAP_WIDTH: 200,
@@ -34,6 +34,7 @@ const vis = new Vue({
       windowHeight: 0,
       showChallenge: false,
       showDiscipline: false,
+      showCategoryBoxes: false,
       triangle: null
     }
   },
@@ -52,6 +53,7 @@ const vis = new Vue({
       window.addEventListener('resize', this.getWindowHeight);
       this.getWindowWidth();
       this.getWindowHeight();
+      window.addEventListener('scroll', this.handleScroll);
     })
     this.getData();
   },
@@ -84,6 +86,9 @@ const vis = new Vue({
     },
     getWindowHeight(event) {
       this.windowHeight = document.documentElement.clientHeight;
+    },
+    handleScroll(event){
+      this.showCategoryBoxes = window.scrollY <= 6000; 
     },
     getData() {
       d3.json(this.FILEPATH, (error, data) => {

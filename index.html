@@ -11,22 +11,25 @@
   <link rel="stylesheet" href="css/intro-sect.css" />
   <link rel="stylesheet" href="css/category-box.css" />
   <link rel="stylesheet" href="css/tooltip.css" />
-  <link rel="stylesheet" href="css/description-sect.css"/>
+  <link rel="stylesheet" href="css/description-sect.css" />
   <link rel="stylesheet" href="css/question.css" />
   <link rel="stylesheet" href="css/minimap.css" />
 </head>
 
 <body>
   <div id="vis">
+    <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all">
+    </svg>
     <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
     </svg>
-    <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all">
+
+
     <div class="question_info">
       <h3 class="title"></h3>
       <div class="description"></div>
     </div>
     <svg :width="WIDTH" :height="QHEIGHT" id="question_container" pointer-events="all">
-      </svg>
+    </svg>
     <!--<div class="milestone-sect section">
       <div class="outside"></div>
     </div>-->
@@ -38,14 +41,27 @@
       <div class="description-text outside">
         <!--<img id="question-symbol" src="resources/pregunta_simbolo.svg">-->
         <h3>PREGUNTAS EN LAS FRONTERAS</h3>
-        <p>Los investigadores definieron preguntas o incertidumbres que están en la frontera de sus líneas de investigaciones actuales.</p>
+        <p>Los investigadores definieron preguntas o incertidumbres que están en la frontera de sus líneas de investigaciones
+          actuales.
+        </p>
         <p class="highlight">¿Cuáles son esas grandes preguntas?</p>
       </div>
     </div>
     <div class="intro-sect section">
       <div class="intro-text outside">
-        <p>El <mark>Consejo Nacional de Innovación para el Desarrollo (CNID)</mark> está mandatado a generar orientaciones en materia de ciencias, tecnologías e innovación para alcanzar un desarrollo sostenible e inclusivo, apuntando a horizontes amplios, globales y de largo plazo. Hacernos cargo de la forma de <mark>anticipar</mark> es fundamental para lograr este cometido, puesto que requerimos un ejercicio riguroso, permanente y sistemático que nos permita identificar tendencias y fenómenos de cambio. De esta manera podremos mejorar nuestra comprensión y/o capacidades de diseño para <mark>abrir posibilidades</mark> a Chile con la contribución de las ciencias, tecnologías e innovación.</p>
-        <p>En esta línea, el CNID organizó, en colaboración con Milenio y la Comisión Nacional de Investigación Científica y Tecnológica (CONICYT), un encuentro llamado <mark><em>“Anticipación de horizontes para Chile: Explorando Áreas Emergentes en Ciencias y Humanidades”</em></mark> en cuya ocasión se buscó detectar preguntas vigentes en las fronteras del saber en ciencias y humanidades.</p>
+        <p>El
+          <mark>Consejo Nacional de Innovación para el Desarrollo (CNID)</mark> está mandatado a generar orientaciones en materia
+          de ciencias, tecnologías e innovación para alcanzar un desarrollo sostenible e inclusivo, apuntando a horizontes
+          amplios, globales y de largo plazo. Hacernos cargo de la forma de
+          <mark>anticipar</mark> es fundamental para lograr este cometido, puesto que requerimos un ejercicio riguroso, permanente
+          y sistemático que nos permita identificar tendencias y fenómenos de cambio. De esta manera podremos mejorar nuestra
+          comprensión y/o capacidades de diseño para
+          <mark>abrir posibilidades</mark> a Chile con la contribución de las ciencias, tecnologías e innovación.</p>
+        <p>En esta línea, el CNID organizó, en colaboración con Milenio y la Comisión Nacional de Investigación Científica y
+          Tecnológica (CONICYT), un encuentro llamado
+          <mark>
+            <em>“Anticipación de horizontes para Chile: Explorando Áreas Emergentes en Ciencias y Humanidades”</em>
+          </mark> en cuya ocasión se buscó detectar preguntas vigentes en las fronteras del saber en ciencias y humanidades.</p>
         <p>Los datos visualizados, son el resultado de un primer ejercicio realizado en el marco del encuentro.</p>
       </div>
     </div>
@@ -82,7 +98,7 @@
         </template>
       </div>
     </div>
-    <div class="category_box dimension_box">
+    <div class="category_box dimension_box" v-if="showCategoryBoxes">
       <h1 v-on:click="toggleChallenge()">DESAFÍOS</h1>
       <div class="container" v-if="showChallenge">
         <div class="check" v-for="dimension in dimensions">
@@ -98,7 +114,7 @@
         </div>
       </div>
     </div>
-    <div class="category_box discipline_box">
+    <div class="category_box discipline_box" v-if="showCategoryBoxes">
       <h1 v-on:click="toggleDiscipline()">DISCIPLINAS</h1>
       <div class="container" v-if="showDiscipline">
         <div class="check" v-for="dimension in disciplines">

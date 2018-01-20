@@ -4,13 +4,14 @@
   left: 0;
   opacity: 0;
   transition: opacity 1s;
+  /* background-color: var(--main-grad1) */
 }
 
 #minimap.show {
   opacity: 0.8;
 }
 
-#minimap line.timeline {
+#minimap .timelines line.timeline {
   stroke: var(--main-whiteStroke);
   stroke-width: 0.5px;
   stroke-dasharray: 3;
@@ -27,4 +28,9 @@
 
 #minimap rect{
   cursor: move;
+}
+
+#minimap .links .link {
+  stroke: var(--main-whiteStroke);
+  stroke-width: 0.2px;
 }

@@ -46,7 +46,10 @@ const vis = new Vue({
     height() {
       return this.HEIGHT - this.MARGIN.TOP - this.MARGIN.BOTTOM;
     },
-    minimapRatio() {
+    minimapRatioX() {
+      return this.MINIMAP_WIDTH / this.width;
+    },
+    minimapRatioY() {
       return this.windowHeight / this.HEIGHT;
     },
   },
@@ -82,12 +85,13 @@ const vis = new Vue({
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
       this.tooltip = d3.select('.tooltip');
       this.minimap = d3.select('#minimap');
+      this.minimap.append('g').attr('class', 'links');
 
       this.minimap
         .append('g')
         .attr('class', 'rect-container').append('rect')
         .attr('width', this.MINIMAP_WIDTH)
-        .attr('height', this.windowHeight * this.minimapRatio)
+        .attr('height', this.windowHeight * this.minimapRatioY)
         .attr('fill', 'grey')
         .attr('opacity', 0.2);
     },
@@ -106,7 +110,7 @@ const vis = new Vue({
       this.showCategoryBoxes = window.scrollY <= 6000;
       if (this.showCategoryBoxes) {
         this.minimap.select('rect')
-          .attr('y', window.scrollY * this.minimapRatio);
+          .attr('y', window.scrollY * this.minimapRatioY);
       }
     },
     getData() {
@@ -155,11 +159,19 @@ const vis = new Vue({
     ticked() {
       this.container.selectAll('.node')
         .attr('transform', d => `translate(${this.boundedX(d)}, ${this.boundedY(d)})`);
+      this.minimap.selectAll('circle')
+        .attr('cx', d => d.x * this.minimapRatioX)
+        .attr('cy', d => d.y * this.minimapRatioY);
       this.container.selectAll('.link')
         .attr('x1', l => l.source.x)
         .attr('y1', l => l.source.y)
         .attr('x2', l => l.target.x)
         .attr('y2', l => l.target.y);
+      this.minimap.selectAll('.link')
+        .attr('x1', l => l.source.x * this.minimapRatioX)
+        .attr('y1', l => l.source.y * this.minimapRatioY)
+        .attr('x2', l => l.target.x * this.minimapRatioX)
+        .attr('y2', l => l.target.y * this.minimapRatioY);
     },
     linkDistance(dif) {
       return (l) => dif ? dif * Math.abs(l.source.date - l.target.date) / 5 : 40;
@@ -193,6 +205,8 @@ const vis = new Vue({
         .attr('y', d => this.heightScale(d) + 8)
         .text(d => d);
       this.minimap
+        .append('g')
+        .attr('class', 'timelines')
         .selectAll('.timeline')
         .data(timelines)
         .enter()
@@ -200,8 +214,8 @@ const vis = new Vue({
         .attr('class', 'timeline')
         .attr('x1', 0)
         .attr('x2', this.MINIMAP_WIDTH)
-        .attr('y1', d => this.heightScale(d) * this.minimapRatio)
-        .attr('y2', d => this.heightScale(d) * this.minimapRatio);
+        .attr('y1', d => this.heightScale(d) * this.minimapRatioY)
+        .attr('y2', d => this.heightScale(d) * this.minimapRatioY);
       this.minimap
         .selectAll('.timeline-text')
         .data(timelines)
@@ -209,7 +223,7 @@ const vis = new Vue({
         .append('text')
         .attr('class', 'timeline-text')
         .attr('x', 75)
-        .attr('y', d => this.heightScale(d) * this.minimapRatio + 16)
+        .attr('y', d => this.heightScale(d) * this.minimapRatioY + 16)
         .text(d => d)
         .on('click', function (d, i, el) {
           let container = document.querySelector("html");
@@ -227,7 +241,7 @@ const vis = new Vue({
               .attr('y', d3.event.y);
             let container = document.querySelector("html");
             const scrollHeight = container.scrollHeight;
-            container.scrollTop = d3.event.y / that.minimapRatio;
+            container.scrollTop = d3.event.y / that.minimapRatioY;
           })
           // .on("end", dragended)
         );
@@ -324,6 +338,16 @@ const vis = new Vue({
 
       gNodes.append('circle')
         .attr('r', this.RADIUS);
+
+      this.minimap
+        .selectAll('circle')
+        .data(val)
+        .enter()
+        .append('circle')
+        .attr('cx', d => d.x * this.minimapRatioX)
+        .attr('cy', d => d.y * this.minimapRatioY)
+        .attr('fill', 'white')
+        .attr('r', 1);
     },
     links: function (val) {
       let that = this;
@@ -337,6 +361,18 @@ const vis = new Vue({
         .attr('y1', l => l.source.y)
         .attr('x2', l => l.target.x)
         .attr('y2', l => l.target.y);
+
+      this.minimap
+        .select('.links')
+        .selectAll('.link')
+        .data(val)
+        .enter()
+        .append('line')
+        .attr('class', 'link')
+        .attr('x1', l => l.source.x * this.minimapRatioX)
+        .attr('y1', l => l.source.y * this.minimapRatioY)
+        .attr('x2', l => l.target.x * this.minimapRatioX)
+        .attr('y2', l => l.target.y * this.minimapRatioY);
     },
     questions: function (val) {
       let that = this;

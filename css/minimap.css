@@ -31,6 +31,8 @@
 #minimap .links .link {
   stroke: var(--main-whiteStroke);
   stroke-width: 0.2px;
+  transition: stroke 200ms; 
+  transition: opacity 200ms; 
 }
 
 #minimap .links line.link.active {
@@ -46,11 +48,12 @@
 
 #minimap circle.node {
   opacity: 1;
+  transition: fill 200ms; 
+  transition: opacity 200ms; 
 }
 
 #minimap circle.node.active  {
   fill: var(--main-red);
-  r: 5px;
 }
 
 #minimap circle.node.disable {

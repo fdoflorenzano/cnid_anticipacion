@@ -157,7 +157,7 @@ def extract_links(hit):
     return list(map(lambda y: {
                     'source': hit['hito_id'], 
                     'target': y,
-                    'questions': hit['pregunta'],
+                    'question': hit['pregunta'],
                     'dimensions': hit['dimension'],
                     'subdimensions': hit['subdimension'],
                     'disciplines': hit['disciplinas'],

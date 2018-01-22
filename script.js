@@ -15,6 +15,7 @@ const vis = new Vue({
       },
       RADIUS: 5,
       FILEPATH: 'data/data.json',
+      TRANSITION: null,
       nodes: null,
       links: null,
       questions: null,
@@ -41,6 +42,7 @@ const vis = new Vue({
       showCategoryBoxes: false,
       triangle: null,
       dragging: false,
+      maxSquares: 1
     }
   },
   computed: {
@@ -111,6 +113,10 @@ const vis = new Vue({
         .attr('height', this.minimapHeightScale(this.windowHeight))
         .attr('fill', 'grey')
         .attr('opacity', 0.2);
+
+      this.TRANSITION = d3.transition()
+        .duration(100)
+        .ease(d3.easeLinear);
     },
     scrollToEnd() {
       let container = document.querySelector("html");
@@ -268,44 +274,84 @@ const vis = new Vue({
 
       this.timelines = timelines;
     },
-
-    applyQuestionFilter(question) {
-      this.disableQuestionFilter();
-      const id = question.id;
-      this.container
-        .selectAll('.node')
-        .classed('active', d => d['question'].includes(id))
-        .classed('disable', d => !d['question'].includes(id));
-
-      this.container
-        .selectAll('.link')
-        .classed('active', d => d['questions'].includes(id))
-        .classed('disable', d => !d['questions'].includes(id));
-
-      this.minimap
-        .selectAll('.node')
-        .classed('active', d => d['question'].includes(id))
-        .classed('disable', d => !d['question'].includes(id));
-
-      this.minimap
-        .selectAll('.link')
-        .classed('active', d => d['questions'].includes(id))
-        .classed('disable', d => !d['questions'].includes(id));
+    applyFilters(select = false, question = null, index = -1, elements = null) {
+      if (!select && question != null) {
+        d3.select(elements[index]).classed('hover', true);
+        this.triangle.transition().ease(d3.easeCubic).delay(20).duration(180).attr('opacity', 1);
+        this.triangle.attr('transform', `translate(${10 + (index % this.maxSquares) * 30} 0)`);
+        d3.select('.question-info').classed('active', true);
+        d3.select('.question-info').select('.title').text(question.text);
+        this.applyQuestionFilter(question);
+      } else if (select) {
+        d3.selectAll(elements).classed('activated', false);
+        if (this.selectedQuestion != null && this.selectedQuestion.id == question.id) {
+          this.selectedQuestion = null;
+          d3.select(elements[index]).classed('activated', false);
+          this.applyQuestionFilter();
+        } else {
+          this.selectedQuestion = question;
+          d3.select(elements[index]).classed('activated', true);
+        }
+      } else if (!select) {
+        if (elements != null) d3.select(elements[index]).classed('hover', false);
+        if (this.selectedQuestion == null) {
+          d3.select('.question-info').classed('active', false);
+          d3.select('.question-info').select('.title').text('');
+          this.triangle.transition().duration(200).attr('opacity', 0);
+          this.applyQuestionFilter();
+        } else {
+          d3.select('.question-info').classed('active', true);
+          d3.select('.question-info').select('.title').text(this.selectedQuestion.text);
+          this.triangle.attr('opacity', 1)
+            .attr('transform', `translate(${10 + (this.selectedQuestion.index % this.maxSquares) * 30} 0)`);
+          this.applyQuestionFilter(this.selectedQuestion);
+        }
+      }
 
     },
-    disableQuestionFilter() {
+    applyQuestionFilter(question = null) {
       this.container
         .selectAll('.node')
-        .classed('active disable', false);
-      this.container
-        .selectAll('.link')
-        .classed('active disable', false);
+        .classed('active', this.filterConditionActive(question))
+        .classed('disable', this.filterConditionDisable(question));
+
       this.minimap
         .selectAll('.node')
-        .classed('active disable', false);
+        .classed('active', this.filterConditionActive(question))
+        .classed('disable', this.filterConditionDisable(question));
+
+      this.container
+        .selectAll('.link')
+        .classed('active', this.filterConditionActive(question))
+        .classed('disable', this.filterConditionDisable(question));
+
       this.minimap
         .selectAll('.link')
-        .classed('active disable', false);
+        .classed('active', this.filterConditionActive(question))
+        .classed('disable', this.filterConditionDisable(question));
+
+    },
+    filterConditionActive(question = null) {
+      if (question == null & this.checkedFilters.length == 0) {
+        return false;
+      } else if (question == null) {
+        return d => arrayContainsArray(d['tags'], this.checkedFilters);
+      } else if (this.checkedFilters.length == 0) {
+        return d => d['question'].includes(question.id);
+      } else {
+        return d => d['question'].includes(question.id) && arrayContainsArray(d['tags'], this.checkedFilters);
+      }
+    },
+    filterConditionDisable(question = null) {
+      if (question == null & this.checkedFilters.length == 0) {
+        return false;
+      } else if (question == null) {
+        return d => !arrayContainsArray(d['tags'], this.checkedFilters);
+      } else if (this.checkedFilters.length == 0) {
+        return d => !d['question'].includes(question.id);
+      } else {
+        return d => !(d['question'].includes(question.id) && arrayContainsArray(d['tags'], this.checkedFilters));
+      }
     },
     toggleToolTip() {
       this.tooltipLarge = !this.tooltipLarge;
@@ -345,14 +391,14 @@ const vis = new Vue({
         this.resizeMinimap();
       }
       if (this.questions) {
-        const maxSquares = Math.floor(this.width / 30);
-        this.QHEIGHT += 40 * (Math.floor(this.questions.length / maxSquares));
+        this.maxSquares = Math.floor(this.width / 30);
+        this.QHEIGHT += 40 * (Math.floor(this.questions.length / this.maxSquares));
 
         const squares = this.qcontainer
           .selectAll('.question')
           .data(this.questions)
-          .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
-          .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)));
+          .attr('x', (_, i) => 10 + (i % this.maxSquares) * 30)
+          .attr('y', (_, i) => 10 + 30 * (Math.floor(i / this.maxSquares)));
       }
 
     },
@@ -431,11 +477,11 @@ const vis = new Vue({
       let that = this;
 
       val.forEach((v, i) => {
-        v['i'] = i;
+        v['index'] = i;
       });
 
-      const maxSquares = Math.floor(this.width / 30);
-      this.QHEIGHT += 40 * (Math.floor(val.length / maxSquares));
+      this.maxSquares = Math.floor(this.width / 30);
+      this.QHEIGHT += 40 * (Math.floor(val.length / this.maxSquares));
 
       this.triangle = this.qcontainer
         .append('path')
@@ -451,76 +497,14 @@ const vis = new Vue({
         .attr('class', 'question')
         .attr('width', 20)
         .attr('height', 20)
-        .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
-        .attr('y', (_, i) => 20 + 30 * (Math.floor(i / maxSquares)))
-        .on("mouseover", function (d, i, el) {
-          //that.checkedFilters = [];
-          d3.select(el[i]).classed('hover', true);
-          that.triangle.transition().ease(d3.easeCubic).delay(20).duration(180).attr('opacity', 1);
-          that.triangle.attr('transform', `translate(${10 + (i % maxSquares) * 30} 0)`);
-          d3.select('.question-info').classed('active', true);
-          d3.select('.question-info').select('.title').text(d.text);
-          that.applyQuestionFilter(d);
-        })
-        .on("mouseout", function (d, i, el) {
-          d3.select(el[i]).classed('hover', false);
-          if (that.selectedQuestion == null) {
-            d3.select('.question-info').classed('active', false);
-            d3.select('.question-info').select('.title').text('');
-            that.checkedFilters = [...that.checkedFilters];
-            that.triangle.transition().duration(1000).attr('opacity', 0);
-          } else {
-            d3.select('.question-info').classed('active', true);
-            d3.select('.question-info').select('.title').text(that.selectedQuestion.text);
-            that.applyQuestionFilter(that.selectedQuestion);
-            that.triangle.attr('opacity', 1)
-              .attr('transform', `translate(${6 + (that.selectedQuestion.i % maxSquares) * 30} 0)`);
-          }
-        })
-        .on("click", function (d, i, el) {
-          that.checkedFilters = [];
-          d3.selectAll(el).classed('activated', false);
-          if (that.selectedQuestion != null && that.selectedQuestion.id == d.id) {
-            that.selectedQuestion = null;
-            that.disableQuestionFilter();
-            d3.select(el[i]).classed('activated', false);
-          } else {
-            that.selectedQuestion = d;
-            d3.select(el[i]).classed('activated', true);
-          }
-        });
+        .attr('x', (_, i) => 10 + (i % this.maxSquares) * 30)
+        .attr('y', (_, i) => 20 + 30 * (Math.floor(i / this.maxSquares)))
+        .on("mouseover", (d, i, el) => that.applyFilters(false, d, i, el))
+        .on("mouseout", (d, i, el) => that.applyFilters(false, null, i, el))
+        .on("click", (d, i, el) => that.applyFilters(true, d, i, el));
     },
     checkedFilters: function (val) {
-      this.disableQuestionFilter();
-
-      if (val.length > 0) {
-        this.qcontainer
-          .selectAll('.question')
-          .classed('activated', false);
-        this.selectedQuestion = null;
-        this.triangle.attr('opacity', 0);
-        d3.select('.question-info').classed('active', false);
-        d3.select('.question-info').select('.title').text('');
-        this.container
-          .selectAll('.node')
-          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
-          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
-
-        this.minimap
-          .selectAll('.node')
-          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
-          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
-
-        this.container
-          .selectAll('.link')
-          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
-          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
-
-        this.minimap
-          .selectAll('.link')
-          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
-          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
-      }
+      this.applyFilters();
     },
     windowWidth: function (val) {
       this.WIDTH = val > 1200 ? 1200 : val;

@@ -235,19 +235,19 @@ const vis = new Vue({
         .attr('x', 75)
         .attr('y', d => this.heightScale(d) * this.minimapRatioY + 16)
         .text(d => d)
-        .on('click', function (d, i, el) {
-          let container = document.querySelector("html");
-          const scrollHeight = container.scrollHeight;
-          container.scrollTop = that.heightScale(d);
-        });
+        // .on('click', function (d, i, el) {
+        //   let container = document.querySelector("html");
+        //   const scrollHeight = container.scrollHeight;
+        //   container.scrollTop = that.heightScale(d);
+        // });
 
       this.minimap.on('click', function () {
         d3.select(this)
           .select('rect')
-          .attr('y', d => d.y = d3.event.y - this.windowHeight * this.minimapRatioY / 2);
+          .attr('y', d => d.y = d3.event.y - that.windowHeight * that.minimapRatioY / 2);
         let container = document.querySelector("html");
         const scrollHeight = container.scrollHeight;
-        container.scrollTop = (d3.event.y - this.windowHeight * this.minimapRatioY / 2) / that.minimapRatioY;
+        container.scrollTop = (d3.event.y - that.windowHeight * that.minimapRatioY / 2) / that.minimapRatioY;
       });
       this.minimap
         .select('.rect-container')
@@ -339,6 +339,9 @@ const vis = new Vue({
         .attr('x2', this.width)
         .attr('y1', this.heightScale)
         .attr('y2', this.heightScale);
+      // if (this.MINIMAP_WIDTH) {
+      //   this.resizeMinimap();
+      // }
       if (this.questions) {
         const maxSquares = Math.floor(this.width / 30);
         this.QHEIGHT += 40 * (Math.floor(this.questions.length / maxSquares));
@@ -349,6 +352,20 @@ const vis = new Vue({
           .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
           .attr('y', (_, i) => 10 + 30 * (Math.floor(i / maxSquares)));
       }
+
+    },
+    resizeMinimap() {
+      let that = this;
+      this.minimap
+        .selectAll('.timeline')
+        .attr('x1', 0)
+        .attr('x2', this.MINIMAP_WIDTH)
+        .attr('y1', d => this.heightScale(d) * this.minimapRatioY)
+        .attr('y2', d => this.heightScale(d) * this.minimapRatioY);
+      this.minimap
+        .attr('class', 'timeline-text')
+        .attr('y', d => this.heightScale(d) * this.minimapRatioY + 16)
+        .style('font-size', this.windowHeight > 600 ? 18 : 0);
 
     }
   },
@@ -437,13 +454,13 @@ const vis = new Vue({
         .attr('x', (_, i) => 10 + (i % maxSquares) * 30)
         .attr('y', (_, i) => 20 + 30 * (Math.floor(i / maxSquares)))
         .on("mouseover", function (d, i, el) {
+          that.checkedFilters = [];
           d3.select(el[i]).classed('hover', true);
           that.triangle.attr('opacity', 1)
             .attr('transform', `translate(${6 + (i % maxSquares) * 30} 0)`);
           d3.select('.question_info').classed('active', true);
           d3.select('.question_info').select('.title').text(d.text);
           that.applyQuestionFilter(d);
-          that.checkedFilters = [];
         })
         .on("mouseout", function (d, i, el) {
           d3.select(el[i]).classed('hover', false);
@@ -471,15 +488,17 @@ const vis = new Vue({
             that.selectedQuestion = d;
             d3.select(el[i]).classed('activated', true);
           }
+
         });
 
 
 
     },
     checkedFilters: function (val) {
-      this.disableQuestionFilter();
 
       if (val.length > 0) {
+        this.disableQuestionFilter();
+
         this.qcontainer
           .selectAll('.question')
           .classed('activated', false);
@@ -511,6 +530,9 @@ const vis = new Vue({
     windowWidth: function (val) {
       this.WIDTH = val > 1200 ? 1200 : val;
       this.MINIMAP_WIDTH = val > 1200 ? 200 : 0;
+      this.resize();
+    },
+    windowHeight: function (val) {
       this.resize();
     }
   }

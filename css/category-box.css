@@ -27,8 +27,8 @@ by Felix Hagspiel.
 }
 
 .category_box .container {
-  width: 300px;
-  max-height:  20vh;
+  width: 320px;
+  height:  20vh;
   overflow-y: auto;
 }
 
@@ -166,4 +166,24 @@ by Felix Hagspiel.
 
 .check > input[type="checkbox"]:not(:checked) + label::before {
     content: "";
+}
+
+.fade-enter-active {
+  transition: opacity .5s;
+  transition: transform .5s;
+}
+.fade-leave-active {
+  transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.collapse {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--color-default);
+  color: var(--color-default);
 }

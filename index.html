@@ -93,7 +93,7 @@
         <template v-for="tag in tooltipped.tags">
           <div class="div-tag">
             <span class="tag" v-if="tags[tag]" v-on:click="addFilterTag(tag)" v-bind:class="{ active: checkedFilters.indexOf(tag) >= 0}">
-            {{tags[tag].nombre}}
+              {{tags[tag].nombre}}
             </span>
           </div>
         </template>
@@ -105,13 +105,16 @@
         <div class="check" v-for="dimension in dimensions">
           <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
           <label :for="dimension.id">{{dimension.nombre}}</label>
-          <div class="check" v-for="subdimension in dimension.subdimension">
-            <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
-            <label class="sub" :for="subdimension.id">
-              {{subdimension.nombre}}
-            </label>
-            <br>
-          </div>
+          <div class="collapse" v-on:click="collapse(dimension.id)" v-if="dimension.subdimension.length > 0"></div>
+          <transition-group name="fade">
+            <div class="check" v-for="subdimension in dimension.subdimension" :key="subdimension.id" v-if="collapsedFilters.indexOf(dimension.id) >= 0">
+              <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
+              <label class="sub" :for="subdimension.id">
+                {{subdimension.nombre}}
+              </label>
+              <br>
+            </div>
+          </transition-group>
         </div>
       </div>
     </div>
@@ -120,15 +123,18 @@
       <div class="container" v-if="showDiscipline">
         <div class="check" v-for="dimension in disciplines">
           <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
-          <label :for="dimension.id">{{dimension.nombre}}</label>
+          <label :for="dimension.id" >{{dimension.nombre}}</label>
+          <div class="collapse" v-on:click="collapse(dimension.id)" v-if="dimension.subdisciplinas.length > 0"></div>
           <br>
-          <div class="check" v-for="subdimension in dimension.subdisciplinas">
-            <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
-            <label class="sub" :for="subdimension.id">
-              {{subdimension.nombre}}
-            </label>
-            <br>
-          </div>
+          <transition-group name="fade">
+            <div class="check" v-for="subdimension in dimension.subdisciplinas" :key="subdimension.id" v-if="collapsedFilters.indexOf(dimension.id) >= 0">
+              <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
+              <label class="sub" :for="subdimension.id">
+                {{subdimension.nombre}}
+              </label>
+              <br>
+            </div>
+          </transition-group>
         </div>
       </div>
     </div>

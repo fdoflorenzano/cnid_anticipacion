@@ -31,6 +31,7 @@ const vis = new Vue({
       minimapHeightScale: null,
       minimapWidthScale: null,
       checkedFilters: [],
+      collapsedFilters: [],
       dimensions: [],
       disciplines: [],
       tags: [],
@@ -367,10 +368,18 @@ const vis = new Vue({
     },
     addFilterTag(tag) {
       const index = this.checkedFilters.indexOf(tag);
-      if (this.checkedFilters.indexOf(tag) < 0) {
+      if (index < 0) {
         this.checkedFilters = [...this.checkedFilters, tag];
       } else {
         this.checkedFilters.splice(index, 1);
+      }
+    },
+    collapse(id) {
+      const index = this.collapsedFilters.indexOf(id);
+      if (index < 0) {
+        this.collapsedFilters = [...this.collapsedFilters, id];
+      } else {
+        this.collapsedFilters.splice(index, 1);
       }
     },
     resize() {

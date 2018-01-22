@@ -22,20 +22,20 @@
     </svg>
     <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
     </svg>
-
-
-    <div class="question_info">
-      <h3 class="title"></h3>
-      <div class="description"></div>
-    </div>
-    <svg :width="WIDTH" :height="QHEIGHT" id="question_container" pointer-events="all">
-    </svg>
     <!--<div class="milestone-sect section">
       <div class="outside"></div>
     </div>-->
-    <div class="question-sect section">
-      <h3>selecciona una pregunta</h3>
-      <div class="separator"></div>
+    <div class="question-sect">
+      <div class="inner-question outside">
+        <div class="question-info">
+          <h3 class="title"></h3>
+          <div class="description"></div>
+        </div>
+        <div class="svg-quest-container">
+          <svg :width="QWIDTH" :height="QHEIGHT" id="question_container" pointer-events="all"></svg>
+        </div>
+        <h3>selecciona una pregunta</h3>
+      </div>
     </div>
     <div class="description-sect section">
       <div class="description-text outside">
@@ -86,15 +86,16 @@
         </span>
       </div>
       <div class="separator-tip" v-if="tooltipLarge"></div>
-      <div v-if="tooltipLarge">
+      <div class="description" v-if="tooltipLarge">
         LOREM
       </div>
-      <div v-if="tooltipped && tooltipLarge">
+      <div class="tags-container" v-if="tooltipped && tooltipLarge">
         <template v-for="tag in tooltipped.tags">
-          <span class="tag" v-if="tags[tag]" v-on:click="addFilterTag(tag)" v-bind:class="{ active: checkedFilters.indexOf(tag) >= 0}">
+          <div class="div-tag">
+            <span class="tag" v-if="tags[tag]" v-on:click="addFilterTag(tag)" v-bind:class="{ active: checkedFilters.indexOf(tag) >= 0}">
             {{tags[tag].nombre}}
-          </span>
-          <br>
+            </span>
+          </div>
         </template>
       </div>
     </div>

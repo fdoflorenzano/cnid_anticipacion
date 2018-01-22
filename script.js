@@ -4,6 +4,7 @@ const vis = new Vue({
     return {
       WIDTH: 1200,
       MINIMAP_WIDTH: 200,
+      QWIDTH: 800,
       HEIGHT: 6000,
       QHEIGHT: 140,
       MARGIN: {
@@ -456,22 +457,22 @@ const vis = new Vue({
         .on("mouseover", function (d, i, el) {
           that.checkedFilters = [];
           d3.select(el[i]).classed('hover', true);
-          that.triangle.attr('opacity', 1)
-            .attr('transform', `translate(${6 + (i % maxSquares) * 30} 0)`);
-          d3.select('.question_info').classed('active', true);
-          d3.select('.question_info').select('.title').text(d.text);
+          that.triangle.transition().ease(d3.easeCubic).delay(20).duration(180).attr('opacity', 1);
+          that.triangle.attr('transform', `translate(${10 + (i % maxSquares) * 30} 0)`);
+          d3.select('.question-info').classed('active', true);
+          d3.select('.question-info').select('.title').text(d.text);
           that.applyQuestionFilter(d);
         })
         .on("mouseout", function (d, i, el) {
           d3.select(el[i]).classed('hover', false);
           if (that.selectedQuestion == null) {
-            d3.select('.question_info').classed('active', false);
-            d3.select('.question_info').select('.title').text('');
+            d3.select('.question-info').classed('active', false);
+            d3.select('.question-info').select('.title').text('');
             that.disableQuestionFilter();
-            that.triangle.attr('opacity', 0);
+            that.triangle.transition().duration(1000).attr('opacity', 0);
           } else {
-            d3.select('.question_info').classed('active', true);
-            d3.select('.question_info').select('.title').text(that.selectedQuestion.text);
+            d3.select('.question-info').classed('active', true);
+            d3.select('.question-info').select('.title').text(that.selectedQuestion.text);
             that.applyQuestionFilter(that.selectedQuestion);
             that.triangle.attr('opacity', 1)
               .attr('transform', `translate(${6 + (that.selectedQuestion.i % maxSquares) * 30} 0)`);
@@ -504,8 +505,8 @@ const vis = new Vue({
           .classed('activated', false);
         this.selectedQuestion = null;
         this.triangle.attr('opacity', 0);
-        d3.select('.question_info').classed('active', false);
-        d3.select('.question_info').select('.title').text('');
+        d3.select('.question-info').classed('active', false);
+        d3.select('.question-info').select('.title').text('');
         this.container
           .selectAll('.node')
           .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))

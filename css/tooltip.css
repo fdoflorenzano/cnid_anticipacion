@@ -15,7 +15,7 @@ div.separator {
 
 div.tooltip {
   position: absolute;
-  max-width: 250px;
+  max-width: 300px;
   padding: 0.5% 0.5% 0.5% 0.5%;
   font-family: sourceSemi, 'sans-serif';
   -webkit-font-smoothing: antialiased;
@@ -36,7 +36,7 @@ div.tooltip .title {
 
 div.tooltip .title span {
   font-family: sourceSemi, 'sans-serif';
-  font-size: 90%;
+  font-size: 85%;
 }
 
 div.tooltip.appear {
@@ -47,14 +47,14 @@ div.tooltip.large {
   text-align: center;
 }
 
-.tooltip.large.appear div:nth-child(3) {
+.tooltip.large.appear .description {
   font-family: alegreya;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 }
 
-.tooltip.large.appear div:nth-child(4) {
+/*.tooltip.large.appear div:nth-child(4) {
   text-align: center;
-}
+}*/
 
 
 span.tag {
@@ -62,11 +62,20 @@ span.tag {
   margin: 4px;
   padding: 1px 6px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
   line-height: 25px;
 }
 
 span.tag.active {
   background-color: var(--main-red);
+}
+
+.div-tag{
+  display: inline-block;
+}
+
+.tags-container{
+  text-align: left;
+  margin-left: 0 5px;
 }

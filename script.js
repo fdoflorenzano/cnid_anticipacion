@@ -36,7 +36,8 @@ const vis = new Vue({
       showChallenge: false,
       showDiscipline: false,
       showCategoryBoxes: false,
-      triangle: null
+      triangle: null,
+      dragging: false,
     }
   },
   computed: {
@@ -88,8 +89,17 @@ const vis = new Vue({
       this.minimap.append('g').attr('class', 'links');
 
       this.minimap
+        .selectAll('.rect-container')
+        .data([{
+          x: 0,
+          y: 0
+        }])
+        .enter()
         .append('g')
-        .attr('class', 'rect-container').append('rect')
+        .attr('class', 'rect-container')
+        .append('rect')
+        .attr('x', d => d.x)
+        .attr('y', d => d.y)
         .attr('width', this.MINIMAP_WIDTH)
         .attr('height', this.windowHeight * this.minimapRatioY)
         .attr('fill', 'grey')
@@ -108,9 +118,9 @@ const vis = new Vue({
     },
     handleScroll(event) {
       this.showCategoryBoxes = window.scrollY <= 6000;
-      if (this.showCategoryBoxes) {
+      if (this.showCategoryBoxes && !this.dragging) {
         this.minimap.select('rect')
-          .attr('y', window.scrollY * this.minimapRatioY);
+          .attr('y', d => d.y = window.scrollY * this.minimapRatioY);
       }
     },
     getData() {
@@ -231,19 +241,27 @@ const vis = new Vue({
           container.scrollTop = that.heightScale(d);
         });
 
+      this.minimap.on('click', function () {
+        d3.select(this)
+          .select('rect')
+          .attr('y', d => d.y = d3.event.y - this.windowHeight * this.minimapRatioY / 2);
+        let container = document.querySelector("html");
+        const scrollHeight = container.scrollHeight;
+        container.scrollTop = (d3.event.y - this.windowHeight * this.minimapRatioY / 2) / that.minimapRatioY;
+      });
       this.minimap
         .select('.rect-container')
         .call(d3.drag()
-          // .on("start", dragstarted)
-          .on("drag", function (d, i, elements) {
+          .on("start", () => that.dragging = true)
+          .on("drag", function () {
             d3.select(this)
               .select('rect')
-              .attr('y', d3.event.y);
+              .attr('y', d => d.y = d3.event.y);
             let container = document.querySelector("html");
             const scrollHeight = container.scrollHeight;
             container.scrollTop = d3.event.y / that.minimapRatioY;
           })
-          // .on("end", dragended)
+          .on("end", () => that.dragging = false)
         );
 
       this.timelines = timelines;
@@ -261,12 +279,29 @@ const vis = new Vue({
         .classed('active', d => d['questions'].includes(id))
         .classed('disable', d => !d['questions'].includes(id));
 
+      this.minimap
+        .selectAll('.node')
+        .classed('active', d => d['question'].includes(id))
+        .classed('disable', d => !d['question'].includes(id));
+
+      this.minimap
+        .selectAll('.link')
+        .classed('active', d => d['questions'].includes(id))
+        .classed('disable', d => !d['questions'].includes(id));
+
     },
     disableQuestionFilter() {
       this.container
         .selectAll('.node')
         .classed('active disable', false);
       this.container
+        .selectAll('.link')
+        .classed('active disable', false);
+
+      this.minimap
+        .selectAll('.node')
+        .classed('active disable', false);
+      this.minimap
         .selectAll('.link')
         .classed('active disable', false);
     },
@@ -340,10 +375,11 @@ const vis = new Vue({
         .attr('r', this.RADIUS);
 
       this.minimap
-        .selectAll('circle')
+        .selectAll('.node')
         .data(val)
         .enter()
         .append('circle')
+        .attr('class', 'node')
         .attr('cx', d => d.x * this.minimapRatioX)
         .attr('cy', d => d.y * this.minimapRatioY)
         .attr('fill', 'white')
@@ -441,8 +477,9 @@ const vis = new Vue({
 
     },
     checkedFilters: function (val) {
+      this.disableQuestionFilter();
+
       if (val.length > 0) {
-        this.disableQuestionFilter();
         this.qcontainer
           .selectAll('.question')
           .classed('activated', false);
@@ -455,7 +492,17 @@ const vis = new Vue({
           .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
           .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
 
+        this.minimap
+          .selectAll('.node')
+          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
+          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
+
         this.container
+          .selectAll('.link')
+          .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
+          .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));
+
+        this.minimap
           .selectAll('.link')
           .classed('active', d => arrayContainsArray(d['tags'], this.checkedFilters))
           .classed('disable', d => !arrayContainsArray(d['tags'], this.checkedFilters));

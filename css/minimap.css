@@ -1,10 +1,9 @@
-#minimap{
+#minimap {
   position: fixed;
   top: 0;
   left: 0;
   opacity: 0;
   transition: opacity 1s;
-  /* background-color: var(--main-grad1) */
 }
 
 #minimap.show {
@@ -26,11 +25,34 @@
   cursor: pointer;
 }
 
-#minimap rect{
+#minimap rect {
   cursor: move;
 }
 
 #minimap .links .link {
   stroke: var(--main-whiteStroke);
   stroke-width: 0.2px;
+}
+
+#minimap .links line.link.active {
+  stroke: var(--main-red);
+  stroke-width: 1px;
+  opacity: 1;
+}
+
+#minimap .links line.link.disable {
+  stroke: var(--main-grey);
+  opacity: 0;
+}
+
+#minimap circle.node {
+  opacity: 1;
+}
+
+#minimap circle.node.active  {
+  fill: var(--main-red);
+}
+
+#minimap circle.node.disable {
+  opacity: 0;
 }

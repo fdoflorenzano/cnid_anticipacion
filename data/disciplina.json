@@ -1,1 +1,1 @@
-[{"nombre": "Natural Sciences", "id": "1"}, {"nombre": "Engineering and Technology", "id": "2"}, {"nombre": "Medical and Health Sciences", "id": "3"}, {"nombre": "Agricultural Sciences", "id": "4"}, {"nombre": "Social Sciences", "id": "5"}, {"nombre": "Humanities", "id": "6"}]
+[{"id": "1", "nombre": "Ciencias Naturales"}, {"id": "2", "nombre": "Ingenier’a y Tecnolog’a"}, {"id": "3", "nombre": "Ciencias MŽdicas y de la Salud"}, {"id": "4", "nombre": "Ciencias Agr’cola"}, {"id": "5", "nombre": "Ciencias Sociales"}, {"id": "6", "nombre": "Humanidades"}]

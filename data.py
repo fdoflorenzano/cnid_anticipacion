@@ -44,6 +44,7 @@ with open('hitos.csv', newline='') as csvfile:
             colnum = 0
             hito = {}
             for col in row:
+                
                 if header[colnum] in ['hito_consecuencia', 'hito_precedente', 
                                       'dimension', 'subdimension', 
                                       'disciplinas', 'subdisciplina']:

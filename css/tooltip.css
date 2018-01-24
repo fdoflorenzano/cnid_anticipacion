@@ -43,9 +43,13 @@ div.tooltip.appear {
   opacity: 0.9;
 }
 
-div.tooltip .description {
+
+.tooltip .description {
   font-family: alegreya;
   margin-bottom: 9px;
+  padding: 0 3%;
+  font-size: 13px;
+  text-align: justify;
 }
 
 

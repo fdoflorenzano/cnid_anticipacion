@@ -75,6 +75,9 @@ const vis = new Vue({
         .attr('transform',
           `translate(${this.MARGIN.LEFT}, ${this.MARGIN.TOP})`);
       this.container
+        .append('circle')
+        .attr('id', 'hover');
+      this.container
         .append('rect')
         .attr('width', this.width)
         .attr('height', this.height)
@@ -313,34 +316,90 @@ const vis = new Vue({
     applyQuestionFilter(question = null) {
       this.container
         .selectAll('.node')
-        .classed('active', this.filterConditionActive(question))
-        .classed('disable', this.filterConditionDisable(question));
+        .attr('class', this.filterCondition('node', question))
 
       this.minimap
         .selectAll('.node')
-        .classed('active', this.filterConditionActive(question))
-        .classed('disable', this.filterConditionDisable(question));
+        .attr('class', this.filterCondition('node', question))
+        .transition()
+        .duration(500)
+        .ease(d3.easeCubic)
+        .attr('fill', (d, i, el) => {
+          const c = d3.select(el[i]).attr('class');
+          switch (c) {
+            case 'node active':
+              return '#e52331';
+            default:
+              return '#f2f2f2';
+          }
+        })
+        .attr('r', (d, i, el) => {
+          const c = d3.select(el[i]).attr('class');
+          switch (c) {
+            case 'node active':
+              return '2';
+            default:
+              return '1';
+          }
+        })
+        .attr('opacity', (d, i, el) => {
+          const c = d3.select(el[i]).attr('class');
+          switch (c) {
+            case 'node disable':
+              return '0';
+            default:
+              return '1';
+          }
+        });
 
       this.container
         .selectAll('.link')
-        .classed('active', this.filterConditionActive(question))
-        .classed('disable', this.filterConditionDisable(question));
+        .attr('class', this.filterCondition('link', question));
 
       this.minimap
         .selectAll('.link')
-        .classed('active', this.filterConditionActive(question))
-        .classed('disable', this.filterConditionDisable(question));
+        .attr('class', this.filterCondition('link', question))
+        .transition()
+        .duration(500)
+        .ease(d3.easeCubic)
+        .attr('stroke', (d, i, el) => {
+          const c = d3.select(el[i]).attr('class');
+          switch (c) {
+            case 'link active':
+              return '#e52331';
+            default:
+              return '#f2f2f2';
+          }
+        })
+        .attr('stroke-width', (d, i, el) => {
+          const c = d3.select(el[i]).attr('class');
+          switch (c) {
+            case 'link active':
+              return '1';
+            default:
+              return '0.5';
+          }
+        })
+        .attr('opacity', (d, i, el) => {
+          const c = d3.select(el[i]).attr('class');
+          switch (c) {
+            case 'link disable':
+              return '0';
+            default:
+              return '1';
+          }
+        });
 
     },
-    filterConditionActive(question = null) {
+    filterCondition(mainType, question = null) {
       if (question == null & this.checkedFilters.length == 0) {
-        return false;
+        return `${mainType}`;
       } else if (question == null) {
-        return d => arrayContainsArray(d['tags'], this.checkedFilters);
+        return d => arrayContainsArray(d['tags'], this.checkedFilters) ? `${mainType} active` : `${mainType} disable`;
       } else if (this.checkedFilters.length == 0) {
-        return d => d['question'].includes(question.id);
+        return d => d['question'].includes(question.id) ? `${mainType} active` : `${mainType} disable`;
       } else {
-        return d => d['question'].includes(question.id) && arrayContainsArray(d['tags'], this.checkedFilters);
+        return d => d['question'].includes(question.id) && arrayContainsArray(d['tags'], this.checkedFilters) ? `${mainType} active` : `${mainType} disable`;
       }
     },
     filterConditionDisable(question = null) {
@@ -435,11 +494,28 @@ const vis = new Vue({
         .append('g')
         .attr('class', 'node')
         .attr('transform', d => `translate(${d.x}, ${d.y})`)
-        .on("mouseover", function (d) {
-          that.tooltipped = d;
+        .on('mouseenter', function (d) {
+          console.log(d3.event);
+          that.container.select('#hover')
+            .attr('cx', d.x)
+            .attr('cy', d.y)
+            .attr('r', that.RADIUS + 4)
+            .transition()
+            .duration(200)
+            .attr('r', that.RADIUS + 10);
+        })
+        .on('mouseleave', function () {
+          that.container.select('#hover')
+            .transition()
+            .duration(200)
+            .attr('r', 0);
+        })
+        .on("mouseover", function (d, i, el) {
+          that.tooltipped = null;
           that.tooltip
             .style("left", (d3.event.pageX - 60) + "px")
             .style("top", (d3.event.pageY + 16) + "px");
+          that.tooltipped = d;
         })
         .on('click', that.toggleToolTip);
 
@@ -480,7 +556,9 @@ const vis = new Vue({
         .attr('x1', l => this.minimapWidthScale(l.source.x))
         .attr('y1', l => this.minimapHeightScale(l.source.y))
         .attr('x2', l => this.minimapWidthScale(l.target.x))
-        .attr('y2', l => this.minimapHeightScale(l.target.y));
+        .attr('y2', l => this.minimapHeightScale(l.target.y))
+        .attr('stroke', '#f2f2f2')
+        .attr('stroke-width', '0.5');
     },
     questions: function (val) {
       let that = this;

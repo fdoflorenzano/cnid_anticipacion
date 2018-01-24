@@ -177,3 +177,9 @@ h3 {
 .s3 {
   min-height: 200px;
 }
+
+#hover{
+  fill: none;
+  stroke: var(--main-whiteStroke);
+  stroke-width: 1px;
+}

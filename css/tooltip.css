@@ -79,3 +79,15 @@ span.tag.active {
   text-align: left;
   margin-left: 0 5px;
 }
+
+.fade-tool-enter-active {
+  transition: opacity .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  /* transition: transform .5s cubic-bezier(1.0, 0.5, 0.8, 1.0); */
+}
+.fade-tool-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.fade-tool-enter, .fade-tool-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  /* transform: translateY(-5px); */
+}

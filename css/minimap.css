@@ -28,7 +28,7 @@
   cursor: move;
 }
 
-#minimap .links .link {
+/* #minimap .links .link {
   stroke: var(--main-whiteStroke);
   stroke-width: 0.2px;
   transition: all 400ms; 
@@ -41,7 +41,6 @@
 }
 
 #minimap .links line.link.disable {
-  stroke: var(--main-grey);
   opacity: 0;
 }
 
@@ -56,4 +55,4 @@
 
 #minimap circle.node.disable {
   opacity: 0;
-}
+} */

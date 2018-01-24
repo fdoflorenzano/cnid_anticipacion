@@ -27,32 +27,3 @@
 #minimap rect {
   cursor: move;
 }
-
-/* #minimap .links .link {
-  stroke: var(--main-whiteStroke);
-  stroke-width: 0.2px;
-  transition: all 400ms; 
-}
-
-#minimap .links line.link.active {
-  stroke: var(--main-red);
-  stroke-width: 1px;
-  opacity: 1;
-}
-
-#minimap .links line.link.disable {
-  opacity: 0;
-}
-
-#minimap circle.node {
-  opacity: 1;
-  transition: all 400ms; 
-}
-
-#minimap circle.node.active  {
-  fill: var(--main-red);
-}
-
-#minimap circle.node.disable {
-  opacity: 0;
-} */

@@ -186,6 +186,15 @@ by Felix Hagspiel.
   display: inline-block;
   width: 10px;
   height: 10px;
-  border: 2px solid var(--color-default);
-  color: var(--color-default);
+  cursor: pointer;
+}
+
+.collapse.collapsed {
+  background-image: url('./resources/collapsed.svg');
+  background-size: 10px 10px;
+}
+
+.collapse.uncollapsed {
+  background-image: url('./resources/uncollapsed.svg');
+  background-size: 10px 10px;
 }

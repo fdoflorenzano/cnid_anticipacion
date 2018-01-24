@@ -52,7 +52,7 @@ body {
   stroke: var(--main-whiteStroke);
   stroke-width: 1px;
   opacity: 0.8;
-  transition: all 400ms; 
+  transition: all 400ms;
 }
 
 #container line.link.active {
@@ -74,7 +74,7 @@ body {
 #container .node circle {
   fill: var(--main-whiteStroke);
   stroke: none;
-  transition: all 400ms; 
+  transition: all 400ms;
 }
 
 #container .node.active circle {
@@ -101,7 +101,9 @@ body {
   fill: white;
 }
 
-h1,h2,h3 {
+h1,
+h2,
+h3 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -163,7 +165,7 @@ h3 {
 }
 
 .section {
-  height: 100vh;
+  height: 80vh;
 }
 
 .s0 {
@@ -178,8 +180,27 @@ h3 {
   min-height: 200px;
 }
 
-#hover{
+#hover {
   fill: none;
   stroke: var(--main-whiteStroke);
   stroke-width: 1px;
+}
+
+[data-aos="costume"] {
+  opacity: 1;
+  transform: translate(0);
+  transition-property: all;
+}
+
+[data-aos="costume"].aos-animate {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+
+.intro-sect {
+  margin-bottom: 10vh;
+}
+
+.description-sect{
+  margin-bottom: 10vh;
 }

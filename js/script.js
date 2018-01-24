@@ -6,7 +6,7 @@ const vis = new Vue({
       MINIMAP_WIDTH: 200,
       QWIDTH: 800,
       HEIGHT: 6000,
-      QHEIGHT: 140,
+      QHEIGHT: 40,
       MARGIN: {
         TOP: 0,
         BOTTOM: 0,

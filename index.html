@@ -3,10 +3,11 @@
 
 <head>
   <meta charset='utf-8'>
-  <script src='utils.js' charset='utf-8'></script>
+  <script src='js/utils.js' charset='utf-8'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/4.12.2/d3.js' charset='utf-8'></script>
   <script src="https://unpkg.com/vue"></script>
-  <script src="js/ScrollMagic.js"></script>
+  <link rel="stylesheet" href="js/aos-master/dist/aos.css" />
+  <script src="js/aos-master/dist/aos.js"></script>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/intro-sect.css" />
   <link rel="stylesheet" href="css/category-box.css" />
@@ -17,6 +18,12 @@
 </head>
 
 <body>
+  <script>
+    AOS.init({
+      duration: 400,
+      easing: 'ease-in-cubic',
+    });
+  </script>
   <div id="vis">
     <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all" v-bind:class="{show: showCategoryBoxes}">
     </svg>
@@ -37,7 +44,7 @@
         <h3>selecciona una pregunta</h3>
       </div>
     </div>
-    <div class="description-sect section">
+    <div class="description-sect section" data-aos="costume" data-aos-anchor="#trigger2">
       <div class="description-text outside">
         <!--<img id="question-symbol" src="resources/pregunta_simbolo.svg">-->
         <h3>PREGUNTAS EN LAS FRONTERAS</h3>
@@ -47,7 +54,8 @@
         <p class="highlight">¿Cuáles son esas grandes preguntas?</p>
       </div>
     </div>
-    <div class="intro-sect section">
+    <div id="trigger2" class="spacer s0"></div>
+    <div class="intro-sect section" data-aos="costume" data-aos-anchor="#trigger1">
       <div class="intro-text outside">
         <p>El
           <mark>Consejo Nacional de Innovación para el Desarrollo (CNID)</mark> está mandatado a generar orientaciones en materia
@@ -65,12 +73,10 @@
         <p>Los datos visualizados, son el resultado de un primer ejercicio realizado en el marco del encuentro.</p>
       </div>
     </div>
-
+    <div id="trigger1" class="spacer s0"></div>
     <div class="first-sect section">
       <div class="first-sect outside">
-        <div class="spacer s2"></div>
-        <div id="trigger1" class="spacer s0"></div>
-        <div id="animate1">
+        <div>
           <title-particle :width="WIDTH"></title-particle>
         </div>
         <div class="separator"></div>
@@ -109,7 +115,8 @@
           <div class="check" v-for="dimension in dimensions">
             <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
             <label :for="dimension.id">{{dimension.nombre}}</label>
-            <div class="collapse" v-on:click="collapse(dimension.id)" v-if="dimension.subdimension.length > 0"></div>
+            <div class="collapse" v-on:click="collapse(dimension.id)" v-if="dimension.subdimension.length > 0" v-bind:class="{collapsed: collapsedFilters.indexOf(dimension.id) < 0, uncollapsed: collapsedFilters.indexOf(dimension.id) >= 0}"></div>
+
             <transition-group name="fade">
               <div class="check" v-for="subdimension in dimension.subdimension" :key="subdimension.id" v-if="collapsedFilters.indexOf(dimension.id) >= 0">
                 <input type="checkbox" :id="subdimension.id" :value="subdimension.id" v-model="checkedFilters">
@@ -130,7 +137,7 @@
           <div class="check" v-for="dimension in disciplines">
             <input type="checkbox" :id="dimension.id" :value="dimension.id" v-model="checkedFilters">
             <label :for="dimension.id">{{dimension.nombre}}</label>
-            <div class="collapse" v-on:click="collapse(dimension.id)" v-if="dimension.subdisciplinas.length > 0"></div>
+            <div class="collapse" v-on:click="collapse(dimension.id)" v-if="dimension.subdisciplinas.length > 0" v-bind:class="{collapsed: collapsedFilters.indexOf(dimension.id) < 0, uncollapsed: collapsedFilters.indexOf(dimension.id) >= 0}"></div>
             <br>
             <transition-group name="fade">
               <div class="check" v-for="subdimension in dimension.subdisciplinas" :key="subdimension.id" v-if="collapsedFilters.indexOf(dimension.id) >= 0">
@@ -146,8 +153,8 @@
       </transition>
     </div>
   </div>
-  <script src="title-component.js"></script>
-  <script src="script.js"></script>
+  <script src="js/title-component.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -43,18 +43,10 @@ div.tooltip.appear {
   opacity: 0.9;
 }
 
-div.tooltip.large {
-  text-align: center;
-}
-
-.tooltip.large.appear .description {
+div.tooltip .description {
   font-family: alegreya;
   margin-bottom: 9px;
 }
-
-/*.tooltip.large.appear div:nth-child(4) {
-  text-align: center;
-}*/
 
 
 span.tag {
@@ -82,12 +74,10 @@ span.tag.active {
 
 .fade-tool-enter-active {
   transition: opacity .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  /* transition: transform .5s cubic-bezier(1.0, 0.5, 0.8, 1.0); */
 }
 .fade-tool-leave-active {
-  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: opacity .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .fade-tool-enter, .fade-tool-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-  /* transform: translateY(-5px); */
 }

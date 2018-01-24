@@ -77,6 +77,9 @@ with open('preguntas.csv', newline='') as csvfile:
                 colnum += 1
             preguntasJson.append(pregunta)
         rownum += 1
+    for pre in preguntasJson:
+        if('descripcion' not in pre.keys()):
+            pre['descripcion'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
     with open('preguntas.json', 'w') as f:
         json.dump(preguntasJson, f, ensure_ascii=False)
 
@@ -148,8 +151,8 @@ def transitive(hit):
 def question(pre):
     """
     Formateador de preguntas desde pregunta original
-    """
-    return {'text': pre['contenido_pregunta'], 'id': pre['mesa'] + pre['pregunta']}
+    """    
+    return {'text': pre['contenido_pregunta'], 'id': pre['mesa'] + pre['pregunta'], 'description': pre['descripcion']}
 def extract_links(hit):
     """
     Extractor de enlaces desde hitos

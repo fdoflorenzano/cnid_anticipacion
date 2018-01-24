@@ -285,6 +285,7 @@ const vis = new Vue({
         this.triangle.attr('transform', `translate(${10 + (index % this.maxSquares) * 30} 0)`);
         d3.select('.question-info').classed('active', true);
         d3.select('.question-info').select('.title').text(question.text);
+        d3.select('.question-info').select('.description').text(question.description);
         this.applyQuestionFilter(question);
       } else if (select) {
         d3.selectAll(elements).classed('activated', false);
@@ -301,11 +302,13 @@ const vis = new Vue({
         if (this.selectedQuestion == null) {
           d3.select('.question-info').classed('active', false);
           d3.select('.question-info').select('.title').text('');
+          d3.select('.question-info').select('.description').text('');
           this.triangle.transition().duration(200).attr('opacity', 0);
           this.applyQuestionFilter();
         } else {
           d3.select('.question-info').classed('active', true);
           d3.select('.question-info').select('.title').text(this.selectedQuestion.text);
+          d3.select('.question-info').select('.description').text(this.selectedQuestion.description);
           this.triangle.attr('opacity', 1)
             .attr('transform', `translate(${10 + (this.selectedQuestion.index % this.maxSquares) * 30} 0)`);
           this.applyQuestionFilter(this.selectedQuestion);

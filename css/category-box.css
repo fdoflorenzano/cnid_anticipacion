@@ -35,11 +35,11 @@ by Felix Hagspiel.
 }
 
 .dimension_box {
-  top: 20%;
+  top: 20vh;
 }
 
 .discipline_box {
-  bottom: 20%;
+  top: 60vh;
 }
 
 .category_box h1 {

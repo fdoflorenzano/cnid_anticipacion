@@ -1,43 +1,43 @@
 id_disciplina,id,nombre
-1,1.1,Mathematics
-1,1.2,Computer and information sciences
-1,1.3,Physical sciences
-1,1.4,Chemical sciences
-1,1.5,Earth and related environmental sciences
-1,1.6,Biological sciences
-1,1.7,Other natural sciences
-2,2.1,Civil engineering
-2,2.2,"Electrical engineering, electronic engineering, information engineering"
-2,2.3,Mechanical engineering
-2,2.4,Chemical engineering
-2,2.5,Materials engineering
-2,2.6,Medical engineering
-2,2.7,Environmental engineering
-2,2.8,Environmental biotechnology
-2,2.9,Industrial Biotechnology
-2,2.10,Nano-technology
-2,2.11,Other engineering and technologies
-3,3.1,Basic medicine
-3,3.2,Clinical medicine
-3,3.3,Health sciences
-3,3.4,Health biotechnology
-3,3.5,Other medical sciences
-4,4.1,"Agriculture, forestry and fisheries"
-4,4.2,Animal and dairy science
-4,4.3,Veterinary science
-4,4.4,Agricultural biotechnology
-4,4.5,Other agricultural science
-5,5.1,Psychology
-5,5.2,Economics and business
-5,5.3,Educational sciences
-5,5.4,Sociology
-5,5.5,Law
-5,5.6,Political science
-5,5.7,Social and economic geography
-5,5.8,Media and communication
-5,5.9,Other social sciences
-6,6.1,History and archeology
-6,6.2,Languages and literature
-6,6.3,"Philosophy, ethics and religion"
-6,6.4,"Art (arts, history of arts, performing arts, music)"
-6,6.5,Other humanities
+1,1.1,Matemáticas
+1,1.2,Ciencias de la Computación y la Información
+1,1.3,Ciencias Físicas
+1,1.4,Ciencias Químicas
+1,1.5,Ciencias de la Tierra y del Medioambiente
+1,1.6,Ciencias Biológicas
+1,1.7,Otras Ciencias Naturales
+2,2.1,Ingeniería Civil
+2,2.2,"Ingeniería Eléctrica, Ingeniería Electrónica e Ingeniería de la Información"
+2,2.3,Ingeniería Mecánica
+2,2.4,Ingeniería Química
+2,2.5,Ingeniería de los Materiales
+2,2.6,Ingeniería Médica
+2,2.7,Ingeniería Ambiental
+2,2.8,Biotecnología Ambiental
+2,2.9,Biotecnología Industrial
+2,2.1,Nano-tecnología
+2,2.11,Otras Ingenierías y Tecnologías
+3,3.1,Medicina Básica
+3,3.2,Medicina Clínica
+3,3.3,Ciencias de la Salud
+3,3.4,Biotecnología Médica
+3,3.5,Otras Ciencias Médicas
+4,4.1,"Agricultural, Silvicultura y Pesca"
+4,4.2,Ciencia Animal y Láctea
+4,4.3,Ciencia Veterinaria
+4,4.4,Biotecnología Agrícola
+4,4.5,Otras Ciencias Agrícolas
+5,5.1,Psicología
+5,5.2,Economía y Negocios
+5,5.3,Ciencias Educacionales
+5,5.4,Sociología
+5,5.5,Leyes
+5,5.6,Ciencia Política
+5,5.7,Geografía Social y Económica
+5,5.8,Medios y Comunicaciones
+5,5.9,Otras Ciencias Sociales
+6,6.1,Historia y Arqueología
+6,6.2,Lenguajes y Literatura
+6,6.3,"Filosofía, ética y religión"
+6,6.4,Artes
+6,6.5,Otras humanidades

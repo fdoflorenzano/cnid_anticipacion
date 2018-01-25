@@ -173,6 +173,7 @@ const vis = new Vue({
           .links(this.links))
         .force("vertical", d3.forceY(d => this.heightScale(d.date)).strength(0.3))
         .force("horizontal", d3.forceX(this.width / 2).strength(0.12))
+        // .alphaTarget(0.3)
         .on("tick", this.ticked);
     },
     boundedX(d) {

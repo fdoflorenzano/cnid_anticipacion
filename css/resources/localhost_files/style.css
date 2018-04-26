@@ -206,7 +206,7 @@ h3 {
 }
 
 #logo-container svg{
-  opacity: 1;
+  opacity: 0.7;
   -webkit-transition: opacity 0.2s ease-in;
   -moz-transition: opacity 0.2s ease-in;
   -o-transition: opacity 0.2s ease-in;
@@ -218,11 +218,11 @@ h3 {
 }
 
 #logo-container {
-  padding-top: 1%;
+  margin: 1%;
 }
 
 #fixed {
-  height: 9%;
+  height: 8%;
   width: 100%;
   position: fixed;
   left: 0px;
@@ -236,99 +236,14 @@ h3 {
   display: inline-block;
   text-decoration: none;
   color: white;
-  cursor: pointer;
-  opacity: 0.9;
+  opacity: 0.8;
   color: white;
-  letter-spacing: 1px;
   font-family: sourceBold, 'sans-serif';
-  font-size: 120%;
+  font-size: 140%;
   font-variant: small-caps;
-  vertical-align: middle;
-  margin: 0 1%;
-}
-
-#fixed p {
-  display: inline-block;
-  text-decoration: none;
-  color: white;
-  opacity: 1;
-  color: white;
-  letter-spacing: 1px;
-  font-family: source, 'sans-serif';
-  font-size: 90%;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  margin: 0 1%;
-  width: 50%;
-}
-
-.link-nav {
-  float: right;
-  padding-top: 1%;
-  padding-right: 2%;
 }
 
 #fixed a:hover {
-  opacity: 1;
-  -webkit-transition: opacity 0.2s ease-in;
-  -moz-transition: opacity 0.2s ease-in;
-  -o-transition: opacity 0.2s ease-in;
-  transition: opacity 0.2s ease-in;
-}
-
-#pop-up {
-  width: 75%;
-  position: fixed;
-  left: 50%;
-  margin-left: -41.5%;
-  z-index: 200;
-  margin-top: 10%;
-  height: 50%;
-  background-color: black;
-  overflow-y: auto;
-  -webkit-column-count: 2; /* Chrome, Safari, Opera */
-  -moz-column-count: 2; /* Firefox */
-  column-count: 2;
-  column-gap: 60px;
-  font-family: alegreya;
-  color: var(--main-whiteStroke);
-  text-align: justify;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  padding: 5%;
-  padding-bottom: 0%;
-  opacity: 0;
-  visibility: hidden;
-}
-
-#pop-up p {
-  padding: 0px;
-  -webkit-margin-before:0em;
-  -webkit-margin-after:1em;
-}
-
-#pop-up a {
-  display: block;
-  position: absolute;
-  right: 6%;
-  top: 6%;
-  padding: 0px;
-  -webkit-margin-before:0em;
-  -webkit-margin-after:1em;
-  text-decoration: none;
-  color: white;
-  opacity: 0.6;
-  color: white;
-  letter-spacing: 1px;
-  font-family: sourceBold, 'sans-serif';
-  font-size: 100%;
-  font-variant: small-caps;
-}
-
-#pop-up a:hover {
   opacity: 1;
   -webkit-transition: opacity 0.2s ease-in;
   -moz-transition: opacity 0.2s ease-in;

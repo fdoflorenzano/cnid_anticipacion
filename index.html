@@ -303,6 +303,9 @@
     </div>
   </div>
   <div id="vis">
+    <div v-if="emptySelection" id="empty-message">
+      ¡Selección no arroja resultados!
+    </div>
     <svg :width="MINIMAP_WIDTH" :height="windowHeight" id="minimap" pointer-events="all" v-bind:class="{show: showCategoryBoxes}">
     </svg>
     <svg :width="WIDTH" :height="HEIGHT" id="container" pointer-events="all">
@@ -370,6 +373,15 @@
         <span>
           {{tooltipped.name}}
         </span>
+        <div v-if="tooltipped.question.length > 0">
+          <p>Relacionada con las preguntas: </p>
+          <span v-for="question_id in tooltipped.question">
+            {{ questions_dict[question_id].text }}
+          </span>
+        </div>
+        <div v-else>
+            <p>No se relaciona con preguntas.</p>
+        </div>
       </div>
       <transition-group name="fade-tool">
         <div class="tags-container" v-if="tooltipped && tooltipLarge" key="tags">

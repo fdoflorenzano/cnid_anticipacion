@@ -19,12 +19,13 @@ const vis = new Vue({
       nodes: null,
       links: null,
       questions: null,
+      questions_dict: null,
       container: null,
       qcontainer: null,
       minimap: null,
       tooltip: null,
       tooltipped: null,
-      tooltipLarge: false,
+      tooltipLarge: true,
       selectedQuestion: null,
       simulation: null,
       heightScale: null,
@@ -41,6 +42,7 @@ const vis = new Vue({
       showChallenge: false,
       showDiscipline: false,
       showCategoryBoxes: false,
+      emptySelection: false,
       triangle: null,
       dragging: false,
       maxSquares: 1
@@ -146,6 +148,18 @@ const vis = new Vue({
         this.nodes = data['nodes'];
         this.links = data['links'];
         this.questions = data['questions'];
+        this.questions_dict =  this.questions.reduce(
+          (map, obj) => {
+              map[obj.id] = obj;
+              return map;
+          }, 
+          {},
+        );
+        this.questions.push({
+          id: null,
+          text: 'Sin preguntas asociadas',
+          description: '',
+        });
         this.dimensions = data['dimensions'];
         this.disciplines = data['disciplines'];
         this.tags = data['tags'];
@@ -320,7 +334,14 @@ const vis = new Vue({
     applyQuestionFilter(question = null) {
       this.container
         .selectAll('.node')
-        .attr('class', this.filterCondition('node', question))
+        .attr('class', this.filterCondition('node', question));
+      
+      this.emptySelection = (question !== null ||
+        this.checkedFilters.length !== 0) & 
+        this.container
+          .selectAll('.node')
+          .filter('.active')
+          .empty();
 
       this.minimap
         .selectAll('.node')
@@ -396,11 +417,13 @@ const vis = new Vue({
 
     },
     filterCondition(mainType, question = null) {
-      if (question == null & this.checkedFilters.length == 0) {
+      if (question === null & this.checkedFilters.length === 0) {
         return `${mainType}`;
-      } else if (question == null) {
+      } else if (question === null) {
         return d => arrayContainsArray(d['tags'], this.checkedFilters) ? `${mainType} active` : `${mainType} disable`;
-      } else if (this.checkedFilters.length == 0) {
+      } else if (this.checkedFilters.length === 0 && question.id === null) {
+        return d => d['question'].length === 0 ? `${mainType} active` : `${mainType} disable`;
+      } else if (this.checkedFilters.length === 0) {
         return d => d['question'].includes(question.id) ? `${mainType} active` : `${mainType} disable`;
       } else {
         return d => d['question'].includes(question.id) && arrayContainsArray(d['tags'], this.checkedFilters) ? `${mainType} active` : `${mainType} disable`;
@@ -417,8 +440,16 @@ const vis = new Vue({
         return d => !(d['question'].includes(question.id) && arrayContainsArray(d['tags'], this.checkedFilters));
       }
     },
-    toggleToolTip() {
-      this.tooltipLarge = !this.tooltipLarge;
+    toggleToolTip(d) {
+      // this.tooltipLarge = !this.tooltipLarge;
+      if (this.tooltipped === null) {
+        this.tooltip
+          .style("left", (d3.event.pageX - 60) + "px")
+          .style("top", (d3.event.pageY + 16) + "px");
+        this.tooltipped = d;
+      } else {
+        this.tooltipped = null;
+      }
     },
     toggleChallenge() {
       this.showChallenge = !this.showChallenge;
@@ -499,7 +530,6 @@ const vis = new Vue({
         .attr('class', 'node')
         .attr('transform', d => `translate(${d.x}, ${d.y})`)
         .on('mouseenter', function (d) {
-          console.log(d3.event);
           that.container.select('#hover')
             .attr('cx', d.x)
             .attr('cy', d.y)

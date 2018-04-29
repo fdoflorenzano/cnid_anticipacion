@@ -1,1 +1,1 @@
-[{"id": "1", "nombre": "\tCiencias Naturales"}, {"id": "2", "nombre": "\tIngeniería y Tecnología"}, {"id": "3", "nombre": "\tCiencias Médicas y de la Salud"}, {"id": "4", "nombre": "\tCiencias Agrícola"}, {"id": "5", "nombre": "\tCiencias Sociales"}, {"id": "6", "nombre": "\tHumanidades"}]
+[{"nombre": "Ciencias y Tecnología", "id": "1"}, {"nombre": "Sociedad", "id": "2"}, {"nombre": "Gestión", "id": "3"}]

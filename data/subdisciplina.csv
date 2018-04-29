@@ -1,43 +1,11 @@
 id_disciplina,id,nombre
-1,1.1,Matemáticas
-1,1.2,Ciencias de la Computación y la Información
-1,1.3,Ciencias Físicas
-1,1.4,Ciencias Químicas
-1,1.5,Ciencias de la Tierra y del Medioambiente
-1,1.6,Ciencias Biológicas
-1,1.7,Otras Ciencias Naturales
-2,2.1,Ingeniería Civil
-2,2.2,"Ingeniería Eléctrica, Ingeniería Electrónica e Ingeniería de la Información"
-2,2.3,Ingeniería Mecánica
-2,2.4,Ingeniería Química
-2,2.5,Ingeniería de los Materiales
-2,2.6,Ingeniería Médica
-2,2.7,Ingeniería Ambiental
-2,2.8,Biotecnología Ambiental
-2,2.9,Biotecnología Industrial
-2,2.1,Nano-tecnología
-2,2.11,Otras Ingenierías y Tecnologías
-3,3.1,Medicina Básica
-3,3.2,Medicina Clínica
-3,3.3,Ciencias de la Salud
-3,3.4,Biotecnología Médica
-3,3.5,Otras Ciencias Médicas
-4,4.1,"Agricultural, Silvicultura y Pesca"
-4,4.2,Ciencia Animal y Láctea
-4,4.3,Ciencia Veterinaria
-4,4.4,Biotecnología Agrícola
-4,4.5,Otras Ciencias Agrícolas
-5,5.1,Psicología
-5,5.2,Economía y Negocios
-5,5.3,Ciencias Educacionales
-5,5.4,Sociología
-5,5.5,Leyes
-5,5.6,Ciencia Política
-5,5.7,Geografía Social y Económica
-5,5.8,Medios y Comunicaciones
-5,5.9,Otras Ciencias Sociales
-6,6.1,Historia y Arqueología
-6,6.2,Lenguajes y Literatura
-6,6.3,"Filosofía, ética y religión"
-6,6.4,Artes
-6,6.5,Otras humanidades
+1,1.1,Ambiental
+1,1.2,Biológico
+1,1.3,Tecnológico
+2,2.1,Educacional
+2,2.2,Teórico
+2,2.3,Institucional
+2,2.4,Político
+2,2.5,Social
+2,2.6,Urbanístico
+3,3.1,Operativo

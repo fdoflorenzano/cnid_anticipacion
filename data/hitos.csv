@@ -1,205 +1,109 @@
 hito_id,hito_texto,pregunta,dimension,subdimension,keywords,disciplinas,subdisciplina,fecha,hito_precedente,hito_consecuencia
-B1,Regeneración del corazón ,,,,,,,2030,,B2
-B2,Cambio de paradigma en las enfermedades crónicas. ??? socialmente,,,,,,,hoy - 2030,,B10
-B3,Cambio de paradigma: Ver al hombre como parte de organizmo superior y no como un organismo superior en si,,,,,,,hoy - 2030,,B7
-B4,Nuevo anticancerigeno ,,,,,,,2040,,B5
-B5,Chile como centro científico internacional,,,,,,,2040,"B4, B8",
-B6,Desarrollo tecnológico. El desarrollo de nuevos materiales que permitan conjugar el reciclaje y la producción energética eficiente.,,,,,,,2040,B7,B8
-B7,Un prototipo de generación energética eficiente y sustentable,,,,,,,2035,B3,B6
-B8,Chile como lugar de centros internacionales de excelencia científica ,,,,,,,2040,B6,B5
-B9,(sobre B8...) precedente y consecuencia,,,,,,,-,-,-
-B10,???,,,,,,,2035,B2,
-A1,Se tiene centros urbanos sustentables y resilentes,1,rh,"rh.2,rh.3,rh.6",sustainable urban area resilient,,,2040-2070,,A15
-A2,"Implementación de modelos oceanográficos y biogeoquímicos ""operacionales"" que asimilen en tiempo cuasi real la información generada por la red de monitoreo",3,rh,"rh.3,rh.4,rh.5",oceanographic biogeochemical operational models real time information monitoring network,,,2035,,"A14, A15"
-A3,"Con los modelos establecer y desarrollar criterios de modelos óptimos de recursos hídricos con variables ambientales, sociales y económicas con sustentabilidad",4,rh,"rh.2,rh.3,rh.4",models criteria optimum water resources enviromental social economic susteinability,,,2040,,A14
-A4,Desarrollar modelos integrales validados,4,,"rh.4,rh.5",validated holistic comprehensive models water,,,2030,,A12
-A5,Generar una institucionalidad estable para la investigación y acción en temas ambientales,2,,rh.2,institutionality investigation action enviromental ,,,2030,,A13
-A6,"Red con adecuada resolución espacial de monitoreo oceanográfico y sistema de transmisión, acopio y distribución de la información",3,,"rh.4,rh.5",oceanographic monitoring transmission system information distribution network spatial resolution,,,2030,A8,A16
-A7,Nuevo sistema de gobernanza urbana,1,,,urban governance system,,,2025-2030,A22,
-A8,"Sistema de observación y modelación urbanos coordinados, integrados y permanentes (atmosféricos, sociales, movilidad, vegetación, habitacional, etc.)",1,,rh.3,coordinated integrated permanent urban observation modelation system,,,2018-2022,"A17, A20, A21, A23",A6
-A9,Implementación de modelos que combinen hidrodinámica y biogeoquímica de la Patagonia chilena,3,,"rh.3,rh.4,rh.5",hidrodinamics biogeochemistry ,,,2020,"A20, A21",
-A10,Financiar públicamente proyectos de investigación realmente multidisplinarios y con productos heterogéneos,2,,,public fund multidisplinary investigation projects,,,2020,"A18, A19, A20",
-A11,Determinar el uso actual del recurso hídrico,4,,rh.3,water source usage determination,,,2025,"A17, A20",
-A12,Disminución de la huella hídrica,,,rh.2,water foodprint,,,2035,A4,
-A13,Aumento del número de investigadores y establecimiento de masas críticas,,,,researchers,,,2040,A5,
-A14,"""Datificación"" de la toma de decisiones",,,,policy data,,,2045,"A3, A2",
-A15,Mejorar planificiación de uso del territorio sumergido,,,"rh.1,rh.2,rh.3",submerged territory,,,2050,"A1, A2",
-A16,"Planificación informada, nueva ley de pesca",,,"rh.1,rh.3,rh.6",fishing law,,,2035,A6,
-A17,"Uso de Tecnologías de información y comunicación espacial, establecer demanda-causa",,,"rh.3,rh.5",information technology water resources,,,hoy,,"A8, A11"
-A18,Permitir el crecimiento de número de investigadores (puestos en centros),,,,research center position science,,,hoy,,A10
-A19,Flexibilizar los criterios con que se evalúa el desempeño,,,,(productivity measurement education) OR (efficiency measurement education),,,hoy,,A10
-A20,Ministerio de Ciencias y Tecnologías con recursos para financiar un programa de observación,,,rh.1,,,,hoy,,"A8, A9, A10, A11"
-A21,Replanteamiento del rol y funcionamientos de las agencias actualmente involucradas,,,"rh.1,rh.3",,,,hoy,,"A8, A9"
-A22,Empoderamiento ciudadano,,,rh.6,,,,2025,,A7
-A23,Responsabilización ciudadana,,,rh.6,,,,hoy,,A8
-C1,Formación interdisciplinaria de científicos jóvenes,3,,,,,,hoy,,
-C2,Consolidación de institucionalidad científicia adecuada para la investigación interdisciplinar,3,,,,,,2025,,
-C3,"Identificación de métodos para investigación transdisciplinar aplicables a la intersección de ciencias sociales, físicas, biológicas, técnicas, etc.",3,,,,,,2030,,
-C4,Reconfiguración de análisis y teoría interdisciplinar sobre el comportamiento complejo en ámbitos técnicos,3,,,,,,2040,,
-C5,"Incorporar en el curriculum de formación docente las ""habilidades del siglo XXI"" y otras",4,,,,,,2030,,
-C6,Incorporación de enfoque interdisciplinario en la formación docente y las políticas educacionales,5,,,,,,2030,,
-C7,"Primer paciente (niño) con fibrosis quísitica (CF) ""corregido""",2,,,,,,2040,C12,
-C8,Se encuentra la señal primera de que una célula cualquiera (todas las células) va a perder el control del ciclo celular,1,,,,,,2040,,C18
-C9,Descentralización (no se puede controlas) sino que es un horizonte normativo,,,,,,,hoy,,
-C10,¿No estamos haciendo un buen diagnóstico?,,,,,,,2025,,
-C11,Humano-máquina,,,,,,,2025-2030,,
-C12,Discusión ética sobre edición genética,,,,,,,2030-2040,,C7
-C13,"Amenazas, ignoracia",,,,,,,2040-2050,C12,C17
-C14,Fragmentación ¿estados de derecho?,,,,,,,2050,,
-C15,"Heterarquía, normativa política",,,,,,,2050-2070,,
-C16,Las nuevas épocas surgen a partir de una catástrofe,,,,,,,2050-2070,,
-C17,Atentados genéticos,,,,,,,2050-2060,C13,
-C18,Dispositivo de vigilancia en búsqueda de enfermedades para personas,,,,,,,2050-2060,C8,C20
-C19,Crisis energética ¿cómo hacemos las cosas?,,,,,,,2050-2060,,
-C20,Hombre de 200 años,,,,,,,2070,C18,
-D1,"Intregación de dinámicas de pensamiento, ideas y emociones en simulaciones computacionales de sociedades humanas",1,,,,,,2020,"D11, D12",
-D2,Educación sin orientación de mercado y sin rendición de cuentas,3,,,,,,2030,,
-D3,Adquisición de conciencia social de simulaciones de computacionales de sociedades humana,1,,,,,,2030-2040,"D13, D14",
-D4,Acceso completo y libre a toda la información,4,,,,,,,,
-D5,Simulación de sistemas biológicos/humanos,2,,,,,,2040,,"D15, D16"
-D6,Autoperpetuación (autopoiesis) de las simulaciones computacionales humanas,1,,,,,,2040,,D16
-D7,Unificación de las ciencias,2,,,,,,2040,,D17
-D8,Inteligencia artificial y automatización,2,,,,,,2050,,"D18, D19"
-D10,Sociedades sin trabajos automatizables,2,,,,,,2080,,D20
-D11,¿Qué es la conciencia y dónde está?,,,,,,,hoy,,D1
-D12,Teoría/Modelo de la conciencia,,,,,,,hoy,,D1
-D13,Computación neurocientífica,,,,,,,2020-2030,,D3
-D14,Computación cuántica,,,,,,,2020-2030,,D3
-D15,Sociedades artificiales,,,,,,,2040-2050,D5,
-D16,Dilemas éticos y políticos debido a la planificación y predicción social,,,,,,,2040-2050,"D5, D6",
-D17,Teoría del todo,,,,,,,2040-2050,D7,
-D18,Transferencia de conciencia humano-máquina,,,,,,,2050-2060,D8,
-D19,Singularidad conciencia artificial,,,,,,,2050-2060,D8,
-D20,Dilemas éticos-morales,,,,,,,2080,D10,
-E1,Pensamiento computacional en colegios (formación escolar),2,,,,,,hoy - 2030,E7,"E8, E9"
-E2,Creación de sistema de comunicación de datos y transmisión de larga distancia y eficiente energéticamente,3,,,,,,2030,"E8, E9",
-E3,Creación de un sistema variable que prediga en tiempo real las enfermedades con mayor prevalencia,,,,,,,2030,"E8, E9",
-E4,Primer computador cuántico personal,2,,,,,,2040,"E7, E1, E8, E9, E3",E10
-E5,Diseño electrónico en los colegios,1,,,,,,2040,"E7, E1, E8, E9, E2",E10
-E6,Sistema inteligentes estandarizados en los ámbitos revelantes: salud - transporte - educación,1,,,,,,2050,"E10, E11","E12, E13"
-E7,Datos abiertos,,,,,,,hoy,,E1
-E8,Discución profunda sobre regulación y ética del uso de la información,,,,,,,hoy - 2030,E1,"E2, E3"
-E9,Sensores robustos y redes estables y algoritmos eficientes,,,,,,,hoy - 2030,E1,"E2, E3"
-E10,Crísis del sistema laboral,,,,,,,2030- 2050,"E4, E5",E11
-E11,Crísisuso información,,,,,,,2030 - 2050,E10,
-E12,Nuevo sistema laboral,,,,,,,2070,E6,
-E13,Redefinición de desarrollo humano,,,,,,,2070,E6,
-F1,"Llegar a las máximas profundidades del océano, realizar observaciones y recolectar muestras para su análisis en tierra",4,,,,,,2020-2030,,
-F2,"Minería seca: optimizar las operaciones auxiliares para disminuir energía, sustituir el proceso de contración. Procesar sin agua",3,,,,,,2030,F13,F20
-F3,Las máquinas desarrollan su propio lenguaje,1,,,,,,2030,,
-F4,Robot mayordomo o cuidador puede operar autonomamente en interior de una casa,2,,,,,,2030,,F18
-F5,Robotos pueden operar/interactuar en ambiente natural (ej. calle) por más de 8 horas,2,,,,,,2030-2040,,F17
-F6,Desarrollo de tecnologías que puedan trabajar a altísimas presiones (observación y experimentación in situ),4,,,,,,2030-2040,,
-F7,Los seres humanos tenemos un dispositivo en el cuerpo desde donde somos vigilados,1,,,,,,2030-2040,,
-F8,Instalación de un sistema de observación que permita registros continuos y sostenidos en el tiempo,4,,,,,,2040,,F21
-F9,Las máquinas pueden experimentar emociones y actuar por sí mismas,1,,,,,,2045,F14,F22
-F10,Máquinas conscientes,2,,,,,,2050,"F15, F16",
-F11,Minería espacial,3,,,,,,2050-2060,,
-F12,Integración del conocimiento en modelos de sistema tierra,4,,,,,,2060,,
-F13,Falta de agua,,,,,,,Hoy,,F2
-F14,¿Pueden las emociones humanas modificar el funcionamiento de las máquinas?,,,,,,,2030-2040,F19,F9
-F15,Entender el origen de la conciencia,,,,,,,2030-2050,,F10
-F16,¿Cómo entender que algo es consciente,,,,,,,2030-2050,,F10
-F17,"Robots interactúan con personas en el mundo real, en formas diversas",,,,,,,2040,F5,
-F18,Robots cuidan personas poco valentes,,,,,,,2035,F4,
-F19,Los humanos tenemos sentimientos por las máquinas,,,,,,,2040,"F4, F5, F6",F14
-F20,Puede extrapolarse a otras áreas y solucionar problemas de agua,,,,,,,2035,F2,
-F21,Comienza la conquista por el fondo del mar,,,,,,,2050,F8,
-F22,¿Podrán existir relaciones amorosas entre humanos y robots?,,,,,,,2055,F9,
-G1,Revisión de los plazos de manejo de los recursos pesqueros y acuicultura,,,,,,,,,
-G2,Estudios potentes del efecto del cambio climático sobre áreas,,,,,,,,,
-G3,Legislación propiedad nacional...???,,,,,,,,,
-G4,Dicotomías ciencia-desarrollo territorial ,,,,,,,,,
-G5,Inventario bases de datos,,,,,,,,,
-G6,Reconocer para la .. ???,,,,,,,,,
-G7,Usos de los territorios desde la propia ciudadanía,,,,,,,,,
-G8,Dicotomía lo productivo - lo social,,,,,,,,,
-G9,Multiplicar por 100 masa crítica y recursos para ciencia,,,,,,,,,
-G10,Super alimentos con ingeniería geénetica,,,,,,,,,
-G11,Ordenamiento territorial desde los propios territorios (para uso de recursos desde región),,,,,,,,,
-G12,"¿Cuál es la sociedad que queremos vivir, e integrar la ciencia?",,,,,,,,,
-G13,Descentralización ,,,,,,,,,
-G14,Valoración de la actividad científica,,,,,,,,,
-G15,automatización => impacto,,,,,,,,,
-G16,Manipulación genéti a del ser humano,,,,,,,,,
-G17,Asumir en la agenda rol GORES y traspasos ???,,,,,,,,,
-G18,Ciencia con impacto en la política pública,,,,,,,,,
-G19,Ciencia multidisciplinaria y colaborativa,,,,,,,,,
-G20,Importancia urgente de la generación de base de datos biológica y ordenamiento único de estos para toma de decisiones futuras,,,,,,,,,
-G21,Educación y ciencias,,,,,,,,,
-G22,Bases de datos biológicos para gestión del territorio,,,,,,,,,
-G23,Incorporación de la multiculturalidad y medicina ancestral,,,,,,,,,
-G24,Plan de manejo de áreas naturales y protegidas por el estado y financiamento ???,,,,,,,,,
-G25,Desarrollo no antagónico al medio ambiente,,,,,,,,,
-I1,Catastro de etnoconocimiento y economías locales,,,,,,,hoy,,
-I2,Fortalecer la identidad cultural,,,,,,,2030,,I2
-I3,Inserción de medicina ancestral en servicio de salud pública,,,,,,,2050,I2,
-I4,Identificación y empoderamiento del capital social en los territorios,,,,,,,2025,,
-I5,Existencia de intereses comunes entre científicos y comunidades locales,,,,,,,2040,,I6
-I6,Participación ciudadana en procesos de investigación científica,,,,,,,2050,I5,I7
-I7,Cambio cultural en la interacción en ciencia y sociedad (toma de decisiones),,,,,,,2060,I6,
-I8,Valorización de los microorganismos y su rol ecosistémico (microalgas en el desierto),,,,,,,2020,,I9
-I9,Baja del porcentaje y número de personas con cáncer en la región por consumo de microalgas encapsuladas,,,,,,,2030,I8,I10
-I10,Celdas fotovoltaicas sensibilizadas con pigmentos naturales de microalgas,,,,,,,2040,I9,I11
-I11,Biopolimeros en parches quirúrgicos para reparación de heridas en hospitales,,,,,,,2045,I10,I12
-I12,"Industria farmaceúticas de microalgas como plataforma recombinante de proteínas (hormonas de crecimiento, pastillas moduladoras Alzheimer antiaging)",,,,,,,2060,I11,
-I13,Recuperar especies cultivables nativas y adaptar nuevas especies,,,,,,,2030,,I14
-I14,Establecer atractivos productivos (cultivos),,,,,,,2040,I13,I15
-I15,Repoblamiento del sector alto andino,,,,,,,2055,I14,
-I16,Conocer áreas de concentración de cetáceos en el norte de Chile chico,,,,,,,2020,,I17
-I17,Desarrollo de turismo científico en territorios vulnerables de pescadores del norte chico - producto,,,,,,,2030-2040,I16,
-I18,Modelo de variables ambientales que afecten procesos oceanográficos,,,,,,,2035-2040,,I19
-I19,Mapa de riesgos de actividades asociadas turismo científico (y otras actividades productivas/comunidades),,,,,,,2040,I18,
-I20,Poner en valor la medicina tradicional y el etnoconocimiento,,,,,,,2025,I1,I21
-I21,Utilización de la medicina alternativa en el sistema formal de salud,,,,,,,2030,I20,I22
-I22,Producción de plantas medicinales a gran escala,,,,,,,2045,I21,I23
-I23,No utilización de drogas farmacológicas,,,,,,,2050,I22,
-J1,Elaboración de un proceso participativo real que defina una visión a largo plazode desarrollo de la agricultura,,,,,,,,,J13
-J2,Generación de nuevos cultivos ,,,,,,,,,
-J3,"Integración de modelos (física de suelos, tecnología , evapotranspiración, plagas, etc.) Disponibilidad de agua (cuenca, suelos, más)",,,,,,,,,"J9, J12"
-J4,Edición génica,,,,,,,,J5,"J7, J8"
-J5,Ciencia en el área de la salud demuestran que los alimentos producidos ecológicamente mejoran la salud v/s alimentos producidos convencionalmente,,,,,,,,,"J7, J8, J4"
-J6,"Ciencia ha demostrado la capacidad de los sistemas agrícolas ecológicos biomiméticos de ser resilientes y productivos o largo plazo, y productos de alimentos saludables",,,,,,,,,J14
-J7,Consolidación de una industria nacional productora de aditivos especializados y/o ingredientes funcionales (7 productos),,,,,,,,"J5, J4",
-J8,Popularización y/o comercialización de nutrigenómica --> cambiará la alimentación (basada en DNA) más personalizada. --> Demanda de nuevos alimentos y componentes,,,,,,,,"J5, J4",
-J9,"Manejo integral del agua --> eficiencia en uso del agua a nivel de cuenca, ríos, canales, predios. Desalinización de agua de mar?",,,,,,,,J3,J16
-J10,Crísis del sistema productivo agroindustrial actual (ej. vacas locas en UK),,,,,,,,J11,J14
-J11,Porcentaje de empresas exportan con valor agregado mayor a empresas que exportan comodities,,,,,,,,,J10
-J12,Generación de herramientas tecnológicas para enfrentar sequías,,,,,,,,J3,
-J13,Consolidación de un modelo de gobernanza sostenible de los territorios rurales,,,,,,,,J1,J15
-J14,Pequeños agrícolas han cambiado su paradigma productivo a sistemas ecológico diversificados. Comercialización local y en cadena corta.,,,,,,,,"J6, J10",J16
-J15,Territorios rurales integrados al ecosistema regional urbano rural natural,,,,,,,,J13,J16
-J16,áreas rurales revitalizadas proceso de migración revertido y pequeña agricultura autosustentables,,,,,,,,"J9, J14",
-J17,"Cultivo de lineas celulares como avance cientifico, marcará un cambio (avance tecnológico, desde la validación como a la creación de tejidos/organos? en vitro?)",,,,,,,,,
-H1,Reducción de inequidades en la sociedad,3,,,,,,2040,,H4
-H2,Mejoría en calidad de vida de la persona,,,,,,,2040-2050,H4,"H7, H11"
-H3,Nuevas formas de gobierno,,,,,,,2040-2050,,
-H4,"Reducción de desastres ambientales, mejor usos de los recursos del país",2,,,,,,2040,H1,"H2, H8"
-H5,Priorizar acciones transversales entre los ministerios,1,,,,,,2040,,H20
-H6,Potenciar arte,,,,,,,2040-2050,H7,
-H7,Mejorar valorización de la biodiversidad y del capital verde del país,,,,,,,2040-2050,H2,H6
-H8,Cambio a una economía basada en energías limpias,,,,,,,2050,H4,"H12, H18"
-H9,Generar herramientas para lograr capacidad adaptativa,,,,,,,2050,,H14
-H10,Promover turismo,,,,,,,2050-2060,,H13
-H11,Mejores y más efectivos tratamientos en salud,,,,,,,2050-2060,H2,H12
-H12,Mayor expectativa de vida y en mejores condiciones,,,,,,,2060,"H8, H11",H17
-H13,Conocer cómo reconstruir los ecosistemas,,,,,,,2060,H10,H17
-H14,Generar estrategias para minimizar impactos socio-económicos,,,,,,,2050-2060,H9,H16
-H15,Mejoramiento de servicios básicos,,,,,,,2060,,H17
-H16,Diversificar el uso de recursos,,,,,,,2060,H14,H17
-H17,"Mayor/mejor integración de la sociedad, paz social",,,,,,,2070,"H12, H13, H15, H16",
-H18,Trade off positions,,,,,,,2050,H8,H19
-H19,"Nuevas preguntas, ¿mismos problemas?",,,,,,,2060,H18,
-H20,Nuevas formas de comprender,,,,,,,2050,H5,
-H21,Integración de metodologías,2,,,,,,hoy,,
-H22,Protocolo de seguimiento,3,,,,,,hoy-2030,,
-H23,Llenar vacíos de formación científica,2,,,,,,hoy,,
-H24,"Ciencia transversal, promover formación de equipos interdisciplinarios",2,,,,,,hoy,,
-H25,Mejorar comunicación de la ciencia y la vigencia de los problemas,2,,,,,,hoy,,
-H26,Abogacía de parte de científica,2,,,,,,hoy,,
-H27,Poner recursos,2,,,,,,hoy,,
-H28,Mejorar capacidad predictiva,1,,,,,,hoy-2030,,
-H29,Comprender la respuesta de los elementos naturales y sociales frente a forzantes de cambio,1,,,,,,hoy-2030,,
-H30,Fortalecer relevancia y comunicación,2,,,,,,hoy,,
-H31,Reconocer vigencia del problema,2,,,,,,hoy,,
-H32,Seguimiento,1,,,,,,2030,,
+A1,Se tienen centros urbanos sustentables y resilientes,1,,,,2,2.6,2040-2070,,A15
+A10,Se debe financiar públicamente proyectos de investigación multidisciplinarios y con productos heterogeneos,2,,,,2,2.1,2020,"A18, A19, A20",
+A11,Se debe determinar el uso actual del recurso hídrico,4,rh,"rh.3, rh.4",,1,1.1,2025, A20,
+A12,Disminuye la huella hídrica,,rh,"rh.2, rh.3",,1,1.1,2035,A4,
+A13,Aumenta el numero de investigadores y se establecen masas críticas,,,,,2,2.1,2040,A5,
+A14,Se datifica la toma de decisiones,,,,,2,2.4,2045,"A3, A2",
+A15,Se debe mejorar la planificación de uso del territorio sumergido,,,,,3,3.1,2050,"A1, A2",
+A16,Hay planificación informada y una nueva ley de pesca,,rh,,,2,2.4,2035,A6,
+A18,Se debe permitir el crecimiento del número de investigadores mediante puestos en centros,,,"rh.1, rh.3",,2,2.1,,,A10
+A19,Se deben flexibilizar los criterios con los que se evalúa el desempeño,,,,,3,3.1,hoy,,A10
+A2,Se debe implementar modelos oceanográficos y biogeoquímicos operacionales que asimilen en tiempo cuasi real la información generada por la red de monitoreo,3,rh,"rh.4, rh.5",,1,1.3,2035,,"A14, A15"
+A20,Se debe generar un Ministerio de Ciencias y Tecnologías con recursos para financiar un programa de observación,,,,,2,2.3,hoy,,"A8, A9, A10, A11"
+A21,Se replantea el rol y el funcionamiento de las agencias actualmente involucradas,,,,,2,2.3,hoy,,"A8, A9"
+A22,Existe empoderamiento cudadano,,,,,2,2.5,2025,,A7
+A23,Hay responsabilización ciudadana,,,,,2,2.5,hoy,,A8
+A3,"Se debe establecer y desarrollar criterios de modelos óptimos de recursos hídricos con valores ambientales, sociales y económicos sustentables",4,rh,"rh.4, rh.2",,3,3.1,2040,,A14
+A4,Se deben desarrollar modelos integrales validados,4,,,,1,1.3,2030,,A12
+A5,Se debe generar una institucionalidad estable para la investigación y acción en temas ambientales,2,,,,2,2.3,2030,,A13
+A6,"Existe una red con adecuada resolución espacial de monitoreo oceanográfico y sistema de transmisión, acopio y distribución de la información",3,rh,"rh.4, rh.5",,1,1.3,2030,A8,A16
+A7,Existe un nuevo sistema de gobernanza urbana,1,,,,2,2.3,2025-2030,A22,
+A8,"Existe un sistema de observación y modelación urbanos coordinados, integrados y permanentes (atmosféricos, sociales, movilidad, vegetación, habitacional, etc.)",1,,,,1,1.3,2018-2022,"A20, A21, A23",A6
+A9,Se debe implementar modelos que combinen hidrodinámica y biogeoquímica de la Patagonia Chilena,3,rh,"rh.4, rh.5",,1,1.3,2020,"A20, A21",
+B1,Se regenera el corazón,,,,,1,1.2,2030,,
+B3,Se debe ver al hombre como parte de un organismo superior y no como un organismo superior en sí,,,,,2,2.2,hoy - 2030,,B7
+B4,Se crea un nuevo anticancerigeno,,,,,1,1.2,2040,,B5
+B5,Chile se transforma como centro cientifico internacional,,,,,2,2.3,2040,"B4, B8",
+B6,Se debe desarrollar nuevos materiales que permitan conjugar el reciclaje y la producción energética eficiente,,,,,1,1.3,2040,B7,B8
+B7,Se tiene un prototipo de generación energética eficiente y sustentable,,,,,1,1.3,2035,B3,B6
+B8,Chile se transforma como lugar de centros internacionales de excelencia científica,,,,,2,2.3,2040,B6,B5
+C1,Hay formación interdisciplinaria de científicos jovenes,3,,,,2,2.1,hoy,,
+C11,Existe un humano-máquina,,,,,1,1.3,2025-2030,,
+C12,Se produce discusión ética sobre la edición genética,,,,,2,2.2,2030-2040,,C7
+C17,Se producen atentados genéticos,,,,,1,1.2,2050-2060,,
+C18,Se crea un dispositivo de vigilancia en busqueda de enfermedades para personas,,,,,1,1.3,2050-2060,C8,C20
+C2,Se consolida una institucionalidad cientifica adecuada para la investigación interdisciplinar,3,,,,2,2.3,2025,,
+C20,Existe un hombre de 200 años,,,,,1,1.2,2070,C18,
+C3,"Se identifican métodos para investigación transdisciplinar aplicables a la intersección de ciencias sociales, físicas, biológicas, técnicas, etc",3,,,,2,2.1,2030,,
+C4,Hay reconfiguración de análisis y teoría interdisciplinar sobre el comportamiento complejo en ámbitos técnicos,3,,,,2,2.2,2040,,
+C5,"Se debe incorporar en el curriculum de formación docente las ""habilidades del Siglo XXI"" ",4,,,,2,2.2,2030,,
+C6,Se incorpora el enfoque interdisciplinario en la formación docente y las políticas educacionales,5,,,,2,2.1,2030,,
+C7,Se corrige el primer paciente niño con fibrosis quística,2,,,,1,1.2,2040,C12,
+C8,Se encuentra la primera señal de que una celula cualquiera va a perder el control del ciclo celular,1,,,,1,1.3,2040,,C18
+D1,"Existe integración de dinámicas de pensamiento, ideas y emociones en simulaciones computacionales de sociedades humanas",1,,,,3,3.1,2020,D12,
+D10,Existen sociedades sin trabajos automatizables,2,,,,2,2.5,2080,,
+D12,Hay una teoría o modelo de la conciencia,,,,,2,2.2,hoy,,D1
+D13,Existe computación neurocientífica,,,,,1,1.3,2020-2030,,D3
+D14,Existe computación cuántica,,,,,1,1.3,2020-2030,,D3
+D15,Se crean sociedades artificiales,,,,,1,1.3,2040-2050,D5,
+D16,Aparecen dilemas éticos y políticos debido a la planificación y predicción social,,,,,2,2.2,2040-2050,"D5, D6",
+D17,Hay una teoría del todo,,,,,2,2.2,2040-2050,,
+D18,Hay transferencia de conciencia humano-máquina,,,,,3,3.1,2050-2060,D8,
+D19,Existe singularidad de la conciencia artificial,,,,,3,3.1,2050-2060,D8,
+D2,Hay educación sin orientación de mercado y sin rendición de cuentas,3,,,,2,2.1,2030,,
+D3,Las simulaciones computacionales de sociedades humanas adquieren conciencia social,1,,,,2,2.5,2030-2040,"D13, D14",
+D4,Hay libre y completo acceso a toda la información ,4,,,,3,3.1,,,
+D5,Se simulan sistemas biológicos/humanos,2,,,,1,1.2,2040,,"D15, D16"
+D6,Se autoperpetúan las simulaciones computacionales humanas,1,,,,1,1.3,2040,,D16
+D8,Existe inteligencia artificial y automatización,2,,,,1,1.3,2050,,"D18, D19"
+D9,La mayoría de los trabajos científicos son multidisciplinarios,2,,,,2,2.1,2100,,
+E1,Hay pensamiento computacional en colegios,2,,,,1,1.3,hoy - 2030,E7,"E8, E9"
+E10,Hay una crisis del sistema laborales,,,,,2,2.5,2030- 2050,"E4, E5",E11
+E11,Hay una crisis del uso de información,,,,,2,2.5,2030 - 2050,E10,
+E12,hay un nuevo sistema laboral,,,,,2,2.5,2070,E6,
+E13,Se redefine el desarrollo humano,,,,,2,2.2,2070,E6,
+E2,Se crea un sistema de comunicación de datos y transmisión de larga distancia eficiente energéticamente,3,,,,1,1.3,2030,"E8, E9",
+E3,Se debe crear un sistema variable que prediga en tiempo real las enfermedades con mayor prevalencia,,,,,1,1.3,2030,"E8, E9",
+E4,Existe el primer computador cuántico personal,2,,,,1,1.3,2040,"E7, E1, E8, E9, E3",E10
+E5,Hay diseño electrónico en los colegios,1,,,,2,3.1,2040,"E7, E1, E8, E9, E2",E10
+E6,Hay sistemas inteligentes estandarizados en los ámbitos relevantes,1,,,,1,1.3,2050,"E10, E11","E12, E13"
+E7,Hay datos abiertos,,,,,1,1.3,hoy,,E1
+E8,Hay discusión sobre regulación y ética del uso de la información,,,,,2,2.4,hoy - 2030,E1,"E2, E3"
+E9,"Existen sensores robustos, redes estables y algoritmos eficientes",,,,,1,1.3,hoy - 2030,E1,"E2, E3"
+F1,Se debe llegar a las máximas profundidades del océano para realizar observaciones y recolectar muestras para su análisis en tierra,4,rh,"rh.4, rh.5",,1,1.1,2020-2030,,
+F10,Hay maquinas conscientes,2,,,,1,1.3,2050,F15,
+F11,Hay minería espacial,3,,,,1,1.3,2050-2060,,
+F12,Existe integración del conocimiento en modelos de sistema tierra,4,,,,3,3.1,2060,,
+F13,Hay falta de agua,,rh,"rh.2, rh.3",,1,1.1,Hoy,,F2
+F15,Se debe entender el origen de la conciencia,,,,,2,2.2,2030-2050,,F10
+F17,Los robots interactuan con personas en el mundo real de formas diversas,,,,,2,2.5,2040,F5,
+F18,Robots cuidan personas poco valentes,,,,,2,2.5,2035,,
+F19,Los humanos tenemos sentimientos por las máquinas,,,,,1,1.3,2040,"F5, F6",
+F2,"Se deben optimizar las operaciones auxiliares para disminuir energía, sustituir el proceso de contracción y procesar sin agua",3,,,,3,3.1,2030,F13,
+F21,Comienza la conquista por el fondo del mar,,,,,1,1.1,2050,F8,
+F5,Los robots pueden operar o interactuar en ambiente natural por más de 8 horas,2,,,,1,1.3,2030-2040,,F17
+F6,Se deben desarrollar tecnologías que puedan trabajar a altisimas presiones con observación y experimentación in situ,4,,,,1,1.3,2030-2040,,
+F7,Los seres humanos tenemos un dispositivio en el cuerpo desde donde somos vigilados,1,,,,1,1.3,2030-2040,,
+F8,Se debe instalar un sistema de observación que permita registros continuos y sostenidos en el tiempo,4,,,,1,1.3,2040,,F21
+H1,Se reducen las inequidades en la sociedad,3,,,,2,2.5,2040,,"H4, H33"
+H10,Se debe promover el turismo,,,,,2,2.5,2050-2060,,H13
+H11,Hay tratamientos en salud mejores y mas efectivos,,,,,2,2.5,2050-2060,H2,H12
+H12,Hay mayor expectativa de vida y en mejores condiciones,,,,,2,2.5,2060,"H8, H11",H17
+H13,Se debe conocer como reconstruir los ecosistemas,,,,,1,1.1,2060,H10,H17
+H14,Se deben generar estrategias para minimizar los impactos socio-económicos,,,,,3,3.1,2050-2060,H9,H16
+H15,Se mejoran los servicios básicos,,,,,2,2.3,2060,,H17
+H16,Se debe diversificar el uso de recursos,,rh,rh.3,,3,3.1,2060,H14,H17
+H17,Hay mayor y mejor integración de la sociedad y paz social,,,,,2,2.5,2070,"H12, H13, H15, H16",
+H2,Mejora la calidad de vida de la persona,,,,,2,2.5,2040-2050,"H4, H33","H7, H11"
+H20,Existen nuevas formas de comprender,,,,,2,2.2,2050,H5,
+H25,Se debe mejorar la comunicación de la ciencia y la vigencia de los problemas,2,,,,2,2.5,hoy,,
+H29,Se debe comprender la respuesta de los elementos naturales y sociales frente a forzantes de cambio,1,,,,2,2.5,hoy-2030,,
+H3,Hay nuevas formas de gobierno,,,,,2,2.3,2040-2050,,
+H4,Mejora el uso de los recursos del país,2,rh,rh.3,,2,2.3,2040,H1,"H2, H8"
+H33,Se reducen los desastres ambientales,2,,,,1,1.1,2040,,H20
+H5,Se deben priorizar acciones transversales entre los ministerios,1,,,,2,2.3,2040,H7,
+H6,Se debe potenciar el arte,,,,,2,2.5,2040-2050,H2,H6
+H7,Se debe mejorar la valorización de la biodiversidad y del capital verde del país,,,,,2,2.5,2040-2050,"H4, H33",H12
+H8,Se cambia a una economía basada en energías limpias,,,,,2,2.4,2050,,H14
+H9,Se deben generar herramientas para lograr capacidad adaptativa,,,,,3,3.1,2050,,

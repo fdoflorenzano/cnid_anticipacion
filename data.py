@@ -33,7 +33,7 @@ def date_parser(date_string):
             return (2018 + int(parsed[1])) / 2
 
 print('PROCESSING HITOS')
-with open('hitos.csv', newline='') as csvfile:
+with open('hitos.csv', newline='', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
     hitosJson = []
     rownum = 0
@@ -44,11 +44,11 @@ with open('hitos.csv', newline='') as csvfile:
             colnum = 0
             hito = {}
             for col in row:
-                
-                if header[colnum] in ['hito_consecuencia', 'hito_precedente', 
-                                      'dimension', 'subdimension', 
+
+                if header[colnum] in ['hito_consecuencia', 'hito_precedente',
+                                      'dimension', 'subdimension',
                                       'disciplinas', 'subdisciplina']:
-                    hito[header[colnum]] = list(filter(lambda x: x != '', 
+                    hito[header[colnum]] = list(filter(lambda x: x != '',
                                                        col.replace(" ", "").split(',')))
                 elif header[colnum] in [ 'tipo', 'lugar', 'investigador']:
                     pass
@@ -59,11 +59,11 @@ with open('hitos.csv', newline='') as csvfile:
                 colnum += 1
             hitosJson.append(hito)
         rownum += 1
-    with open('hitos.json', 'w') as f:
+    with open('hitos.json', 'w', encoding="utf-8") as f:
         json.dump(hitosJson, f, ensure_ascii=False)
 
 print('PROCESSING PREGUNTAS')
-with open('preguntas.csv', newline='') as csvfile:
+with open('preguntas.csv', newline='', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile)
     preguntasJson = []
     rownum = 0
@@ -80,12 +80,12 @@ with open('preguntas.csv', newline='') as csvfile:
         rownum += 1
     for pre in preguntasJson:
         if('descripcion' not in pre.keys()):
-            pre['descripcion'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    with open('preguntas.json', 'w') as f:
+            pre['descripcion'] = ""
+    with open('preguntas.json', 'w', encoding="utf-8") as f:
         json.dump(preguntasJson, f, ensure_ascii=False)
 
 def csvToJson(file):
-    with open(file+'.csv', newline='') as csvfile:
+    with open(file+'.csv', newline='', encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         preguntasJson = []
         rownum = 0
@@ -100,7 +100,7 @@ def csvToJson(file):
                     colnum += 1
                 preguntasJson.append(pregunta)
             rownum += 1
-        with open(file + '.json', 'w') as f:
+        with open(file + '.json', 'w', encoding="utf-8") as f:
             json.dump(preguntasJson, f, ensure_ascii=False)
 
 print('PROCESSING DISCIPLINAS Y DIMENSIONES')
@@ -152,14 +152,14 @@ def transitive(hit):
 def question(pre):
     """
     Formateador de preguntas desde pregunta original
-    """    
+    """
     return {'text': pre['contenido_pregunta'], 'id': pre['mesa'] + pre['pregunta'], 'description': pre['descripcion']}
 def extract_links(hit):
     """
     Extractor de enlaces desde hitos
     """
     return list(map(lambda y: {
-                    'source': hit['hito_id'], 
+                    'source': hit['hito_id'],
                     'target': y,
                     'question': hit['pregunta'],
                     'dimensions': hit['dimension'],
@@ -198,7 +198,7 @@ def filter_data(data):
                 present_questions[q] = True;
         else:
             valid_nodes[node['id']] = False
-    
+
     data['nodes'] = list(filter(lambda x: valid_nodes[x['id']], data['nodes']));
     data['links'] = list(filter(lambda x: valid_nodes[x['source']] and valid_nodes[x['target']], data['links']))
     data['questions'] = list(filter(lambda x: x['id'] in present_questions, data['questions']));
@@ -214,14 +214,14 @@ def tagger(categories):
             tags[subdimension['id']] = subdimension
     for disc in categories['disciplines']:
         for subdiscipline in disc['subdisciplinas']:
-            tags[subdiscipline['id']] = subdiscipline 
+            tags[subdiscipline['id']] = subdiscipline
     return tags;
 
 print('ADDING UP INFO')
 
-with open('disciplina.json') as disciplinas_file:
+with open('disciplina.json', encoding="utf-8") as disciplinas_file:
     disciplinas = json.loads(disciplinas_file.read())
-    with open('subdisciplina.json') as subdisciplinas_file:
+    with open('subdisciplina.json', encoding="utf-8") as subdisciplinas_file:
         subdisciplinas = json.loads(subdisciplinas_file.read())
         for d in disciplinas:
             d['subdisciplinas'] = []
@@ -230,12 +230,12 @@ with open('disciplina.json') as disciplinas_file:
                 if s['id_disciplina'] == d['id']:
                     d['subdisciplinas'].append(s)
                     break
-        with open('disciplinas.json', 'w') as f:
+        with open('disciplinas.json', 'w', encoding="utf-8") as f:
             json.dump(disciplinas, f, ensure_ascii=False)
 
-with open('dimension.json') as dimension_file:
+with open('dimension.json', encoding="utf-8") as dimension_file:
     dimension = json.loads(dimension_file.read())
-    with open('subdimension.json') as subdimension_file:
+    with open('subdimension.json', encoding="utf-8") as subdimension_file:
         subdimension = json.loads(subdimension_file.read())
         for d in dimension:
             d['subdimension'] = []
@@ -245,25 +245,25 @@ with open('dimension.json') as dimension_file:
                     s['id'] = d['id'] + '.' + s['id']
                     d['subdimension'].append(s)
                     break
-        with open('dimensiones.json', 'w') as f:
+        with open('dimensiones.json', 'w', encoding="utf-8") as f:
             json.dump(dimension, f, ensure_ascii=False)
 
-with open('dimensiones.json') as dimension_file:
+with open('dimensiones.json', encoding="utf-8") as dimension_file:
     dimensiones = json.loads(dimension_file.read())
-    with open('disciplinas.json') as disciplina_file:
+    with open('disciplinas.json', encoding="utf-8") as disciplina_file:
         disciplinas = json.loads(disciplina_file.read())
         data = {
             "dimensions": dimensiones,
             "disciplines": disciplinas
         }
-        with open('categories.json', 'w') as f:
+        with open('categories.json', 'w', encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False)
 
-with open('hitos.json') as hitos_file:
+with open('hitos.json', encoding="utf-8") as hitos_file:
     hitos = json.loads(hitos_file.read())
-    with open('preguntas.json') as preguntas_file:
+    with open('preguntas.json', encoding="utf-8") as preguntas_file:
         preguntas = json.loads(preguntas_file.read())
-        with open('categories.json') as category_file:
+        with open('categories.json', encoding="utf-8") as category_file:
             categories = json.loads(category_file.read())
             data = {}
             data['dimensions'] = categories['dimensions']
@@ -274,7 +274,7 @@ with open('hitos.json') as hitos_file:
             data['links'] = flat(list(map(lambda x: extract_links(x), hitos)))
             data['nodes'] = list(map(lambda x: node(x), hitos))
             data = filter_data(data)
-            with open('data.json', 'w') as f:
+            with open('data.json', 'w', encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False)
 
 print('DONE')
